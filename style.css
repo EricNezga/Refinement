@@ -24,14 +24,14 @@ h1 {
     max-width: 1080px;
 }
 
-/* Tarjetas de cada factor */
+/* Factores más anchos */
 .factor {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 20px;
     padding: 25px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
-    width: 220px;
+    width: 260px;
     transition: transform 0.3s ease, border 0.3s ease;
 }
 
@@ -45,7 +45,6 @@ h1 {
     margin-bottom: 20px;
 }
 
-/* Fila horizontal con etiqueta + contenido */
 .card-row {
     display: flex;
     align-items: stretch;
@@ -68,7 +67,6 @@ h1 {
     color: #111;
 }
 
-/* Etiqueta vertical (de abajo hacia arriba) */
 .label {
     writing-mode: vertical-lr;
     transform: rotate(180deg);
@@ -84,7 +82,6 @@ h1 {
     align-items: center;
 }
 
-/* Contenido textual del nivel */
 .card-content {
     flex: 1;
     padding: 8px 10px;
@@ -97,43 +94,55 @@ h1 {
     margin-bottom: 4px;
 }
 
-/* Panel lateral separado */
+/* Tarjetas laterales */
 .sidebar {
     display: flex;
     flex-direction: column;
     position: fixed;
     top: 120px;
     right: 40px;
-    gap: 15px;
+    gap: 12px;
     z-index: 10;
 }
 
-/* Tarjeta individual */
+/* Formato minimalista para Total y SP */
 .resultado.tarjeta {
-    text-align: right;
+    text-align: center;
     background-color: rgba(255,255,255,0.05);
-    padding: 18px 24px;
+    padding: 10px 0;
     border-radius: 12px;
-    width: 230px;
+    width: 80px;
+    height: 80px;
     box-shadow: 0 0 15px rgba(0,0,0,0.2);
     border: 1px solid #ffffff22;
     backdrop-filter: blur(8px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-.resultado.tarjeta h2 {
-    font-size: 18px;
-    margin: 0;
-    white-space: nowrap;
+.resultado.tarjeta .etiqueta {
+    font-size: 14px;
+    font-weight: 600;
+    color: #ccc;
+    margin-bottom: 4px;
 }
 
-/* Colores dinámicos */
-#story-point.sp-3 { color: #4caf50; }
-#story-point.sp-5 { color: #ffb300; }
-#story-point.sp-8 { color: #ff7043; }
-#story-point.sp-13,
-#story-point.sp-21 { color: #e53935; }
+.resultado.tarjeta .valor {
+    font-size: 26px;
+    font-weight: bold;
+    color: #fff;
+}
 
-/* Responsive para móvil */
+/* Colores según story point */
+.valor.sp-3 { color: #4caf50; }
+.valor.sp-5 { color: #ffb300; }
+.valor.sp-8 { color: #ff7043; }
+.valor.sp-13,
+.valor.sp-21 { color: #e53935; }
+
+/* Responsive */
 @media (max-width: 960px) {
     .sidebar {
         position: static;
@@ -144,8 +153,8 @@ h1 {
     }
 
     .resultado.tarjeta {
-        text-align: center;
-        width: 100%;
-        max-width: 300px;
+        width: 100px;
+        height: 100px;
+        margin: 10px;
     }
 }
