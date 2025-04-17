@@ -1,5 +1,5 @@
 const storyPointDisplay = document.getElementById("story-point");
-const toggleBtn = document.getElementById("toggleView");
+const toggleBtn = document.getElementById("toggle-view");
 const wrapper = document.querySelector(".wrapper");
 
 function select(element, value) {
@@ -33,19 +33,12 @@ function select(element, value) {
   bubble.classList.add("active");
 }
 
-// Toggle simple view
+// Cambiar vista
+let isSimple = false;
 toggleBtn.addEventListener("click", () => {
-  wrapper.classList.toggle("simple");
-  toggleBtn.innerHTML = wrapper.classList.contains("simple")
-    ? `<svg xmlns="http://www.w3.org/2000/svg" class="lucide-eye-closed-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-.722-3.25"/><path d="M2 8a10.645 10.645 0 0 0 20 0"/><path d="m20 15-1.726-2.05"/><path d="m4 15 1.726-2.05"/><path d="m9 18 .722-3.25"/></svg>`
-    : `<svg xmlns="http://www.w3.org/2000/svg" class="lucide-eye-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg>`;
-});
-
-// Show toggle on resize back to wide
-window.addEventListener("resize", () => {
-  if (window.innerWidth > 768) {
-    toggleBtn.style.display = "flex";
-  } else if (!wrapper.classList.contains("simple")) {
-    toggleBtn.style.display = "none";
-  }
+  isSimple = !isSimple;
+  wrapper.classList.toggle("simple", isSimple);
+  toggleBtn.innerHTML = isSimple
+    ? `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye-closed-icon"><path d="m15 18-.722-3.25"/><path d="M2 8a10.645 10.645 0 0 0 20 0"/><path d="m20 15-1.726-2.05"/><path d="m4 15 1.726-2.05"/><path d="m9 18 .722-3.25"/></svg>`
+    : `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye-icon"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg>`;
 });
