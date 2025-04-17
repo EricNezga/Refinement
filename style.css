@@ -25,13 +25,19 @@ body {
 
 /* === CONTROLS === */
 .controls {
-  position: absolute;
+  position: fixed; /* Esto lo hace flotante */
   top: 20px;
-  right: 40px;
+  right: 20px;
+  z-index: 1000;
   display: flex;
   align-items: center;
   gap: 10px;
+  background: rgba(255,255,255,0.2); /* opcional */
+  padding: 6px 12px;
+  border-radius: 12px;
+  backdrop-filter: blur(6px); /* efecto glass */
 }
+
 
 .view-toggle {
   background: none;
