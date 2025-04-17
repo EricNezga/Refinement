@@ -13,6 +13,10 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 30px;
+  position: sticky;
+  top: 0;
+  background: linear-gradient(135deg, #fde68a, #fcd34d);
+  z-index: 100;
 }
 
 .title {
@@ -30,6 +34,10 @@ body {
   font-size: 18px;
   font-weight: bold;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 101;
 }
 
 .wrapper {
@@ -51,9 +59,7 @@ body {
 }
 
 .factor h2 {
-  margin-top: 0;
-  font-size: 20px;
-  color: #1e293b;
+  display: none;
 }
 
 .card-row {
@@ -74,11 +80,30 @@ body {
 }
 
 .card-row.selected {
-  background-color: #60a5fa;
   color: white;
 }
 
+.card-row.selected .label {
+  background-color: #86efac;
+}
+
+.card-row.selected[data-value="1"] {
+  background-color: #bbf7d0;
+}
+
+.card-row.selected[data-value="2"] {
+  background-color: #fef08a;
+  color: #000;
+}
+
+.card-row.selected[data-value="3"] {
+  background-color: #fecaca;
+  color: #000;
+}
+
 .label {
+  writing-mode: vertical-lr;
+  transform: rotate(180deg);
   background: #facc15;
   color: #1e293b;
   padding: 6px 10px;
@@ -86,14 +111,15 @@ body {
   font-weight: bold;
   margin-right: 12px;
   font-size: 14px;
-  min-width: 50px;
+  min-width: 32px;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .card-content .card-title {
-  font-weight: bold;
-  display: block;
-  margin-bottom: 4px;
+  display: none;
 }
 
 /* Burbujas */
