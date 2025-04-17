@@ -1,236 +1,238 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora de Story Points</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculadora de Story Points</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
-        * {
-            box-sizing: border-box;
-        }
+    * {
+      box-sizing: border-box;
+    }
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-            color: #e0e0e0;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #e0e0e0;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-        h1 {
-            font-size: clamp(1.5rem, 2.5vw, 2.5rem);
-            margin-bottom: 30px;
-            color: #fff;
-        }
+    h1 {
+      font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+      margin-bottom: 30px;
+      color: #fff;
+    }
 
-        .layout {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            width: 100%;
-            max-width: 1400px;
-        }
+    .layout {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      width: 100%;
+      max-width: 1400px;
+    }
 
-        .factor {
-            flex: 1 1 280px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 20px;
-            min-width: 260px;
-        }
+    .factor {
+      flex: 1 1 300px;
+      min-width: 280px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 20px;
+    }
 
-        .factor h2 {
-            font-size: clamp(1rem, 1.5vw, 1.5rem);
-            text-align: center;
-            margin-bottom: 20px;
-            color: #fff;
-        }
+    .factor h2 {
+      font-size: clamp(1rem, 1.5vw, 1.5rem);
+      text-align: center;
+      margin-bottom: 20px;
+      color: #fff;
+    }
 
-        .card-row {
-            display: flex;
-            align-items: stretch;
-            margin-bottom: 10px;
-            border-radius: 10px;
-            overflow: hidden;
-            border: 2px solid transparent;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
+    .card-row {
+      display: flex;
+      align-items: stretch;
+      margin-bottom: 10px;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
 
-        .card-row:hover {
-            border-color: #00c6ff;
-            background-color: rgba(0, 198, 255, 0.1);
-        }
+    .card-row:hover {
+      border-color: #00c6ff;
+      background-color: rgba(0, 198, 255, 0.1);
+    }
 
-        .card-row.selected {
-            border-color: #00c6ff;
-            background-color: #00c6ff;
-            color: #111;
-        }
+    .card-row.selected {
+      border-color: #00c6ff;
+      background-color: #00c6ff;
+      color: #111;
+    }
 
-        .label {
-            writing-mode: vertical-lr;
-            transform: rotate(180deg);
-            background-color: rgba(255, 255, 255, 0.08);
-            color: #ccc;
-            padding: 8px;
-            font-size: clamp(0.85rem, 1vw, 1.1rem);
-            font-weight: bold;
-            width: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+    .label {
+      writing-mode: vertical-lr;
+      transform: rotate(180deg);
+      background-color: rgba(255, 255, 255, 0.08);
+      color: #ccc;
+      padding: 8px;
+      font-size: clamp(1rem, 1vw, 1.2rem);
+      font-weight: bold;
+      width: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-        .card-content {
-            flex: 1;
-            padding: 10px;
-            text-align: left;
-        }
+    .card-content {
+      flex: 1;
+      padding: 10px;
+      text-align: left;
+    }
 
-        .card-title {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 4px;
-        }
+    .card-title {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 4px;
+    }
 
-        .sidebar {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            gap: 15px;
-        }
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 15px;
+    }
 
-        .resultado.tarjeta {
-            background-color: rgba(255,255,255,0.05);
-            padding: 10px;
-            border-radius: 12px;
-            width: 80px;
-            height: 80px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid #ffffff22;
-            backdrop-filter: blur(6px);
-            transition: all 0.3s ease;
-        }
+    .resultado.tarjeta {
+      background-color: rgba(255,255,255,0.05);
+      padding: 10px;
+      border-radius: 12px;
+      width: 80px;
+      height: 80px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #ffffff22;
+      backdrop-filter: blur(6px);
+      transition: all 0.3s ease;
+    }
 
-        .resultado.tarjeta.active {
-            border-color: #00c6ff;
-            background-color: rgba(0, 198, 255, 0.1);
-        }
+    .resultado.tarjeta.active {
+      border-color: #00c6ff;
+      background-color: rgba(0, 198, 255, 0.1);
+    }
 
-        .resultado.tarjeta .etiqueta {
-            font-size: 14px;
-            color: #ccc;
-        }
+    .resultado.tarjeta .etiqueta {
+      font-size: 14px;
+      color: #ccc;
+    }
 
-        .resultado.tarjeta .valor {
-            font-size: 24px;
-            font-weight: bold;
-        }
+    .resultado.tarjeta .valor {
+      font-size: 24px;
+      font-weight: bold;
+    }
 
-        .valor.sp-3 { color: #4caf50; }
-        .valor.sp-5 { color: #ffb300; }
-        .valor.sp-8 { color: #ff7043; }
-        .valor.sp-13,
-        .valor.sp-21 { color: #e53935; }
+    .valor.sp-3 { color: #4caf50; }
+    .valor.sp-5 { color: #ffb300; }
+    .valor.sp-8 { color: #ff7043; }
+    .valor.sp-13,
+    .valor.sp-21 { color: #e53935; }
 
-        @media (max-width: 768px) {
-            .layout {
-                flex-direction: column;
-                align-items: center;
-            }
+    .sticky-boxes {
+      position: fixed;
+      bottom: 15px;
+      right: 15px;
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+      z-index: 100;
+    }
 
-            .sidebar {
-                flex-direction: row;
-            }
-        }
-    </style>
+    @media (min-width: 768px) {
+      .sticky-boxes {
+        top: 100px;
+        bottom: auto;
+        flex-direction: column;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h1>Calculadora de Story Points</h1>
+  <h1>Calculadora de Story Points</h1>
 
-    <div class="layout">
-        <div class="factor" data-factor="Complejidad">
-            <h2>Complejidad</h2>
-            <div class="card-row" onclick="select(this, 1)"><div class="label">Baja</div><div class="card-content"><span class="card-title">(1)</span><p>Refactor mínimo, ajustes menores</p></div></div>
-            <div class="card-row" onclick="select(this, 2)"><div class="label">Media</div><div class="card-content"><span class="card-title">(2)</span><p>Lógica de negocio leve</p></div></div>
-            <div class="card-row" onclick="select(this, 3)"><div class="label">Alta</div><div class="card-content"><span class="card-title">(3)</span><p>Nueva lógica, múltiples capas o sistemas</p></div></div>
-        </div>
-
-        <div class="factor" data-factor="Incertidumbre">
-            <h2>Incertidumbre</h2>
-            <div class="card-row" onclick="select(this, 1)"><div class="label">Baja</div><div class="card-content"><span class="card-title">(1)</span><p>Todo claro, historia bien definida</p></div></div>
-            <div class="card-row" onclick="select(this, 2)"><div class="label">Media</div><div class="card-content"><span class="card-title">(2)</span><p>Falta algún criterio, depende de terceros</p></div></div>
-            <div class="card-row" onclick="select(this, 3)"><div class="label">Alta</div><div class="card-content"><span class="card-title">(3)</span><p>Definición ambigua o inestable</p></div></div>
-        </div>
-
-        <div class="factor" data-factor="Esfuerzo">
-            <h2>Esfuerzo</h2>
-            <div class="card-row" onclick="select(this, 1)"><div class="label">Bajo</div><div class="card-content"><span class="card-title">(1)</span><p>Rápido de ejecutar</p></div></div>
-            <div class="card-row" onclick="select(this, 2)"><div class="label">Medio</div><div class="card-content"><span class="card-title">(2)</span><p>Tareas múltiples pero manejables</p></div></div>
-            <div class="card-row" onclick="select(this, 3)"><div class="label">Alto</div><div class="card-content"><span class="card-title">(3)</span><p>QA, review, validación + releases</p></div></div>
-        </div>
-
-        <div class="sidebar">
-            <div class="resultado tarjeta" id="totalBox">
-                <div class="etiqueta">Total</div>
-                <div class="valor" id="total">0</div>
-            </div>
-            <div class="resultado tarjeta" id="spBox">
-                <div class="etiqueta">SP</div>
-                <div class="valor" id="story-point">-</div>
-            </div>
-        </div>
+  <div class="layout">
+    <div class="factor" data-factor="Complejidad">
+      <h2>Complejidad</h2>
+      <div class="card-row" onclick="select(this, 1)"><div class="label">Baja</div><div class="card-content"><span class="card-title">(1)</span><p>Refactor mínimo, ajustes menores</p></div></div>
+      <div class="card-row" onclick="select(this, 2)"><div class="label">Media</div><div class="card-content"><span class="card-title">(2)</span><p>Lógica de negocio leve</p></div></div>
+      <div class="card-row" onclick="select(this, 3)"><div class="label">Alta</div><div class="card-content"><span class="card-title">(3)</span><p>Nueva lógica, múltiples capas o sistemas</p></div></div>
     </div>
 
-    <script>
-        const totalDisplay = document.getElementById("total");
-        const storyPointDisplay = document.getElementById("story-point");
-        const spBox = document.getElementById("spBox");
+    <div class="factor" data-factor="Incertidumbre">
+      <h2>Incertidumbre</h2>
+      <div class="card-row" onclick="select(this, 1)"><div class="label">Baja</div><div class="card-content"><span class="card-title">(1)</span><p>Todo claro, historia bien definida</p></div></div>
+      <div class="card-row" onclick="select(this, 2)"><div class="label">Media</div><div class="card-content"><span class="card-title">(2)</span><p>Falta algún criterio, depende de terceros</p></div></div>
+      <div class="card-row" onclick="select(this, 3)"><div class="label">Alta</div><div class="card-content"><span class="card-title">(3)</span><p>Definición ambigua o inestable</p></div></div>
+    </div>
 
-        function select(element, value) {
-            const container = element.parentElement;
-            const cards = container.querySelectorAll(".card-row");
-            cards.forEach(c => c.classList.remove("selected"));
-            element.classList.add("selected");
+    <div class="factor" data-factor="Esfuerzo">
+      <h2>Esfuerzo</h2>
+      <div class="card-row" onclick="select(this, 1)"><div class="label">Bajo</div><div class="card-content"><span class="card-title">(1)</span><p>Rápido de ejecutar</p></div></div>
+      <div class="card-row" onclick="select(this, 2)"><div class="label">Medio</div><div class="card-content"><span class="card-title">(2)</span><p>Tareas múltiples pero manejables</p></div></div>
+      <div class="card-row" onclick="select(this, 3)"><div class="label">Alto</div><div class="card-content"><span class="card-title">(3)</span><p>QA, review, validación + releases</p></div></div>
+    </div>
+  </div>
 
-            const selectedValues = Array.from(document.querySelectorAll(".factor")).map(f => {
-                const selected = f.querySelector(".selected");
-                if (!selected) return 0;
-                return parseInt(selected.querySelector(".card-title").textContent.match(/\d+/)[0]);
-            });
+  <div class="sticky-boxes">
+    <div class="resultado tarjeta" id="totalBox">
+      <div class="etiqueta">Total</div>
+      <div class="valor" id="total">0</div>
+    </div>
+    <div class="resultado tarjeta" id="spBox">
+      <div class="etiqueta">SP</div>
+      <div class="valor" id="story-point">-</div>
+    </div>
+  </div>
 
-            const total = selectedValues.reduce((a, b) => a + b, 0);
-            totalDisplay.textContent = total;
+  <script>
+    const totalDisplay = document.getElementById("total");
+    const storyPointDisplay = document.getElementById("story-point");
+    const spBox = document.getElementById("spBox");
 
-            let sp = "-";
-            if (total >= 3 && total <= 4) sp = 3;
-            else if (total === 5) sp = 5;
-            else if (total === 6 || total === 7) sp = 8;
-            else if (total === 8) sp = 13;
-            else if (total === 9) sp = 21;
+    function select(element, value) {
+      const container = element.parentElement;
+      const cards = container.querySelectorAll(".card-row");
+      cards.forEach(c => c.classList.remove("selected"));
+      element.classList.add("selected");
 
-            storyPointDisplay.textContent = sp;
-            storyPointDisplay.className = `valor sp-${sp}`;
+      const selectedValues = Array.from(document.querySelectorAll(".factor")).map(f => {
+        const selected = f.querySelector(".selected");
+        if (!selected) return 0;
+        return parseInt(selected.querySelector(".card-title").textContent.match(/\d+/)[0]);
+      });
 
-            // Activar estilo cuando hay 3 seleccionados
-            const selectedCount = document.querySelectorAll(".card-row.selected").length;
-            if (selectedCount === 3) {
-                spBox.classList.add("active");
-            } else {
-                spBox.classList.remove("active");
-            }
-        }
-    </script>
+      const total = selectedValues.reduce((a, b) => a + b, 0);
+      totalDisplay.textContent = total;
+
+      let sp = "-";
+      if (total >= 3 && total <= 4) sp = 3;
+      else if (total === 5) sp = 5;
+      else if (total === 6 || total === 7) sp = 8;
+      else if (total === 8) sp = 13;
+      else if (total === 9) sp = 21;
+
+      storyPointDisplay.textContent = sp;
+      storyPointDisplay.className = `valor sp-${sp}`;
+
+      const selectedCount = document.querySelectorAll(".card-row.selected").length;
+      spBox.classList.toggle("active", selectedCount === 3);
+    }
+  </script>
 </body>
 </html>
