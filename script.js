@@ -25,3 +25,4 @@ function select(element, value) {
 
     storyPointDisplay.textContent = sp;
 }
+
