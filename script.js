@@ -1,4 +1,5 @@
 const storyPointDisplay = document.getElementById("story-point");
+const toggleBtn = document.getElementById("toggle-simple");
 
 function select(element, value) {
   const container = element.closest(".factor");
@@ -33,3 +34,7 @@ function select(element, value) {
 function valueFromCard(card) {
   return parseInt(card.getAttribute("data-value")) || 0;
 }
+
+toggleBtn.addEventListener("click", () => {
+  document.body.classList.toggle("simple-mode");
+});
