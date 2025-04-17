@@ -1,4 +1,3 @@
-const totalDisplay = document.getElementById("total");
 const storyPointDisplay = document.getElementById("story-point");
 
 function select(element, value) {
@@ -7,14 +6,13 @@ function select(element, value) {
   cards.forEach(card => card.classList.remove("selected"));
   element.classList.add("selected");
 
-  const selected = Array.from(document.querySelectorAll(".factor")).map(f => {
+  const selectedValues = Array.from(document.querySelectorAll(".factor")).map(f => {
     const sel = f.querySelector(".selected");
     if (!sel) return 0;
     return parseInt(sel.querySelector(".card-title").textContent.match(/\d+/)[0]);
   });
 
-  const total = selected.reduce((acc, val) => acc + val, 0);
-  totalDisplay.textContent = total;
+  const total = selectedValues.reduce((acc, val) => acc + val, 0);
 
   let sp = "-";
   if (total >= 3 && total <= 4) sp = 3;
@@ -24,4 +22,10 @@ function select(element, value) {
   else if (total === 9) sp = 21;
 
   storyPointDisplay.textContent = sp;
+
+  // Mostrar burbuja en cada columna
+  const factorName = container.dataset.factor.toLowerCase();
+  const bubble = document.getElementById(`bubble-${factorName}`);
+  bubble.textContent = value;
+  bubble.classList.add("active");
 }
