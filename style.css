@@ -1,30 +1,43 @@
+/* style.css */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
 body {
     font-family: 'Poppins', sans-serif;
     background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
     color: #e0e0e0;
-    text-align: center;
-    padding: 40px;
     margin: 0;
+    padding: 40px;
+    box-sizing: border-box;
 }
 
 h1 {
-    font-size: 36px;
+    font-size: 28px;
     color: #ffffff;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 30px;
+    flex-wrap: wrap;
+    max-width: 90%;
+    margin: 0 auto;
+    transform: scale(0.8);
+    transform-origin: top left;
 }
 
 .container {
     display: flex;
-    justify-content: flex-start;
-    flex-wrap: wrap;
+    justify-content: center;
     gap: 20px;
-    margin-top: 20px;
-    max-width: 1080px;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    min-width: 300px;
 }
 
-/* Factores más anchos */
 .factor {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -33,6 +46,7 @@ h1 {
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
     width: 260px;
     transition: transform 0.3s ease, border 0.3s ease;
+    flex-shrink: 0;
 }
 
 .factor:hover {
@@ -43,6 +57,8 @@ h1 {
 .factor h2 {
     color: #ffffff;
     margin-bottom: 20px;
+    font-size: 18px;
+    text-align: center;
 }
 
 .card-row {
@@ -51,9 +67,10 @@ h1 {
     cursor: pointer;
     border-radius: 10px;
     overflow: hidden;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
     transition: all 0.3s ease;
     border: 2px solid transparent;
+    height: 90px;
 }
 
 .card-row:hover {
@@ -73,10 +90,10 @@ h1 {
     background-color: rgba(255, 255, 255, 0.08);
     color: #ccc;
     padding: 10px;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: bold;
     text-align: center;
-    width: 32px;
+    width: 36px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -84,77 +101,69 @@ h1 {
 
 .card-content {
     flex: 1;
-    padding: 8px 10px;
+    padding: 10px 12px;
     text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .card-content .card-title {
     font-weight: bold;
     display: inline-block;
-    margin-bottom: 4px;
+    margin-bottom: 6px;
 }
 
-/* Tarjetas laterales */
-.sidebar {
+/* Resultado siempre visible */
+.resultado-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
     display: flex;
     flex-direction: column;
-    position: fixed;
-    top: 120px;
-    right: 40px;
-    gap: 12px;
-    z-index: 10;
+    gap: 10px;
+    z-index: 1000;
+    animation: fadeIn 0.6s ease-in-out;
 }
 
-/* Formato minimalista para Total y SP */
-.resultado.tarjeta {
-    text-align: center;
+.resultado-box {
     background-color: rgba(255,255,255,0.05);
-    padding: 10px 0;
+    padding: 12px 20px;
     border-radius: 12px;
     width: 80px;
-    height: 80px;
     box-shadow: 0 0 15px rgba(0,0,0,0.2);
     border: 1px solid #ffffff22;
-    backdrop-filter: blur(8px);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.resultado.tarjeta .etiqueta {
+    text-align: center;
     font-size: 14px;
     font-weight: 600;
-    color: #ccc;
-    margin-bottom: 4px;
+    color: #ffffff;
 }
 
-.resultado.tarjeta .valor {
-    font-size: 26px;
-    font-weight: bold;
-    color: #fff;
+.resultado-box span {
+    font-size: 22px;
+    display: block;
+    margin-top: 4px;
 }
 
-/* Colores según story point */
-.valor.sp-3 { color: #4caf50; }
-.valor.sp-5 { color: #ffb300; }
-.valor.sp-8 { color: #ff7043; }
-.valor.sp-13,
-.valor.sp-21 { color: #e53935; }
+/* Story point color dynamics */
+#story-point.sp-3 { color: #4caf50; }
+#story-point.sp-5 { color: #ffb300; }
+#story-point.sp-8 { color: #ff7043; }
+#story-point.sp-13,
+#story-point.sp-21 { color: #e53935; }
 
-/* Responsive */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
 @media (max-width: 960px) {
-    .sidebar {
-        position: static;
-        flex-direction: row;
-        justify-content: center;
-        margin-top: 30px;
-        flex-wrap: wrap;
+    .wrapper {
+        transform: scale(1);
+        transform-origin: top center;
     }
-
-    .resultado.tarjeta {
-        width: 100px;
-        height: 100px;
-        margin: 10px;
+    .resultado-container {
+        top: 10px;
+        right: 10px;
     }
 }
