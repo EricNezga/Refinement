@@ -1,161 +1,176 @@
-/* Estilos base */
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500&display=swap');
+
 body {
   font-family: 'Fredoka', sans-serif;
+  background: linear-gradient(135deg, #fde68a, #fcd34d);
   margin: 0;
   padding: 0;
-  background: linear-gradient(to bottom right, #fef3c7, #fde68a);
-  color: #1f2937;
+  color: #111;
 }
 
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 24px;
-  position: sticky;
-  top: 0;
-  background: linear-gradient(to bottom right, #fef3c7, #fde68a);
-  z-index: 999;
+  padding: 20px 30px 10px;
 }
 
 .title {
-  font-size: 1.8rem;
+  font-size: 28px;
   font-weight: bold;
-  margin: 0;
 }
 
 .controls {
   display: flex;
+  gap: 10px;
   align-items: center;
-  gap: 12px;
 }
 
 #toggle-view {
-  background: none;
+  background: #fff;
   border: none;
-  cursor: pointer;
+  border-radius: 8px;
   padding: 6px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
 .sp-badge {
   display: flex;
-  align-items: center;
+  gap: 10px;
   background: #1f2937;
   color: white;
-  font-weight: bold;
-  padding: 4px 12px;
-  border-radius: 12px;
+  padding: 10px 16px;
+  border-radius: 16px;
   font-size: 16px;
+  font-weight: bold;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
 }
 
 .wrapper {
   display: flex;
   justify-content: center;
-  gap: 24px;
-  padding: 20px 24px;
+  gap: 30px;
+  padding: 20px 30px 50px;
   flex-wrap: wrap;
-  transition: all 0.3s ease;
+  position: relative;
+  top: 10px;
+}
+
+.wrapper.simple .card-content {
+  display: none;
 }
 
 .factor {
-  background: #fef9c3;
-  padding: 16px;
-  border-radius: 16px;
-  box-shadow: 4px 4px 0 #fcd34d;
+  background: #fef3c7;
+  border: 4px solid #fcd34d;
+  border-radius: 24px;
+  padding: 20px;
+  width: 280px;
   position: relative;
-  min-width: 260px;
-  max-width: 300px;
-  flex: 1;
-  margin-top: 10px;
+  box-shadow: 4px 4px 0 #f59e0b;
+  text-align: center;
 }
 
 .factor h2 {
-  text-align: center;
+  margin-top: 0;
   font-size: 20px;
-  margin-bottom: 12px;
+  margin-bottom: 20px;
 }
 
 .card-row {
+  display: flex;
+  align-items: center;
   background: #fff;
-  border-radius: 12px;
-  display: flex;
-  margin-bottom: 12px;
-  overflow: hidden;
-  transition: background 0.3s ease;
-  cursor: pointer;
+  border-radius: 16px;
+  margin: 10px 0;
+  transition: all 0.3s ease-in-out;
+  padding: 0;
 }
 
-.card-row .label {
+.card-row.selected.low { background-color: #d9f99d; }
+.card-row.selected.medium { background-color: #fef08a; }
+.card-row.selected.high { background-color: #fecaca; }
+
+.card-content {
+  flex-grow: 1;
+  padding: 16px;
+  text-align: left;
+}
+
+.label {
   background: #facc15;
-  color: #1e293b;
-  padding: 0 12px;
-  font-weight: bold;
+  padding: 16px;
+  min-height: 100%;
   display: flex;
-  align-items: center;
   justify-content: center;
-  min-width: 65px;
-  height: 100%;
-  box-sizing: border-box;
-}
-
-.card-row .card-content {
-  padding: 10px;
-  flex: 1;
-  display: flex;
   align-items: center;
-  font-size: 15px;
-  font-weight: 500;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  font-weight: bold;
+  color: #1e293b;
+  border-radius: 16px 0 0 16px;
+  font-size: 14px;
 }
 
-.card-row.selected[data-value="1"] {
-  background-color: #86efac;
-  color: #1e293b;
-}
-.card-row.selected[data-value="2"] {
-  background-color: #fde68a;
-  color: #1e293b;
-}
-.card-row.selected[data-value="3"] {
-  background-color: #93c5fd;
-  color: #1e293b;
+.wrapper.simple .label {
+  writing-mode: horizontal-tb;
+  font-size: 16px;
+  border-radius: 12px;
+  width: 100%;
+  justify-content: center;
 }
 
 .bubble {
   position: absolute;
-  top: -12px;
-  right: -12px;
+  top: -15px;
+  right: -15px;
   background: #34d399;
   color: white;
   font-weight: bold;
-  width: 24px;
-  height: 24px;
+  font-size: 16px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   display: none;
-  align-items: center;
   justify-content: center;
-  font-size: 14px;
+  align-items: center;
+  animation: pop 0.4s ease;
 }
 
 .bubble.active {
   display: flex;
 }
 
-/* Vista simple */
-.wrapper.simple .card-content {
-  display: none;
-}
-
-.wrapper.simple .card-row {
-  justify-content: center;
+@keyframes pop {
+  from {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 @media screen and (max-width: 768px) {
-  .wrapper {
+  .header {
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
+    gap: 10px;
   }
 
-  .controls {
-    gap: 8px;
+  .sp-badge {
+    position: fixed;
+    top: 12px;
+    right: 12px;
+    z-index: 1000;
+  }
+
+  #toggle-view {
+    position: fixed;
+    top: 12px;
+    right: 80px;
+    z-index: 1000;
   }
 }
