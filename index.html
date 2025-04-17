@@ -1,103 +1,137 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Calculadora de Story Points</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Story Points</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="header">
-    <h1 class="title">Calculadora de Story Points</h1>
-    <div class="resultados-sticky">
-      <div class="box">
-        <div>Total</div>
-        <div id="total">0</div>
-      </div>
-      <div class="box">
-        <div>SP</div>
-        <div id="story-point">-</div>
-      </div>
-    </div>
-  </div>
+    <header>
+        <h1>Calculadora de Story Points</h1>
+        <div class="resultado-container">
+            <div class="resultado-box">
+                <span class="label">Total</span>
+                <div id="total">0</div>
+            </div>
+            <div class="resultado-box" id="story-box">
+                <span class="label">SP</span>
+                <div id="story-point">-</div>
+            </div>
+        </div>
+    </header>
 
-  <div class="wrapper">
-    <div class="factor" data-factor="Complejidad">
-      <h2>Complejidad</h2>
-      <div class="card-row" onclick="select(this, 1)">
-        <div class="label">Baja</div>
-        <div class="card-content">
-          <span class="card-title">(1)</span>
-          <p>Refactor mínimo, ajustes menores</p>
-        </div>
-      </div>
-      <div class="card-row" onclick="select(this, 2)">
-        <div class="label">Media</div>
-        <div class="card-content">
-          <span class="card-title">(2)</span>
-          <p>Lógica de negocio leve</p>
-        </div>
-      </div>
-      <div class="card-row" onclick="select(this, 3)">
-        <div class="label">Alta</div>
-        <div class="card-content">
-          <span class="card-title">(3)</span>
-          <p>Nueva lógica, múltiples capas o sistemas</p>
-        </div>
-      </div>
-    </div>
+    <main class="main-wrapper">
+        <div class="container">
+            <!-- COMPLEJIDAD -->
+            <div class="factor" data-factor="Complejidad">
+                <h2>Complejidad</h2>
+                <div class="card-row" onclick="select(this, 1)">
+                    <div class="label-vertical">Baja</div>
+                    <div class="card-content">
+                        <span class="card-title">(1)</span>
+                        <p>Refactor mínimo, ajustes menores</p>
+                    </div>
+                </div>
+                <div class="card-row" onclick="select(this, 2)">
+                    <div class="label-vertical">Media</div>
+                    <div class="card-content">
+                        <span class="card-title">(2)</span>
+                        <p>Lógica de negocio leve</p>
+                    </div>
+                </div>
+                <div class="card-row" onclick="select(this, 3)">
+                    <div class="label-vertical">Alta</div>
+                    <div class="card-content">
+                        <span class="card-title">(3)</span>
+                        <p>Nueva lógica, múltiples capas o sistemas</p>
+                    </div>
+                </div>
+            </div>
 
-    <div class="factor" data-factor="Incertidumbre">
-      <h2>Incertidumbre</h2>
-      <div class="card-row" onclick="select(this, 1)">
-        <div class="label">Baja</div>
-        <div class="card-content">
-          <span class="card-title">(1)</span>
-          <p>Todo claro, historia bien definida</p>
-        </div>
-      </div>
-      <div class="card-row" onclick="select(this, 2)">
-        <div class="label">Media</div>
-        <div class="card-content">
-          <span class="card-title">(2)</span>
-          <p>Falta algún criterio, depende de terceros</p>
-        </div>
-      </div>
-      <div class="card-row" onclick="select(this, 3)">
-        <div class="label">Alta</div>
-        <div class="card-content">
-          <span class="card-title">(3)</span>
-          <p>Definición ambigua o inestable</p>
-        </div>
-      </div>
-    </div>
+            <!-- INCERTIDUMBRE -->
+            <div class="factor" data-factor="Incertidumbre">
+                <h2>Incertidumbre</h2>
+                <div class="card-row" onclick="select(this, 1)">
+                    <div class="label-vertical">Baja</div>
+                    <div class="card-content">
+                        <span class="card-title">(1)</span>
+                        <p>Todo claro, historia bien definida</p>
+                    </div>
+                </div>
+                <div class="card-row" onclick="select(this, 2)">
+                    <div class="label-vertical">Media</div>
+                    <div class="card-content">
+                        <span class="card-title">(2)</span>
+                        <p>Falta algún criterio, depende de terceros</p>
+                    </div>
+                </div>
+                <div class="card-row" onclick="select(this, 3)">
+                    <div class="label-vertical">Alta</div>
+                    <div class="card-content">
+                        <span class="card-title">(3)</span>
+                        <p>Definición ambigua o inestable</p>
+                    </div>
+                </div>
+            </div>
 
-    <div class="factor" data-factor="Esfuerzo">
-      <h2>Esfuerzo</h2>
-      <div class="card-row" onclick="select(this, 1)">
-        <div class="label">Bajo</div>
-        <div class="card-content">
-          <span class="card-title">(1)</span>
-          <p>Rápido de ejecutar</p>
+            <!-- ESFUERZO -->
+            <div class="factor" data-factor="Esfuerzo">
+                <h2>Esfuerzo</h2>
+                <div class="card-row" onclick="select(this, 1)">
+                    <div class="label-vertical">Bajo</div>
+                    <div class="card-content">
+                        <span class="card-title">(1)</span>
+                        <p>Rápido de ejecutar</p>
+                    </div>
+                </div>
+                <div class="card-row" onclick="select(this, 2)">
+                    <div class="label-vertical">Medio</div>
+                    <div class="card-content">
+                        <span class="card-title">(2)</span>
+                        <p>Tareas múltiples pero manejables</p>
+                    </div>
+                </div>
+                <div class="card-row" onclick="select(this, 3)">
+                    <div class="label-vertical">Alto</div>
+                    <div class="card-content">
+                        <span class="card-title">(3)</span>
+                        <p>QA, review, validación + releases</p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="card-row" onclick="select(this, 2)">
-        <div class="label">Medio</div>
-        <div class="card-content">
-          <span class="card-title">(2)</span>
-          <p>Tareas múltiples pero manejables</p>
-        </div>
-      </div>
-      <div class="card-row" onclick="select(this, 3)">
-        <div class="label">Alto</div>
-        <div class="card-content">
-          <span class="card-title">(3)</span>
-          <p>QA, review, validación + releases</p>
-        </div>
-      </div>
-    </div>
-  </div>
+    </main>
 
-  <script src="script.js"></script>
+    <script>
+        const totalDisplay = document.getElementById("total");
+        const storyDisplay = document.getElementById("story-point");
+        const storyBox = document.getElementById("story-box");
+
+        function select(element, value) {
+            const container = element.parentElement;
+            const cards = container.querySelectorAll(".card-row");
+            cards.forEach(c => c.classList.remove("selected"));
+            element.classList.add("selected");
+
+            const selectedValues = Array.from(document.querySelectorAll(".factor")).map(f => {
+                const selected = f.querySelector(".selected .card-title");
+                return selected ? parseInt(selected.textContent.match(/\d+/)[0]) : 0;
+            });
+
+            const total = selectedValues.reduce((a, b) => a + b, 0);
+            totalDisplay.textContent = total;
+
+            let sp = "-";
+            if (total >= 3 && total <= 4) sp = 3;
+            else if (total === 5) sp = 5;
+            else if (total === 6 || total === 7) sp = 8;
+            else if (total === 8) sp = 13;
+            else if (total === 9) sp = 21;
+
+            storyDisplay.textContent = sp;
+            storyBox.className = `resultado-box ${sp !== '-' ? 'highlight' : ''}`;
+        }
+    </script>
 </body>
 </html>
