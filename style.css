@@ -1,3 +1,4 @@
+/* === BASE === */
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500&display=swap');
 
 body {
@@ -8,12 +9,12 @@ body {
   padding: 0;
 }
 
-.header {
+header {
+  padding: 30px;
+  padding-right: 100px;
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  align-items: start;
-  padding: 30px 30px 10px;
-  flex-wrap: wrap;
 }
 
 .title {
@@ -22,50 +23,48 @@ body {
   margin: 0;
 }
 
-.controls {
+/* === STORY POINT FIXED POSITION === */
+.story-point-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
   display: flex;
   align-items: center;
-  gap: 12px;
-  position: relative;
-  margin-top: 4px;
+  gap: 10px;
+  z-index: 1000;
 }
 
-.sp-badge {
-  background: #1f2937;
-  padding: 8px 14px;
-  border-radius: 14px;
-  color: white;
-  font-size: 16px;
-  font-weight: bold;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.toggle-view {
-  background: white;
-  border: 2px solid #ccc;
-  border-radius: 10px;
+.story-point-container .sp-toggle {
+  background: #fff;
+  border-radius: 12px;
   padding: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: background 0.3s ease;
+}
+
+.story-point-container .sp-toggle:hover {
+  background: #facc15;
+}
+
+.story-point-container .sp-badge {
+  background: #1f2937;
+  color: #fff;
+  font-weight: bold;
+  padding: 6px 12px;
+  border-radius: 12px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 4px;
 }
 
-.toggle-view svg {
-  width: 22px;
-  height: 22px;
-}
-
+/* === WRAPPER Y COLUMNA === */
 .wrapper {
   display: flex;
   justify-content: center;
   gap: 30px;
   flex-wrap: wrap;
-  padding: 0 20px 50px;
+  padding: 20px;
 }
 
 .factor {
@@ -83,8 +82,8 @@ body {
 
 .factor h2 {
   font-size: 20px;
-  color: #1e293b;
-  margin: 0 0 12px;
+  margin-bottom: 16px;
+  text-align: center;
 }
 
 .card-row {
@@ -100,19 +99,13 @@ body {
   width: 100%;
 }
 
-.card-row:hover {
-  border-color: #fcd34d;
-  background: #fef9c3;
+.card-row.selected {
+  background-color: #60a5fa;
+  color: white;
 }
 
-.card-row.selected[data-value="1"] {
-  background-color: #bbf7d0;
-}
-.card-row.selected[data-value="2"] {
-  background-color: #fde68a;
-}
-.card-row.selected[data-value="3"] {
-  background-color: #fecaca;
+.card-content p {
+  margin: 0;
 }
 
 .label {
@@ -121,24 +114,23 @@ body {
   padding: 6px 10px;
   border-radius: 8px;
   font-weight: bold;
-  font-size: 14px;
-  text-align: center;
-  writing-mode: vertical-rl;
-  transform: rotate(180deg);
   margin-right: 12px;
-  width: 24px;
+  font-size: 14px;
+  min-width: 50px;
+  text-align: center;
 }
 
+/* === BUBBLES === */
 .bubble {
   position: absolute;
-  top: -12px;
-  right: -12px;
+  top: -15px;
+  right: -15px;
   background: #34d399;
   color: white;
   font-weight: bold;
-  font-size: 14px;
-  width: 28px;
-  height: 28px;
+  font-size: 16px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   display: none;
   justify-content: center;
@@ -161,41 +153,12 @@ body {
   }
 }
 
-/* Responsive */
+/* === RESPONSIVE === */
 @media (max-width: 768px) {
-  .header {
+  .story-point-container {
+    top: 10px;
+    right: 10px;
     flex-direction: column;
-    align-items: flex-start;
-    gap: 20px;
-  }
-
-  .controls {
-    align-self: flex-end;
-  }
-
-  .toggle-view {
-    display: none;
-  }
-
-  .wrapper.simple .card-content {
-    display: none;
-  }
-
-  .wrapper.simple .card-row {
-    justify-content: center;
-  }
-
-  .wrapper.simple .label {
-    transform: none;
-    writing-mode: horizontal-tb;
-    width: auto;
-    font-size: 16px;
-    padding: 8px 12px;
-  }
-
-  .wrapper.simple .factor h2 {
-    display: block;
-    font-size: 18px;
-    margin-bottom: 10px;
+    gap: 6px;
   }
 }
