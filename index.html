@@ -7,41 +7,66 @@
 </head>
 <body>
     <h1> Calculadora de Story Points</h1>
+
     <div class="container">
+        <!-- Complejidad -->
         <div class="factor" data-factor="Complejidad">
             <h2>Complejidad</h2>
-            <button onclick="select(this, 1)">Baja (1)</button>
-            <p class="desc">Refactor mínimo, ajustes menores</p>
 
-            <button onclick="select(this, 2)">Media (2)</button>
-            <p class="desc">Lógica de negocio leve</p>
+            <div class="card" onclick="select(this, 1)">
+                <span class="card-title">Baja (1)</span>
+                <p>Refactor mínimo, ajustes menores</p>
+            </div>
 
-            <button onclick="select(this, 3)">Alta (3)</button>
-            <p class="desc">Nueva lógica, múltiples capas o sistemas</p>
+            <div class="card" onclick="select(this, 2)">
+                <span class="card-title">Media (2)</span>
+                <p>Lógica de negocio leve</p>
+            </div>
+
+            <div class="card" onclick="select(this, 3)">
+                <span class="card-title">Alta (3)</span>
+                <p>Nueva lógica, múltiples capas o sistemas</p>
+            </div>
         </div>
 
+        <!-- Incertidumbre -->
         <div class="factor" data-factor="Incertidumbre">
             <h2>Incertidumbre</h2>
-            <button onclick="select(this, 1)">Baja (1)</button>
-            <p class="desc">Todo claro, historia bien definida</p>
 
-            <button onclick="select(this, 2)">Media (2)</button>
-            <p class="desc">Falta algún criterio, depende de terceros</p>
+            <div class="card" onclick="select(this, 1)">
+                <span class="card-title">Baja (1)</span>
+                <p>Todo claro, historia bien definida</p>
+            </div>
 
-            <button onclick="select(this, 3)">Alta (3)</button>
-            <p class="desc">Definición ambigua o inestable</p>
+            <div class="card" onclick="select(this, 2)">
+                <span class="card-title">Media (2)</span>
+                <p>Falta algún criterio, depende de terceros</p>
+            </div>
+
+            <div class="card" onclick="select(this, 3)">
+                <span class="card-title">Alta (3)</span>
+                <p>Definición ambigua o inestable</p>
+            </div>
         </div>
 
+        <!-- Esfuerzo -->
         <div class="factor" data-factor="Esfuerzo">
             <h2>Esfuerzo</h2>
-            <button onclick="select(this, 1)">Bajo (1)</button>
-            <p class="desc">Rápido de ejecutar</p>
 
-            <button onclick="select(this, 2)">Medio (2)</button>
-            <p class="desc">Tareas múltiples pero manejables</p>
+            <div class="card" onclick="select(this, 1)">
+                <span class="card-title">Bajo (1)</span>
+                <p>Rápido de ejecutar</p>
+            </div>
 
-            <button onclick="select(this, 3)">Alto (3)</button>
-            <p class="desc">QA, review, validación + releases</p>
+            <div class="card" onclick="select(this, 2)">
+                <span class="card-title">Medio (2)</span>
+                <p>Tareas múltiples pero manejables</p>
+            </div>
+
+            <div class="card" onclick="select(this, 3)">
+                <span class="card-title">Alto (3)</span>
+                <p>QA, review, validación + releases</p>
+            </div>
         </div>
     </div>
 
