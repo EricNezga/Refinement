@@ -11,26 +11,45 @@
         <div class="factor" data-factor="Complejidad">
             <h2>Complejidad</h2>
             <button onclick="select(this, 1)">Baja (1)</button>
+            <p class="desc">Refactor mínimo, ajustes menores</p>
+
             <button onclick="select(this, 2)">Media (2)</button>
+            <p class="desc">Lógica de negocio leve</p>
+
             <button onclick="select(this, 3)">Alta (3)</button>
+            <p class="desc">Nueva lógica, múltiples capas o sistemas</p>
         </div>
+
         <div class="factor" data-factor="Incertidumbre">
             <h2>Incertidumbre</h2>
             <button onclick="select(this, 1)">Baja (1)</button>
+            <p class="desc">Todo claro, historia bien definida</p>
+
             <button onclick="select(this, 2)">Media (2)</button>
+            <p class="desc">Falta algún criterio, depende de terceros</p>
+
             <button onclick="select(this, 3)">Alta (3)</button>
+            <p class="desc">Definición ambigua o inestable</p>
         </div>
+
         <div class="factor" data-factor="Esfuerzo">
             <h2>Esfuerzo</h2>
             <button onclick="select(this, 1)">Bajo (1)</button>
+            <p class="desc">Rápido de ejecutar</p>
+
             <button onclick="select(this, 2)">Medio (2)</button>
+            <p class="desc">Tareas múltiples pero manejables</p>
+
             <button onclick="select(this, 3)">Alto (3)</button>
+            <p class="desc">QA, review, validación + releases</p>
         </div>
     </div>
+
     <div class="resultado">
         <h2>Total: <span id="total">0</span></h2>
         <h2>Story Point sugerido: <span id="story-point">-</span></h2>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
