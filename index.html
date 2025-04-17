@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
@@ -8,22 +8,21 @@
 </head>
 <body>
   <div class="header">
-    <h1>Calculadora de Story Points</h1>
-    <div class="puntos">
+    <h1 class="title">Calculadora de Story Points</h1>
+    <div class="resultados-sticky">
       <div class="box">
-        <span>Total</span>
-        <strong id="total">0</strong>
+        <div>Total</div>
+        <div id="total">0</div>
       </div>
-      <div class="box" id="spBox">
-        <span>SP</span>
-        <strong id="story-point">-</strong>
+      <div class="box">
+        <div>SP</div>
+        <div id="story-point">-</div>
       </div>
     </div>
   </div>
 
-  <main class="container">
-    <!-- FACTOR -->
-    <div class="factor">
+  <div class="wrapper">
+    <div class="factor" data-factor="Complejidad">
       <h2>Complejidad</h2>
       <div class="card-row" onclick="select(this, 1)">
         <div class="label">Baja</div>
@@ -48,7 +47,7 @@
       </div>
     </div>
 
-    <div class="factor">
+    <div class="factor" data-factor="Incertidumbre">
       <h2>Incertidumbre</h2>
       <div class="card-row" onclick="select(this, 1)">
         <div class="label">Baja</div>
@@ -73,7 +72,7 @@
       </div>
     </div>
 
-    <div class="factor">
+    <div class="factor" data-factor="Esfuerzo">
       <h2>Esfuerzo</h2>
       <div class="card-row" onclick="select(this, 1)">
         <div class="label">Bajo</div>
@@ -97,7 +96,7 @@
         </div>
       </div>
     </div>
-  </main>
+  </div>
 
   <script src="script.js"></script>
 </body>
