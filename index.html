@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora de Story Points</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>🧠 Calculadora de Story Points</h1>
+    <div class="container">
+        <div class="factor" data-factor="Complejidad">
+            <h2>Complejidad</h2>
+            <button onclick="select(this, 1)">Baja (1)</button>
+            <button onclick="select(this, 2)">Media (2)</button>
+            <button onclick="select(this, 3)">Alta (3)</button>
+        </div>
+        <div class="factor" data-factor="Incertidumbre">
+            <h2>Incertidumbre</h2>
+            <button onclick="select(this, 1)">Baja (1)</button>
+            <button onclick="select(this, 2)">Media (2)</button>
+            <button onclick="select(this, 3)">Alta (3)</button>
+        </div>
+        <div class="factor" data-factor="Esfuerzo">
+            <h2>Esfuerzo</h2>
+            <button onclick="select(this, 1)">Bajo (1)</button>
+            <button onclick="select(this, 2)">Medio (2)</button>
+            <button onclick="select(this, 3)">Alto (3)</button>
+        </div>
+    </div>
+    <div class="resultado">
+        <h2>Total: <span id="total">0</span></h2>
+        <h2>Story Point sugerido: <span id="story-point">-</span></h2>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
