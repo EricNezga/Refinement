@@ -1,4 +1,4 @@
-DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
@@ -9,21 +9,17 @@ DOCTYPE html>
 <body>
   <div class="header">
     <h1 class="title">Calculadora de Story Points</h1>
-    <div class="resultados-sticky">
-      <div class="box">
-        <div>Total</div>
-        <div id="total">0</div>
-      </div>
-      <div class="box">
-        <div>SP</div>
-        <div id="story-point">-</div>
-      </div>
+    <div class="sp-badge">
+      <div class="sp-title">SP</div>
+      <div id="story-point">-</div>
     </div>
   </div>
 
   <div class="wrapper">
+    <!-- COMPLEJIDAD -->
     <div class="factor" data-factor="Complejidad">
       <h2>Complejidad</h2>
+      <div class="bubble" id="bubble-complejidad"></div>
       <div class="card-row" onclick="select(this, 1)">
         <div class="label">Baja</div>
         <div class="card-content">
@@ -47,8 +43,10 @@ DOCTYPE html>
       </div>
     </div>
 
+    <!-- INCERTIDUMBRE -->
     <div class="factor" data-factor="Incertidumbre">
       <h2>Incertidumbre</h2>
+      <div class="bubble" id="bubble-incertidumbre"></div>
       <div class="card-row" onclick="select(this, 1)">
         <div class="label">Baja</div>
         <div class="card-content">
@@ -72,8 +70,10 @@ DOCTYPE html>
       </div>
     </div>
 
+    <!-- ESFUERZO -->
     <div class="factor" data-factor="Esfuerzo">
       <h2>Esfuerzo</h2>
+      <div class="bubble" id="bubble-esfuerzo"></div>
       <div class="card-row" onclick="select(this, 1)">
         <div class="label">Bajo</div>
         <div class="card-content">
