@@ -16,10 +16,10 @@ function select(element, value) {
   const total = selectedValues.reduce((acc, val) => acc + val, 0);
 
   let sp = "-";
-  if (total >= 3 && total <= 4) sp = 3;
-  else if (total === 5) sp = 5;
-  else if (total === 6) sp = 8;
-  else if (total === 7 || total === 8) sp = 13;
+  if (total >= 3) sp = 3;
+  else if (total === 4 || total === 5) sp = 5;
+  else if (total === 6 || total === 7) sp = 8;
+  else if (total === 8) sp = 13;
   else if (total === 9) sp = 21;
 
   storyPointDisplay.textContent = sp;
