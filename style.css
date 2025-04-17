@@ -195,3 +195,38 @@ body {
     justify-content: center;
   }
 }
+/* Añadir margen a las columnas */
+.factor {
+  margin-top: 10px;
+}
+
+/* Restaurar colores de selección */
+.card-row.selected[data-value="1"] {
+  background-color: #86efac; /* verde pastel */
+  color: #1e293b;
+}
+.card-row.selected[data-value="2"] {
+  background-color: #fde68a; /* amarillo pastel */
+  color: #1e293b;
+}
+.card-row.selected[data-value="3"] {
+  background-color: #93c5fd; /* azul pastel */
+  color: #1e293b;
+}
+
+/* Asegurar que label cubra el alto completo de la fila */
+.label {
+  background: #facc15;
+  color: #1e293b;
+  padding: 0 12px;
+  border-radius: 8px 0 0 8px;
+  font-weight: bold;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  min-width: 65px;
+  box-sizing: border-box;
+  text-align: center;
+}
