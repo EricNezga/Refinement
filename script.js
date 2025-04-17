@@ -1,6 +1,5 @@
 const totalDisplay = document.getElementById("total");
 const storyPointDisplay = document.getElementById("story-point");
-const spBox = document.getElementById("spBox");
 
 function select(element, value) {
   const container = element.closest(".factor");
@@ -25,11 +24,4 @@ function select(element, value) {
   else if (total === 9) sp = 21;
 
   storyPointDisplay.textContent = sp;
-
-  // Color SP box
-  spBox.className = "box";
-  if (sp === 3) spBox.classList.add("sp-3");
-  else if (sp === 5) spBox.classList.add("sp-5");
-  else if (sp === 8) spBox.classList.add("sp-8");
-  else if (sp === 13 || sp === 21) spBox.classList.add("sp-high");
 }
