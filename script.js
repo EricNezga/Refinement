@@ -1,5 +1,9 @@
 const storyPointDisplay = document.getElementById("story-point");
-const toggleBtn = document.getElementById("toggle-simple");
+const toggleViewBtn = document.getElementById("toggle-view");
+const wrapper = document.querySelector(".wrapper");
+const eyeIcon = document.getElementById("eye-icon");
+
+let simpleMode = false;
 
 function select(element, value) {
   const container = element.closest(".factor");
@@ -35,6 +39,14 @@ function valueFromCard(card) {
   return parseInt(card.getAttribute("data-value")) || 0;
 }
 
-toggleBtn.addEventListener("click", () => {
-  document.body.classList.toggle("simple-mode");
+toggleViewBtn.addEventListener("click", () => {
+  simpleMode = !simpleMode;
+  wrapper.classList.toggle("simple", simpleMode);
+  // Cambia el ícono
+  eyeIcon.setAttribute(
+    "d",
+    simpleMode
+      ? "M17.94 17.94 15 15m-6 0-2.94 2.94M1 1l22 22M9.88 9.88a3 3 0 0 0 4.24 4.24M7.67 4.93A10.72 10.72 0 0 1 12 4c4.5 0 8.36 2.94 9.88 7-.37 1.02-.9 1.97-1.57 2.83M6.14 6.14C3.54 7.77 1.95 10.04 1 12c.69 1.35 1.71 2.57 2.93 3.55"
+      : "M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"
+  );
 });
