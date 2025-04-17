@@ -10,8 +10,8 @@
   <header class="header">
     <h1 class="title">Refinamiento Ágil</h1>
     <div class="controls">
-      <button id="toggle-simple" class="toggle-simple" title="Vista simple">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye-icon lucide-eye">
+      <button id="toggle-view" class="toggle-icon-btn" title="Vista simple">
+        <svg id="eye-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye-icon lucide-eye">
           <path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/>
           <circle cx="12" cy="12" r="3"/>
         </svg>
@@ -23,27 +23,10 @@
     </div>
   </header>
 
-  <section class="satisfaction">
-    <h2 class="section-title">¿Cómo ha ido tu semana?</h2>
-    <div class="satisfaction-bar">
-      <div class="squares">
-        <div class="square" data-level="1"></div>
-        <div class="square" data-level="2"></div>
-        <div class="square" data-level="3"></div>
-        <div class="square" data-level="4"></div>
-        <div class="square" data-level="5"></div>
-      </div>
-      <div class="slider-wrapper">
-        <input type="range" min="1" max="5" value="3" class="slider" id="satisfaction-range">
-      </div>
-    </div>
-  </section>
-
   <section class="storypoints">
-    <h2 class="section-title">Calcular Story Points</h2>
     <div class="wrapper">
       <div class="factor" data-factor="Complejidad">
-        <h3>Complejidad</h3>
+        <h2>Complejidad</h2>
         <div class="bubble" id="bubble-complejidad"></div>
         <div class="card-row" onclick="select(this, 1)">
           <div class="label">Baja</div>
@@ -66,7 +49,7 @@
       </div>
 
       <div class="factor" data-factor="Incertidumbre">
-        <h3>Incertidumbre</h3>
+        <h2>Incertidumbre</h2>
         <div class="bubble" id="bubble-incertidumbre"></div>
         <div class="card-row" onclick="select(this, 1)">
           <div class="label">Baja</div>
@@ -89,7 +72,7 @@
       </div>
 
       <div class="factor" data-factor="Esfuerzo">
-        <h3>Esfuerzo</h3>
+        <h2>Esfuerzo</h2>
         <div class="bubble" id="bubble-esfuerzo"></div>
         <div class="card-row" onclick="select(this, 1)">
           <div class="label">Bajo</div>
