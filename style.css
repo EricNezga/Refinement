@@ -13,34 +13,12 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 30px;
-  position: relative;
 }
 
 .title {
   font-size: 28px;
   font-weight: bold;
-  margin: 0;
-}
-
-.controls {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.toggle-simple {
-  background: #1f2937;
-  color: #fff;
-  border: none;
-  border-radius: 12px;
-  padding: 8px 12px;
-  font-weight: bold;
-  font-size: 14px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+  margin-bottom: 10px;
 }
 
 .sp-badge {
@@ -61,6 +39,19 @@ body {
   gap: 30px;
   flex-wrap: wrap;
   padding: 0 20px 50px;
+  transition: all 0.3s ease-in-out;
+}
+
+.wrapper.simple .card-content p {
+  display: none;
+}
+
+.wrapper.simple .card-row {
+  justify-content: center;
+}
+
+.wrapper.simple .label {
+  writing-mode: horizontal-tb;
 }
 
 .factor {
@@ -71,17 +62,12 @@ body {
   width: 280px;
   position: relative;
   box-shadow: 4px 4px 0 #f59e0b;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
 }
 
 .factor h2 {
-  margin-top: 0;
-  margin-bottom: 16px;
   font-size: 20px;
   color: #1e293b;
-  align-self: center;
+  margin-bottom: 16px;
 }
 
 .card-row {
@@ -94,7 +80,6 @@ body {
   align-items: center;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
-  width: 100%;
 }
 
 .card-row:hover {
@@ -102,9 +87,19 @@ body {
   background: #fef9c3;
 }
 
-.card-row.selected {
-  background-color: #60a5fa;
-  color: white;
+.card-row.selected[data-value="1"] {
+  background-color: #bbf7d0;
+  color: #1e293b;
+}
+
+.card-row.selected[data-value="2"] {
+  background-color: #fef08a;
+  color: #1e293b;
+}
+
+.card-row.selected[data-value="3"] {
+  background-color: #fecaca;
+  color: #1e293b;
 }
 
 .label {
@@ -117,20 +112,15 @@ body {
   font-size: 14px;
   min-width: 50px;
   text-align: center;
-  writing-mode: vertical-lr;
+  writing-mode: vertical-rl;
   transform: rotate(180deg);
 }
 
-.card-content {
-  flex: 1;
-}
-
 .card-content .card-title {
-  font-weight: bold;
-  display: block;
-  margin-bottom: 4px;
+  display: none;
 }
 
+/* Burbujas */
 .bubble {
   position: absolute;
   top: -15px;
@@ -163,18 +153,21 @@ body {
   }
 }
 
-/* Vista simple */
-body.simple-mode .card-content p {
-  display: none;
-}
-body.simple-mode .card-row {
+.toggle-icon-btn {
+  background: #1f2937;
+  border: none;
+  border-radius: 12px;
+  padding: 10px;
+  margin-right: 12px;
+  display: flex;
+  align-items: center;
   justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
 }
-body.simple-mode .label {
-  writing-mode: horizontal-tb;
-  transform: none;
-  margin: 0 auto;
-}
-body.simple-mode .card-content .card-title {
-  display: none;
+
+.toggle-icon-btn svg {
+  stroke: #fff;
+  width: 24px;
+  height: 24px;
 }
