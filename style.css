@@ -100,3 +100,30 @@ button.selected {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
 }
+.card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid transparent;
+    border-radius: 12px;
+    padding: 15px;
+    margin: 10px 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    border-color: #00c6ff;
+    background-color: rgba(0, 198, 255, 0.1);
+}
+
+.card.selected {
+    border-color: #00c6ff;
+    background-color: #00c6ff;
+    color: #111;
+}
+
+.card-title {
+    display: block;
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 6px;
+}
