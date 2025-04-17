@@ -6,71 +6,98 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1> Calculadora de Story Points</h1>
+    <h1>🧠 Calculadora de Story Points</h1>
 
     <div class="container">
-        <!-- Complejidad -->
+        <!-- COMPLEJIDAD -->
         <div class="factor" data-factor="Complejidad">
             <h2>Complejidad</h2>
 
-            <div class="card" onclick="select(this, 1)">
-                <span class="card-title">Baja (1)</span>
-                <p>Refactor mínimo, ajustes menores</p>
+            <div class="card-row" onclick="select(this, 1)">
+                <div class="label">Baja</div>
+                <div class="card-content">
+                    <span class="card-title">(1)</span>
+                    <p>Refactor mínimo, ajustes menores</p>
+                </div>
             </div>
 
-            <div class="card" onclick="select(this, 2)">
-                <span class="card-title">Media (2)</span>
-                <p>Lógica de negocio leve</p>
+            <div class="card-row" onclick="select(this, 2)">
+                <div class="label">Media</div>
+                <div class="card-content">
+                    <span class="card-title">(2)</span>
+                    <p>Lógica de negocio leve</p>
+                </div>
             </div>
 
-            <div class="card" onclick="select(this, 3)">
-                <span class="card-title">Alta (3)</span>
-                <p>Nueva lógica, múltiples capas o sistemas</p>
+            <div class="card-row" onclick="select(this, 3)">
+                <div class="label">Alta</div>
+                <div class="card-content">
+                    <span class="card-title">(3)</span>
+                    <p>Nueva lógica, múltiples capas o sistemas</p>
+                </div>
             </div>
         </div>
 
-        <!-- Incertidumbre -->
+        <!-- INCERTIDUMBRE -->
         <div class="factor" data-factor="Incertidumbre">
             <h2>Incertidumbre</h2>
 
-            <div class="card" onclick="select(this, 1)">
-                <span class="card-title">Baja (1)</span>
-                <p>Todo claro, historia bien definida</p>
+            <div class="card-row" onclick="select(this, 1)">
+                <div class="label">Baja</div>
+                <div class="card-content">
+                    <span class="card-title">(1)</span>
+                    <p>Todo claro, historia bien definida</p>
+                </div>
             </div>
 
-            <div class="card" onclick="select(this, 2)">
-                <span class="card-title">Media (2)</span>
-                <p>Falta algún criterio, depende de terceros</p>
+            <div class="card-row" onclick="select(this, 2)">
+                <div class="label">Media</div>
+                <div class="card-content">
+                    <span class="card-title">(2)</span>
+                    <p>Falta algún criterio, depende de terceros</p>
+                </div>
             </div>
 
-            <div class="card" onclick="select(this, 3)">
-                <span class="card-title">Alta (3)</span>
-                <p>Definición ambigua o inestable</p>
+            <div class="card-row" onclick="select(this, 3)">
+                <div class="label">Alta</div>
+                <div class="card-content">
+                    <span class="card-title">(3)</span>
+                    <p>Definición ambigua o inestable</p>
+                </div>
             </div>
         </div>
 
-        <!-- Esfuerzo -->
+        <!-- ESFUERZO -->
         <div class="factor" data-factor="Esfuerzo">
             <h2>Esfuerzo</h2>
 
-            <div class="card" onclick="select(this, 1)">
-                <span class="card-title">Bajo (1)</span>
-                <p>Rápido de ejecutar</p>
+            <div class="card-row" onclick="select(this, 1)">
+                <div class="label">Bajo</div>
+                <div class="card-content">
+                    <span class="card-title">(1)</span>
+                    <p>Rápido de ejecutar</p>
+                </div>
             </div>
 
-            <div class="card" onclick="select(this, 2)">
-                <span class="card-title">Medio (2)</span>
-                <p>Tareas múltiples pero manejables</p>
+            <div class="card-row" onclick="select(this, 2)">
+                <div class="label">Medio</div>
+                <div class="card-content">
+                    <span class="card-title">(2)</span>
+                    <p>Tareas múltiples pero manejables</p>
+                </div>
             </div>
 
-            <div class="card" onclick="select(this, 3)">
-                <span class="card-title">Alto (3)</span>
-                <p>QA, review, validación + releases</p>
+            <div class="card-row" onclick="select(this, 3)">
+                <div class="label">Alto</div>
+                <div class="card-content">
+                    <span class="card-title">(3)</span>
+                    <p>QA, review, validación + releases</p>
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="resultado">
+    <div class="resultado lateral">
         <h2>Total: <span id="total">0</span></h2>
         <h2>Story Point sugerido: <span id="story-point">-</span></h2>
     </div>
