@@ -109,11 +109,26 @@
       margin-bottom: 4px;
     }
 
-    .sidebar {
+    .sticky-boxes {
+      position: fixed;
+      top: 140px;
+      right: 30px;
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      gap: 15px;
+      gap: 10px;
+      z-index: 100;
+      transition: all 0.6s ease;
+    }
+
+    .sticky-boxes.floating {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      flex-direction: row;
+      background: rgba(0,0,0,0.2);
+      padding: 6px 12px;
+      border-radius: 12px;
+      backdrop-filter: blur(4px);
     }
 
     .resultado.tarjeta {
@@ -151,33 +166,6 @@
     .valor.sp-8 { color: #ff7043; }
     .valor.sp-13,
     .valor.sp-21 { color: #e53935; }
-
-    .sticky-boxes {
-      position: fixed;
-      top: 120px;
-      right: 30px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      z-index: 100;
-      opacity: 1;
-      transform: translateY(0);
-      transition: all 0.5s ease;
-    }
-
-    @media (max-width: 1150px) {
-      .sticky-boxes {
-        position: absolute;
-        top: 10px;
-        right: 50%;
-        transform: translateX(50%) translateY(0);
-        flex-direction: row;
-        background: rgba(0,0,0,0.2);
-        padding: 6px 12px;
-        border-radius: 12px;
-        backdrop-filter: blur(4px);
-      }
-    }
   </style>
 </head>
 <body>
@@ -206,7 +194,7 @@
     </div>
   </div>
 
-  <div class="sticky-boxes">
+  <div class="sticky-boxes" id="sticky">
     <div class="resultado tarjeta" id="totalBox">
       <div class="etiqueta">Total</div>
       <div class="valor" id="total">0</div>
@@ -221,6 +209,7 @@
     const totalDisplay = document.getElementById("total");
     const storyPointDisplay = document.getElementById("story-point");
     const spBox = document.getElementById("spBox");
+    const sticky = document.getElementById("sticky");
 
     function select(element, value) {
       const container = element.parentElement;
@@ -250,6 +239,14 @@
       const selectedCount = document.querySelectorAll(".card-row.selected").length;
       spBox.classList.toggle("active", selectedCount === 3);
     }
+
+    function updateStickyMode() {
+      const isNarrow = window.innerWidth < 1150;
+      sticky.classList.toggle("floating", isNarrow);
+    }
+
+    window.addEventListener("resize", updateStickyMode);
+    window.addEventListener("DOMContentLoaded", updateStickyMode);
   </script>
 </body>
 </html>
