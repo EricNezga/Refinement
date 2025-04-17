@@ -11,26 +11,53 @@ body {
 .header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 30px;
+  align-items: start;
+  padding: 30px 30px 10px;
+  flex-wrap: wrap;
 }
 
 .title {
   font-size: 28px;
   font-weight: bold;
-  margin-bottom: 10px;
+  margin: 0;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+  margin-top: 4px;
 }
 
 .sp-badge {
-  display: flex;
-  gap: 10px;
   background: #1f2937;
-  padding: 10px 20px;
-  border-radius: 16px;
+  padding: 8px 14px;
+  border-radius: 14px;
   color: white;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.toggle-view {
+  background: white;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  padding: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toggle-view svg {
+  width: 22px;
+  height: 22px;
 }
 
 .wrapper {
@@ -39,19 +66,6 @@ body {
   gap: 30px;
   flex-wrap: wrap;
   padding: 0 20px 50px;
-  transition: all 0.3s ease-in-out;
-}
-
-.wrapper.simple .card-content p {
-  display: none;
-}
-
-.wrapper.simple .card-row {
-  justify-content: center;
-}
-
-.wrapper.simple .label {
-  writing-mode: horizontal-tb;
 }
 
 .factor {
@@ -62,12 +76,15 @@ body {
   width: 280px;
   position: relative;
   box-shadow: 4px 4px 0 #f59e0b;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .factor h2 {
   font-size: 20px;
   color: #1e293b;
-  margin-bottom: 16px;
+  margin: 0 0 12px;
 }
 
 .card-row {
@@ -80,6 +97,7 @@ body {
   align-items: center;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
+  width: 100%;
 }
 
 .card-row:hover {
@@ -89,17 +107,12 @@ body {
 
 .card-row.selected[data-value="1"] {
   background-color: #bbf7d0;
-  color: #1e293b;
 }
-
 .card-row.selected[data-value="2"] {
-  background-color: #fef08a;
-  color: #1e293b;
+  background-color: #fde68a;
 }
-
 .card-row.selected[data-value="3"] {
   background-color: #fecaca;
-  color: #1e293b;
 }
 
 .label {
@@ -108,29 +121,24 @@ body {
   padding: 6px 10px;
   border-radius: 8px;
   font-weight: bold;
-  margin-right: 12px;
   font-size: 14px;
-  min-width: 50px;
   text-align: center;
   writing-mode: vertical-rl;
   transform: rotate(180deg);
+  margin-right: 12px;
+  width: 24px;
 }
 
-.card-content .card-title {
-  display: none;
-}
-
-/* Burbujas */
 .bubble {
   position: absolute;
-  top: -15px;
-  right: -15px;
+  top: -12px;
+  right: -12px;
   background: #34d399;
   color: white;
   font-weight: bold;
-  font-size: 16px;
-  width: 32px;
-  height: 32px;
+  font-size: 14px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
   display: none;
   justify-content: center;
@@ -153,21 +161,41 @@ body {
   }
 }
 
-.toggle-icon-btn {
-  background: #1f2937;
-  border: none;
-  border-radius: 12px;
-  padding: 10px;
-  margin-right: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
-}
+/* Responsive */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
 
-.toggle-icon-btn svg {
-  stroke: #fff;
-  width: 24px;
-  height: 24px;
+  .controls {
+    align-self: flex-end;
+  }
+
+  .toggle-view {
+    display: none;
+  }
+
+  .wrapper.simple .card-content {
+    display: none;
+  }
+
+  .wrapper.simple .card-row {
+    justify-content: center;
+  }
+
+  .wrapper.simple .label {
+    transform: none;
+    writing-mode: horizontal-tb;
+    width: auto;
+    font-size: 16px;
+    padding: 8px 12px;
+  }
+
+  .wrapper.simple .factor h2 {
+    display: block;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
 }
