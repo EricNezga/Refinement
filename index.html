@@ -81,7 +81,7 @@
             background-color: rgba(255, 255, 255, 0.08);
             color: #ccc;
             padding: 8px;
-            font-size: clamp(0.7rem, 0.9vw, 1rem);
+            font-size: clamp(0.85rem, 1vw, 1.1rem);
             font-weight: bold;
             width: 30px;
             display: flex;
@@ -120,6 +120,12 @@
             justify-content: center;
             border: 1px solid #ffffff22;
             backdrop-filter: blur(6px);
+            transition: all 0.3s ease;
+        }
+
+        .resultado.tarjeta.active {
+            border-color: #00c6ff;
+            background-color: rgba(0, 198, 255, 0.1);
         }
 
         .resultado.tarjeta .etiqueta {
@@ -131,6 +137,12 @@
             font-size: 24px;
             font-weight: bold;
         }
+
+        .valor.sp-3 { color: #4caf50; }
+        .valor.sp-5 { color: #ffb300; }
+        .valor.sp-8 { color: #ff7043; }
+        .valor.sp-13,
+        .valor.sp-21 { color: #e53935; }
 
         @media (max-width: 768px) {
             .layout {
@@ -148,7 +160,6 @@
     <h1>Calculadora de Story Points</h1>
 
     <div class="layout">
-        <!-- FACTORES -->
         <div class="factor" data-factor="Complejidad">
             <h2>Complejidad</h2>
             <div class="card-row" onclick="select(this, 1)"><div class="label">Baja</div><div class="card-content"><span class="card-title">(1)</span><p>Refactor mínimo, ajustes menores</p></div></div>
@@ -170,13 +181,12 @@
             <div class="card-row" onclick="select(this, 3)"><div class="label">Alto</div><div class="card-content"><span class="card-title">(3)</span><p>QA, review, validación + releases</p></div></div>
         </div>
 
-        <!-- RESULTADO -->
         <div class="sidebar">
-            <div class="resultado tarjeta">
+            <div class="resultado tarjeta" id="totalBox">
                 <div class="etiqueta">Total</div>
                 <div class="valor" id="total">0</div>
             </div>
-            <div class="resultado tarjeta">
+            <div class="resultado tarjeta" id="spBox">
                 <div class="etiqueta">SP</div>
                 <div class="valor" id="story-point">-</div>
             </div>
@@ -186,6 +196,7 @@
     <script>
         const totalDisplay = document.getElementById("total");
         const storyPointDisplay = document.getElementById("story-point");
+        const spBox = document.getElementById("spBox");
 
         function select(element, value) {
             const container = element.parentElement;
@@ -211,6 +222,14 @@
 
             storyPointDisplay.textContent = sp;
             storyPointDisplay.className = `valor sp-${sp}`;
+
+            // Activar estilo cuando hay 3 seleccionados
+            const selectedCount = document.querySelectorAll(".card-row.selected").length;
+            if (selectedCount === 3) {
+                spBox.classList.add("active");
+            } else {
+                spBox.classList.remove("active");
+            }
         }
     </script>
 </body>
