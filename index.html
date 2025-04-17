@@ -9,21 +9,21 @@
 <body>
   <div class="header">
     <h1>Calculadora de Story Points</h1>
+    <div class="puntos">
+      <div class="box">
+        <span>Total</span>
+        <strong id="total">0</strong>
+      </div>
+      <div class="box" id="spBox">
+        <span>SP</span>
+        <strong id="story-point">-</strong>
+      </div>
+    </div>
   </div>
 
-  <div class="results">
-    <div class="box">
-      <div>Total</div>
-      <div id="total">0</div>
-    </div>
-    <div class="box" id="sp-box">
-      <div>SP</div>
-      <div id="story-point">-</div>
-    </div>
-  </div>
-
-  <main class="wrapper">
-    <div class="factor" data-factor="Complejidad">
+  <main class="container">
+    <!-- FACTOR -->
+    <div class="factor">
       <h2>Complejidad</h2>
       <div class="card-row" onclick="select(this, 1)">
         <div class="label">Baja</div>
@@ -48,7 +48,7 @@
       </div>
     </div>
 
-    <div class="factor" data-factor="Incertidumbre">
+    <div class="factor">
       <h2>Incertidumbre</h2>
       <div class="card-row" onclick="select(this, 1)">
         <div class="label">Baja</div>
@@ -73,7 +73,7 @@
       </div>
     </div>
 
-    <div class="factor" data-factor="Esfuerzo">
+    <div class="factor">
       <h2>Esfuerzo</h2>
       <div class="card-row" onclick="select(this, 1)">
         <div class="label">Bajo</div>
