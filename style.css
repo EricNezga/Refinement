@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
 body {
@@ -41,95 +40,81 @@ h1 {
 
 .factor h2 {
     color: #ffffff;
+    margin-bottom: 20px;
 }
 
-button {
-    margin: 10px 0;
-    padding: 12px 24px;
-    font-size: 16px;
-    border: 2px solid #ffffff33;
-    border-radius: 10px;
-    background-color: #1e2a38;
-    color: #e0e0e0;
+.card-row {
+    display: flex;
+    align-items: stretch;
     cursor: pointer;
-    transition: all 0.25s ease;
-    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
 }
 
-button:hover {
-    background-color: #00c6ff33;
+.card-row:hover {
     border-color: #00c6ff;
-    color: #ffffff;
+    background-color: rgba(0, 198, 255, 0.1);
 }
 
-button.selected {
+.card-row.selected {
+    border-color: #00c6ff;
     background-color: #00c6ff;
     color: #111;
-    border-color: #00c6ff;
-    font-weight: bold;
 }
 
-.desc {
-    margin-top: -8px;
-    margin-bottom: 18px;
+.label {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    background-color: rgba(255, 255, 255, 0.08);
+    color: #ccc;
+    padding: 10px;
     font-size: 14px;
-    color: #bbb;
-    line-height: 1.3;
-    max-width: 220px;
-    margin-left: auto;
-    margin-right: auto;
+    font-weight: bold;
+    text-align: center;
+    width: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.resultado {
-    margin-top: 50px;
-    font-size: 22px;
+.card-content {
+    flex: 1;
+    padding: 10px 15px;
+    text-align: left;
+}
+
+.card-content .card-title {
     font-weight: bold;
-    color: #ffffff;
+    display: inline-block;
+    margin-bottom: 4px;
+}
+
+.resultado.lateral {
+    position: fixed;
+    top: 100px;
+    right: 40px;
+    text-align: right;
     background-color: rgba(255,255,255,0.05);
     padding: 20px;
-    border-radius: 16px;
-    width: fit-content;
-    margin-left: auto;
-    margin-right: auto;
-    animation: fadeIn 0.6s ease-in-out;
+    border-radius: 12px;
+    width: 220px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
     border: 1px solid #ffffff22;
+    z-index: 100;
 }
+
+/* Colores por SP */
+#story-point.sp-3 { color: #4caf50; }
+#story-point.sp-5 { color: #ffb300; }
+#story-point.sp-8 { color: #ff7043; }
+#story-point.sp-13,
+#story-point.sp-21 { color: #e53935; }
 
 /* Animación */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
 }
-.card {
-    background: rgba(255, 255, 255, 0.05);
-    border: 2px solid transparent;
-    border-radius: 12px;
-    padding: 15px;
-    margin: 10px 0;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.card:hover {
-    border-color: #00c6ff;
-    background-color: rgba(0, 198, 255, 0.1);
-}
-
-.card.selected {
-    border-color: #00c6ff;
-    background-color: #00c6ff;
-    color: #111;
-}
-
-.card-title {
-    display: block;
-    font-weight: bold;
-    font-size: 16px;
-    margin-bottom: 6px;
-}
-/* Colores dinámicos para el resultado */
-#story-point.sp-3 { color: #4caf50; }     /* Verde */
-#story-point.sp-5 { color: #ffb300; }     /* Ámbar */
-#story-point.sp-8 { color: #ff7043; }     /* Naranja */
-#story-point.sp-13,
-#story-point.sp-21 { color: #e53935; }    /* Rojo */
