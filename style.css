@@ -3,8 +3,56 @@
 body {
   font-family: 'Fredoka', sans-serif;
   background: linear-gradient(135deg, #fde68a, #fcd34d);
+  color: #222;
   margin: 0;
   padding: 0;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px;
+  position: relative;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.toggle-simple {
+  background: #1f2937;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 8px 12px;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+.sp-badge {
+  display: flex;
+  gap: 10px;
+  background: #1f2937;
+  padding: 10px 20px;
+  border-radius: 16px;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
 }
 
 .wrapper {
@@ -12,7 +60,7 @@ body {
   justify-content: center;
   gap: 30px;
   flex-wrap: wrap;
-  padding: 40px 20px;
+  padding: 0 20px 50px;
 }
 
 .factor {
@@ -23,75 +71,71 @@ body {
   width: 280px;
   position: relative;
   box-shadow: 4px 4px 0 #f59e0b;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
-/* Tarjetas */
+.factor h2 {
+  margin-top: 0;
+  margin-bottom: 16px;
+  font-size: 20px;
+  color: #1e293b;
+  align-self: center;
+}
+
 .card-row {
   background: #fff;
+  border: 2px solid transparent;
   border-radius: 16px;
   display: flex;
-  margin: 12px 0;
+  margin: 10px 0;
   padding: 12px;
   align-items: center;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
-  border: 3px solid transparent;
+  width: 100%;
 }
 
 .card-row:hover {
-  background: #fefce8;
+  border-color: #fcd34d;
+  background: #fef9c3;
 }
 
-.card-row.selected[data-value="1"] {
-  background-color: #bbf7d0;
-  border-color: #22c55e;
-}
-.card-row.selected[data-value="2"] {
-  background-color: #fef9c3;
-  border-color: #eab308;
-}
-.card-row.selected[data-value="3"] {
-  background-color: #fecaca;
-  border-color: #f87171;
+.card-row.selected {
+  background-color: #60a5fa;
+  color: white;
 }
 
-/* Etiquetas */
 .label {
   background: #facc15;
   color: #1e293b;
-  padding: 6px;
+  padding: 6px 10px;
   border-radius: 8px;
   font-weight: bold;
   margin-right: 12px;
   font-size: 14px;
+  min-width: 50px;
+  text-align: center;
   writing-mode: vertical-lr;
   transform: rotate(180deg);
 }
 
-/* SP badge */
-.sp-badge {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  background: #1f2937;
-  color: #fff;
-  padding: 10px 20px;
-  border-radius: 16px;
-  font-size: 18px;
-  font-weight: bold;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
-  z-index: 999;
-  display: flex;
-  gap: 10px;
-  align-items: center;
+.card-content {
+  flex: 1;
 }
 
-/* Burbujas */
+.card-content .card-title {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 4px;
+}
+
 .bubble {
   position: absolute;
   top: -15px;
   right: -15px;
-  background: #10b981;
+  background: #34d399;
   color: white;
   font-weight: bold;
   font-size: 16px;
@@ -119,10 +163,18 @@ body {
   }
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .wrapper {
-    flex-direction: column;
-    align-items: center;
-  }
+/* Vista simple */
+body.simple-mode .card-content p {
+  display: none;
+}
+body.simple-mode .card-row {
+  justify-content: center;
+}
+body.simple-mode .label {
+  writing-mode: horizontal-tb;
+  transform: none;
+  margin: 0 auto;
+}
+body.simple-mode .card-content .card-title {
+  display: none;
 }
