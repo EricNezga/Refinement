@@ -11,32 +11,35 @@ body {
   background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
   color: #e0e0e0;
   padding: 40px;
+  min-height: 100vh;
 }
 
+/* ENCABEZADO */
 .header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   flex-wrap: wrap;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 
 .title {
   font-size: 28px;
+  font-weight: 600;
 }
 
+/* CUADROS RESULTADO SUPERIOR */
 .resultados-sticky {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
   position: sticky;
   top: 20px;
-  right: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
   background-color: rgba(255, 255, 255, 0.08);
-  padding: 12px;
   border-radius: 12px;
+  padding: 12px;
   min-width: 80px;
-  text-align: center;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
@@ -44,6 +47,7 @@ body {
 .resultados-sticky .box {
   font-size: 14px;
   font-weight: bold;
+  text-align: center;
 }
 
 .resultados-sticky .box div:last-child {
@@ -52,6 +56,7 @@ body {
   margin-top: 4px;
 }
 
+/* CONTENEDOR DE CATEGORÍAS */
 .wrapper {
   display: flex;
   flex-wrap: wrap;
@@ -61,6 +66,7 @@ body {
   margin: auto;
 }
 
+/* TARJETA DE FACTORES */
 .factor {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -76,6 +82,7 @@ body {
   text-align: center;
 }
 
+/* OPCIONES DE CADA FACTOR */
 .card-row {
   display: flex;
   margin-bottom: 12px;
@@ -104,7 +111,6 @@ body {
   padding: 10px 5px;
   font-size: 15px;
   font-weight: bold;
-  text-align: center;
   width: 32px;
   display: flex;
   justify-content: center;
@@ -121,7 +127,7 @@ body {
   margin-bottom: 4px;
 }
 
-/* Responsive */
+/* RESPONSIVE */
 @media (max-width: 768px) {
   .header {
     flex-direction: column;
@@ -136,15 +142,18 @@ body {
 
   .factor {
     width: 100%;
-    max-width: 380px;
+    max-width: 400px;
   }
 
   .resultados-sticky {
-    position: static;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
     flex-direction: row;
-    justify-content: space-around;
-    width: 100%;
-    max-width: 380px;
-    margin-top: 20px;
+    justify-content: center;
+    padding: 10px 16px;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
   }
 }
