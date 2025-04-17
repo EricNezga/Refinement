@@ -127,3 +127,9 @@ button.selected {
     font-size: 16px;
     margin-bottom: 6px;
 }
+/* Colores dinámicos para el resultado */
+#story-point.sp-3 { color: #4caf50; }     /* Verde */
+#story-point.sp-5 { color: #ffb300; }     /* Ámbar */
+#story-point.sp-8 { color: #ff7043; }     /* Naranja */
+#story-point.sp-13,
+#story-point.sp-21 { color: #e53935; }    /* Rojo */
