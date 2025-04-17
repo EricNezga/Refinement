@@ -7,94 +7,70 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header class="header">
-    <h1 class="title">Refinamiento Ágil</h1>
-    <div class="controls">
-      <button id="toggle-view" class="toggle-icon-btn" title="Vista simple">
-        <svg id="eye-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye-icon lucide-eye">
-          <path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/>
-          <circle cx="12" cy="12" r="3"/>
-        </svg>
-      </button>
-      <div class="sp-badge">
-        <div class="sp-title">SP</div>
-        <div id="story-point">-</div>
+  <div class="controls-top-right">
+    <button id="toggle-view" title="Vista simple">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg>
+    </button>
+    <div class="sp-badge">
+      <div class="sp-title">SP</div>
+      <div id="story-point">-</div>
+    </div>
+  </div>
+
+  <h1 class="page-title">Refinamiento Ágil</h1>
+
+  <div class="wrapper">
+    <div class="factor" data-factor="Complejidad">
+      <h2>Complejidad</h2>
+      <div class="bubble" id="bubble-complejidad"></div>
+      <div class="card-row" onclick="select(this, 1)" data-value="1">
+        <div class="label">Baja</div>
+        <div class="card-content">Refactor mínimo, ajustes menores</div>
+      </div>
+      <div class="card-row" onclick="select(this, 2)" data-value="2">
+        <div class="label">Media</div>
+        <div class="card-content">Lógica de negocio leve</div>
+      </div>
+      <div class="card-row" onclick="select(this, 3)" data-value="3">
+        <div class="label">Alta</div>
+        <div class="card-content">Nueva lógica, múltiples capas o sistemas</div>
       </div>
     </div>
-  </header>
 
-  <section class="storypoints">
-    <div class="wrapper">
-      <div class="factor" data-factor="Complejidad">
-        <h2>Complejidad</h2>
-        <div class="bubble" id="bubble-complejidad"></div>
-        <div class="card-row" onclick="select(this, 1)">
-          <div class="label">Baja</div>
-          <div class="card-content">
-            <p>Refactor mínimo, ajustes menores</p>
-          </div>
-        </div>
-        <div class="card-row" onclick="select(this, 2)">
-          <div class="label">Media</div>
-          <div class="card-content">
-            <p>Lógica de negocio leve</p>
-          </div>
-        </div>
-        <div class="card-row" onclick="select(this, 3)">
-          <div class="label">Alta</div>
-          <div class="card-content">
-            <p>Nueva lógica, múltiples capas o sistemas</p>
-          </div>
-        </div>
+    <div class="factor" data-factor="Incertidumbre">
+      <h2>Incertidumbre</h2>
+      <div class="bubble" id="bubble-incertidumbre"></div>
+      <div class="card-row" onclick="select(this, 1)" data-value="1">
+        <div class="label">Baja</div>
+        <div class="card-content">Todo claro, historia bien definida</div>
       </div>
-
-      <div class="factor" data-factor="Incertidumbre">
-        <h2>Incertidumbre</h2>
-        <div class="bubble" id="bubble-incertidumbre"></div>
-        <div class="card-row" onclick="select(this, 1)">
-          <div class="label">Baja</div>
-          <div class="card-content">
-            <p>Todo claro, historia bien definida</p>
-          </div>
-        </div>
-        <div class="card-row" onclick="select(this, 2)">
-          <div class="label">Media</div>
-          <div class="card-content">
-            <p>Falta algún criterio, depende de terceros</p>
-          </div>
-        </div>
-        <div class="card-row" onclick="select(this, 3)">
-          <div class="label">Alta</div>
-          <div class="card-content">
-            <p>Definición ambigua o inestable</p>
-          </div>
-        </div>
+      <div class="card-row" onclick="select(this, 2)" data-value="2">
+        <div class="label">Media</div>
+        <div class="card-content">Falta algún criterio, depende de terceros</div>
       </div>
-
-      <div class="factor" data-factor="Esfuerzo">
-        <h2>Esfuerzo</h2>
-        <div class="bubble" id="bubble-esfuerzo"></div>
-        <div class="card-row" onclick="select(this, 1)">
-          <div class="label">Bajo</div>
-          <div class="card-content">
-            <p>Rápido de ejecutar</p>
-          </div>
-        </div>
-        <div class="card-row" onclick="select(this, 2)">
-          <div class="label">Medio</div>
-          <div class="card-content">
-            <p>Tareas múltiples pero manejables</p>
-          </div>
-        </div>
-        <div class="card-row" onclick="select(this, 3)">
-          <div class="label">Alto</div>
-          <div class="card-content">
-            <p>QA, review, validación + releases</p>
-          </div>
-        </div>
+      <div class="card-row" onclick="select(this, 3)" data-value="3">
+        <div class="label">Alta</div>
+        <div class="card-content">Definición ambigua o inestable</div>
       </div>
     </div>
-  </section>
+
+    <div class="factor" data-factor="Esfuerzo">
+      <h2>Esfuerzo</h2>
+      <div class="bubble" id="bubble-esfuerzo"></div>
+      <div class="card-row" onclick="select(this, 1)" data-value="1">
+        <div class="label">Bajo</div>
+        <div class="card-content">Rápido de ejecutar</div>
+      </div>
+      <div class="card-row" onclick="select(this, 2)" data-value="2">
+        <div class="label">Medio</div>
+        <div class="card-content">Tareas múltiples pero manejables</div>
+      </div>
+      <div class="card-row" onclick="select(this, 3)" data-value="3">
+        <div class="label">Alto</div>
+        <div class="card-content">QA, review, validación + releases</div>
+      </div>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
