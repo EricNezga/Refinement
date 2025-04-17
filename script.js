@@ -1,31 +1,35 @@
 const totalDisplay = document.getElementById("total");
 const storyPointDisplay = document.getElementById("story-point");
+const spBox = document.getElementById("spBox");
 
 function select(element, value) {
-    const container = element.parentElement;
-    const rows = container.querySelectorAll(".card-row");
-    rows.forEach(r => r.classList.remove("selected"));
-    element.classList.add("selected");
+  const container = element.closest(".factor");
+  const cards = container.querySelectorAll(".card-row");
+  cards.forEach(card => card.classList.remove("selected"));
+  element.classList.add("selected");
 
-    const selectedValues = Array.from(document.querySelectorAll(".factor")).map(f => {
-        const selected = f.querySelector(".selected");
-        if (!selected) return 0;
-        return parseInt(selected.querySelector(".card-title").textContent.match(/\d+/)[0]);
-    });
+  const selected = Array.from(document.querySelectorAll(".factor")).map(f => {
+    const sel = f.querySelector(".selected");
+    if (!sel) return 0;
+    return parseInt(sel.querySelector(".card-title").textContent.match(/\d+/)[0]);
+  });
 
-    const total = selectedValues.reduce((a, b) => a + b, 0);
-    totalDisplay.textContent = total;
+  const total = selected.reduce((acc, val) => acc + val, 0);
+  totalDisplay.textContent = total;
 
-    let sp = "-";
-    if (total >= 3 && total <= 4) sp = 3;
-    else if (total === 5) sp = 5;
-    else if (total === 6 || total === 7) sp = 8;
-    else if (total === 8) sp = 13;
-    else if (total === 9) sp = 21;
+  let sp = "-";
+  if (total >= 3 && total <= 4) sp = 3;
+  else if (total === 5) sp = 5;
+  else if (total >= 6 && total <= 7) sp = 8;
+  else if (total === 8) sp = 13;
+  else if (total === 9) sp = 21;
 
-    storyPointDisplay.textContent = sp;
-    storyPointDisplay.className = "";
-    if (sp !== "-") {
-        storyPointDisplay.classList.add(`sp-${sp}`);
-    }
+  storyPointDisplay.textContent = sp;
+
+  // Color SP box
+  spBox.className = "box";
+  if (sp === 3) spBox.classList.add("sp-3");
+  else if (sp === 5) spBox.classList.add("sp-5");
+  else if (sp === 8) spBox.classList.add("sp-8");
+  else if (sp === 13 || sp === 21) spBox.classList.add("sp-high");
 }
