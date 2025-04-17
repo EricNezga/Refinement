@@ -3,84 +3,96 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Calculadora de Story Points</title>
+  <title>Refinamiento Ágil</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1 class="title">Calculadora de Story Points</h1>
+  <section class="satisfaccion">
+    <h2 class="section-title">¿Cómo ha ido tu semana?</h2>
+    <div class="slider-container">
+      <input type="range" min="0" max="100" value="50" class="slider" id="satisfactionRange" />
+      <div class="slider-background"></div>
+    </div>
+  </section>
 
-  <div class="sp-badge" id="sp-float">
-    <div class="sp-title">SP</div>
-    <div id="story-point">-</div>
-  </div>
+  <section class="storypoints">
+    <h2 class="section-title">Estima tu historia</h2>
+    <div class="sp-badge" id="sp-badge">
+      <div class="sp-title">SP</div>
+      <div id="story-point">-</div>
+    </div>
 
-  <div class="wrapper">
-    <div class="factor" data-factor="Complejidad">
-      <div class="bubble" id="bubble-complejidad"></div>
-      <div class="card-row" onclick="select(this, 1)">
-        <div class="label vertical baja">Baja</div>
-        <div class="card-content">
-          <p>Refactor mínimo, ajustes menores</p>
+    <div class="wrapper">
+      <!-- COMPLEJIDAD -->
+      <div class="factor" data-factor="Complejidad">
+        <div class="bubble" id="bubble-complejidad"></div>
+        <div class="card-row" onclick="select(this, 1)">
+          <div class="label">Baja</div>
+          <div class="card-content">
+            <p>Refactor mínimo, ajustes menores</p>
+          </div>
+        </div>
+        <div class="card-row" onclick="select(this, 2)">
+          <div class="label">Media</div>
+          <div class="card-content">
+            <p>Lógica de negocio leve</p>
+          </div>
+        </div>
+        <div class="card-row" onclick="select(this, 3)">
+          <div class="label">Alta</div>
+          <div class="card-content">
+            <p>Nueva lógica, múltiples capas o sistemas</p>
+          </div>
         </div>
       </div>
-      <div class="card-row" onclick="select(this, 2)">
-        <div class="label vertical media">Media</div>
-        <div class="card-content">
-          <p>Lógica de negocio leve</p>
+
+      <!-- INCERTIDUMBRE -->
+      <div class="factor" data-factor="Incertidumbre">
+        <div class="bubble" id="bubble-incertidumbre"></div>
+        <div class="card-row" onclick="select(this, 1)">
+          <div class="label">Baja</div>
+          <div class="card-content">
+            <p>Todo claro, historia bien definida</p>
+          </div>
+        </div>
+        <div class="card-row" onclick="select(this, 2)">
+          <div class="label">Media</div>
+          <div class="card-content">
+            <p>Falta algún criterio, depende de terceros</p>
+          </div>
+        </div>
+        <div class="card-row" onclick="select(this, 3)">
+          <div class="label">Alta</div>
+          <div class="card-content">
+            <p>Definición ambigua o inestable</p>
+          </div>
         </div>
       </div>
-      <div class="card-row" onclick="select(this, 3)">
-        <div class="label vertical alta">Alta</div>
-        <div class="card-content">
-          <p>Nueva lógica, múltiples capas o sistemas</p>
+
+      <!-- ESFUERZO -->
+      <div class="factor" data-factor="Esfuerzo">
+        <div class="bubble" id="bubble-esfuerzo"></div>
+        <div class="card-row" onclick="select(this, 1)">
+          <div class="label">Bajo</div>
+          <div class="card-content">
+            <p>Rápido de ejecutar</p>
+          </div>
+        </div>
+        <div class="card-row" onclick="select(this, 2)">
+          <div class="label">Medio</div>
+          <div class="card-content">
+            <p>Tareas múltiples pero manejables</p>
+          </div>
+        </div>
+        <div class="card-row" onclick="select(this, 3)">
+          <div class="label">Alto</div>
+          <div class="card-content">
+            <p>QA, review, validación + releases</p>
+          </div>
         </div>
       </div>
     </div>
-
-    <div class="factor" data-factor="Incertidumbre">
-      <div class="bubble" id="bubble-incertidumbre"></div>
-      <div class="card-row" onclick="select(this, 1)">
-        <div class="label vertical baja">Baja</div>
-        <div class="card-content">
-          <p>Todo claro, historia bien definida</p>
-        </div>
-      </div>
-      <div class="card-row" onclick="select(this, 2)">
-        <div class="label vertical media">Media</div>
-        <div class="card-content">
-          <p>Falta algún criterio, depende de terceros</p>
-        </div>
-      </div>
-      <div class="card-row" onclick="select(this, 3)">
-        <div class="label vertical alta">Alta</div>
-        <div class="card-content">
-          <p>Definición ambigua o inestable</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="factor" data-factor="Esfuerzo">
-      <div class="bubble" id="bubble-esfuerzo"></div>
-      <div class="card-row" onclick="select(this, 1)">
-        <div class="label vertical baja">Bajo</div>
-        <div class="card-content">
-          <p>Rápido de ejecutar</p>
-        </div>
-      </div>
-      <div class="card-row" onclick="select(this, 2)">
-        <div class="label vertical media">Medio</div>
-        <div class="card-content">
-          <p>Tareas múltiples pero manejables</p>
-        </div>
-      </div>
-      <div class="card-row" onclick="select(this, 3)">
-        <div class="label vertical alta">Alto</div>
-        <div class="card-content">
-          <p>QA, review, validación + releases</p>
-        </div>
-      </div>
-    </div>
-  </div>
+  </section>
 
   <script src="script.js"></script>
 </body>
