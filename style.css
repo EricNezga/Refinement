@@ -1,64 +1,66 @@
+/* === ESTILO GENERAL === */
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500&display=swap');
 
 body {
   font-family: 'Fredoka', sans-serif;
   background: linear-gradient(135deg, #fde68a, #fcd34d);
+  color: #222;
   margin: 0;
   padding: 0;
-  color: #111;
 }
 
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 30px 10px;
+  padding: 30px;
+  position: relative;
 }
 
 .title {
   font-size: 28px;
   font-weight: bold;
+  margin: 0;
 }
 
 .controls {
   display: flex;
-  gap: 10px;
-  align-items: center;
+  gap: 12px;
+  position: absolute;
+  right: 30px;
+  top: 30px;
 }
 
 #toggle-view {
-  background: #fff;
+  background: white;
   border: none;
+  padding: 6px 8px;
   border-radius: 8px;
-  padding: 6px;
   cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
 .sp-badge {
   display: flex;
-  gap: 10px;
+  gap: 8px;
+  align-items: center;
   background: #1f2937;
-  color: white;
   padding: 10px 16px;
   border-radius: 16px;
+  color: white;
   font-size: 16px;
   font-weight: bold;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
 }
 
+/* === WRAPPER Y COLUMNAS === */
 .wrapper {
   display: flex;
   justify-content: center;
   gap: 30px;
-  padding: 20px 30px 50px;
   flex-wrap: wrap;
+  padding: 0 20px 50px;
   position: relative;
-  top: 10px;
-}
-
-.wrapper.simple .card-content {
-  display: none;
+  top: 10px; /* desplaza hacia abajo 10px */
 }
 
 .factor {
@@ -73,54 +75,53 @@ body {
 }
 
 .factor h2 {
-  margin-top: 0;
+  margin: 0 0 10px;
   font-size: 20px;
-  margin-bottom: 20px;
+  color: #1e293b;
 }
 
 .card-row {
-  display: flex;
-  align-items: center;
   background: #fff;
+  border: 2px solid transparent;
   border-radius: 16px;
+  display: flex;
   margin: 10px 0;
-  transition: all 0.3s ease-in-out;
-  padding: 0;
+  padding: 12px;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
 }
 
-.card-row.selected.low { background-color: #d9f99d; }
-.card-row.selected.medium { background-color: #fef08a; }
-.card-row.selected.high { background-color: #fecaca; }
+.card-row:hover {
+  border-color: #fcd34d;
+  background: #fef9c3;
+}
 
-.card-content {
-  flex-grow: 1;
-  padding: 16px;
-  text-align: left;
+.card-row.selected {
+  background-color: #60a5fa;
+  color: white;
+}
+
+.card-content p {
+  margin: 0;
 }
 
 .label {
   background: #facc15;
-  padding: 16px;
-  min-height: 100%;
+  color: #1e293b;
+  padding: 8px;
+  border-radius: 12px;
+  font-weight: bold;
+  margin-right: 12px;
+  font-size: 14px;
+  min-width: 50px;
+  text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-  font-weight: bold;
-  color: #1e293b;
-  border-radius: 16px 0 0 16px;
-  font-size: 14px;
 }
 
-.wrapper.simple .label {
-  writing-mode: horizontal-tb;
-  font-size: 16px;
-  border-radius: 12px;
-  width: 100%;
-  justify-content: center;
-}
-
+/* === BURBUJAS === */
 .bubble {
   position: absolute;
   top: -15px;
@@ -153,24 +154,38 @@ body {
   }
 }
 
-@media screen and (max-width: 768px) {
-  .header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-  }
+/* === VISTA SIMPLE === */
+.wrapper.simple .card-content {
+  display: none;
+}
 
-  .sp-badge {
-    position: fixed;
-    top: 12px;
-    right: 12px;
-    z-index: 1000;
+.wrapper.simple .card-row {
+  justify-content: center;
+  padding: 0;
+  max-height: 60px;
+  height: 60px;
+  background: transparent;
+}
+
+.wrapper.simple .label {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  border-radius: 16px;
+  font-size: 16px;
+  padding: 0;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .controls {
+    flex-direction: column;
+    align-items: flex-end;
   }
 
   #toggle-view {
-    position: fixed;
-    top: 12px;
-    right: 80px;
-    z-index: 1000;
+    display: none;
   }
 }
