@@ -24,5 +24,8 @@ function select(element, value) {
     else if (total === 9) sp = 21;
 
     storyPointDisplay.textContent = sp;
-}
+    storyPointDisplay.className = ""; // Limpia clases anteriores
+    if (sp !== "-") {
+        storyPointDisplay.classList.add(`sp-${sp}`);
+}}
 
