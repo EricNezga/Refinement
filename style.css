@@ -43,6 +43,7 @@ h1 {
     margin-bottom: 20px;
 }
 
+/* Estructura tipo fila */
 .card-row {
     display: flex;
     align-items: stretch;
@@ -65,9 +66,10 @@ h1 {
     color: #111;
 }
 
+/* Etiqueta vertical de abajo hacia arriba */
 .label {
-    writing-mode: vertical-rl;
-    text-orientation: mixed;
+    writing-mode: vertical-lr;
+    transform: rotate(180deg);
     background-color: rgba(255, 255, 255, 0.08);
     color: #ccc;
     padding: 10px;
@@ -82,7 +84,7 @@ h1 {
 
 .card-content {
     flex: 1;
-    padding: 10px 15px;
+    padding: 8px 10px;
     text-align: left;
 }
 
@@ -92,75 +94,40 @@ h1 {
     margin-bottom: 4px;
 }
 
+/* Resultado lateral a la derecha */
 .resultado.lateral {
     position: fixed;
-    top: 100px;
+    top: 120px;
     right: 40px;
     text-align: right;
     background-color: rgba(255,255,255,0.05);
-    padding: 20px;
+    padding: 20px 25px;
     border-radius: 12px;
-    width: 220px;
+    width: 250px;
     box-shadow: 0 0 15px rgba(0,0,0,0.2);
     border: 1px solid #ffffff22;
-    z-index: 100;
+    z-index: 10;
+    backdrop-filter: blur(8px);
 }
 
-/* Colores por SP */
+.resultado.lateral h2 {
+    margin: 10px 0;
+    font-size: 20px;
+    white-space: nowrap;
+}
+
+/* Colores según story point */
 #story-point.sp-3 { color: #4caf50; }
 #story-point.sp-5 { color: #ffb300; }
 #story-point.sp-8 { color: #ff7043; }
 #story-point.sp-13,
 #story-point.sp-21 { color: #e53935; }
 
-/* Animación */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-/* 1. Etiquetas verticales invertidas */
-.label {
-    writing-mode: vertical-lr; /* de abajo hacia arriba */
-    transform: rotate(180deg); /* invierte el texto */
-    text-orientation: mixed;
-    background-color: rgba(255, 255, 255, 0.08);
-    color: #ccc;
-    padding: 10px;
-    font-size: 14px;
-    font-weight: bold;
-    text-align: center;
-    width: 32px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* 2. Reducir separación entre columnas */
-.card-content {
-    flex: 1;
-    padding: 8px 10px;
-    text-align: left;
-}
-
-/* 3. Resultado más integrado en pantalla */
-.resultado.lateral {
-    position: absolute;
-    top: 100px;
-    right: 20px;
-    text-align: right;
-    background-color: rgba(255,255,255,0.05);
-    padding: 20px;
-    border-radius: 12px;
-    width: 240px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
-    border: 1px solid #ffffff22;
-    z-index: 10;
-}
-
-/* Adaptación responsive para móviles */
+/* Responsive para móviles */
 @media (max-width: 960px) {
     .resultado.lateral {
         position: static;
         margin: 30px auto 0;
+        text-align: center;
     }
 }
