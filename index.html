@@ -81,7 +81,7 @@
       background-color: rgba(255, 255, 255, 0.08);
       color: #ccc;
       padding: 8px;
-      font-size: clamp(1rem, 1vw, 1.2rem);
+      font-size: clamp(1rem, 1.2vw, 1.2rem);
       font-weight: bold;
       width: 34px;
       display: flex;
@@ -146,19 +146,24 @@
 
     .sticky-boxes {
       position: fixed;
-      bottom: 15px;
+      top: 120px;
       right: 15px;
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       gap: 10px;
       z-index: 100;
+      opacity: 1;
+      transform: translateY(0);
+      transition: all 0.5s ease;
     }
 
-    @media (min-width: 768px) {
+    @media (max-width: 768px) {
       .sticky-boxes {
-        top: 100px;
-        bottom: auto;
-        flex-direction: column;
+        top: 10px;
+        right: 10px;
+        flex-direction: row;
+        opacity: 0.95;
+        transform: translateY(5px);
       }
     }
   </style>
