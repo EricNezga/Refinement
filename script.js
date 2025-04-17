@@ -3,8 +3,8 @@ const storyPointDisplay = document.getElementById("story-point");
 
 function select(element, value) {
     const container = element.parentElement;
-    const cards = container.querySelectorAll(".card");
-    cards.forEach(c => c.classList.remove("selected"));
+    const rows = container.querySelectorAll(".card-row");
+    rows.forEach(r => r.classList.remove("selected"));
     element.classList.add("selected");
 
     const selectedValues = Array.from(document.querySelectorAll(".factor")).map(f => {
@@ -24,8 +24,8 @@ function select(element, value) {
     else if (total === 9) sp = 21;
 
     storyPointDisplay.textContent = sp;
-    storyPointDisplay.className = ""; // Limpia clases anteriores
+    storyPointDisplay.className = "";
     if (sp !== "-") {
         storyPointDisplay.classList.add(`sp-${sp}`);
-}}
-
+    }
+}
