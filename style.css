@@ -167,11 +167,12 @@ body {
 
 /* === VISTA SIMPLE === */
 .wrapper.simple .factor {
+  align-items: center;
   width: 180px;
   padding: 12px;
   height: 250px;
   display: flex;
-  flex-direction: cloumn;
+  flex-direction: column;
   justify-content: flex-start;
 }
 
