@@ -180,9 +180,11 @@ body {
 }
 
 .wrapper.simple .card-row {
+  display: flex;
+  justify-content: center; /* centra horizontalmente */
+  align-items: center;     /* centra verticalmente */
   padding: 6px;
   height: 50px;
-  border: 10px solid #facc15;
   background: none !important;
   box-shadow: none;
   margin: 6px 0;
@@ -190,6 +192,7 @@ body {
 }
 
 .wrapper.simple .label {
+  margin: 0;
   background: #facc15;
   writing-mode: horizontal-tb;
   transform: none;
