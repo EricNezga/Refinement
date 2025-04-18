@@ -35,6 +35,7 @@ function select(element, value) {
   const factorName = container.dataset.factor.toLowerCase();
   const bubble = document.getElementById(`bubble-${factorName}`);
   bubble.textContent = value;
+  bubble.setAttribute("data-value", value); // Añade esto
   bubble.classList.add("active");
 }
 
