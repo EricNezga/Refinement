@@ -168,14 +168,15 @@ body {
 }
 
 .wrapper.simple .label {
-  writing-mode: vertical-rl;
-  transform: rotate(180deg);
-  height: 100%;
-  width: 100%;
-  margin: 0;
-  border-radius: 16px;
+  writing-mode: horizontal-tb;
+  transform: none;
+  height: auto;
+  padding: 10px 16px;
   font-size: 16px;
-  padding: 0;
+  border-radius: 12px;
+  width: 100%;
+  text-align: center;
+  justify-content: center;
 }
 
 /* === RESPONSIVE === */
