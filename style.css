@@ -194,27 +194,49 @@ body {
     display: none;
   }
 }
+
 /* === Estilos de los bloques Texto selected según valor === */
-.card-row.selected[data-value="1"] .label {
+.card-row.selected[data-value="1"] {
   background-color: #d1fae5; /* verde suave */
   color: #065f46;
 }
 
-.card-row.selected[data-value="2"] .label {
+.card-row.selected[data-value="2"] {
   background-color: #fde68a; /* naranja pastel */
   color: #78350f;
 }
 
-.card-row.selected[data-value="3"] .label {
+.card-row.selected[data-value="3"] {
   background-color: #fecaca; /* rojo claro */
   color: #7f1d1d;
+}
+
+/* General: cuando está seleccionada */
+.card-row.selected p {
+  color: #1e293b; /* azul-gris legible */
+}
+
+/* === Estilo del LABEL en selección por valor === */
+.card-row.selected[data-value="1"] .label {
+  background-color: #10b981;  /* verde más fuerte */
+  color: white;
+}
+
+.card-row.selected[data-value="2"] .label {
+  background-color: #f59e0b;  /* naranja fuerte */
+  color: white;
+}
+
+.card-row.selected[data-value="3"] .label {
+  background-color: #ef4444;  /* rojo fuerte */
+  color: white;
 }
 
 .card-row.selected p {
   color: #1e293b; /* azul gris oscuro, muy legible */
 }
 
-/* Colores pastel en las burbujas según valor */
+/* === Colores pastel en las burbujas según valor === */
 .bubble[data-value="1"] {
   background-color: #34d399;  /* Verde */
   color: #064e3b;
