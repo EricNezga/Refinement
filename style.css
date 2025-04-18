@@ -81,7 +81,7 @@ body {
   color: #1e293b;
 }
 
-/* === Bloques con texto (cards) y label === */
+/* === CARDS - Bloques con texto (cards) y label === */
 .card-row {
   background: #fff;
   border: 2px solid transparent;
@@ -95,7 +95,6 @@ body {
 }
 
 .card-content {
-  display: block; /* aseguras visibilidad por defecto */
   opacity: 1;
   visibility: visible;
   transition: opacity 0.3s ease 0.2s, visibility 0.3s ease 0.2s;
@@ -167,7 +166,6 @@ body {
 }
 
 /* === VISTA SIMPLE === */
-
 .wrapper.simple .factor {
   width: 180px;
   padding: 12px;
@@ -176,18 +174,19 @@ body {
 .wrapper.simple .card-content {
   opacity: 0;
   visibility: hidden;
+  transition-delay: 0s;
+  transition-duration: 0.3s;
   transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 .wrapper.simple .card-row {
-  justify-content: center;
-  background: none;
-  border: none;
+  padding: 6px;
+  height: 50px;
+  border: 10px solid #facc15;
+  background: none !important;
   box-shadow: none;
-  padding: 4px 0;
-  margin: 2px 0;
-  height: auto;
-  max-height: unset;
+  margin: 6px 0;
+  transition: all 0.3s ease 0.3s; /* empieza tras el desvanecimiento del texto */
 }
 
 .wrapper.simple .label {
