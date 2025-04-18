@@ -31,9 +31,11 @@ function select(element, value) {
   else if (total === 9) sp = 21;
 
   storyPointDisplay.textContent = sp;
-  storyPointDisplay.classList.remove("shake");
-  void storyPointDisplay.offsetWidth;
-  storyPointDisplay.classList.add("shake");
+  /* Animación SP */
+  const spBox = document.querySelector(".sp-badge");
+  spBox.classList.remove("wobble");
+  void spBox.offsetWidth;
+  spBox.classList.add("wobble");
 
   const factorName = container.dataset.factor.toLowerCase();
   const bubble = document.getElementById(`bubble-${factorName}`);
