@@ -74,6 +74,9 @@ body {
   box-shadow: 4px 4px 0 #f59e0b;
   text-align: center;
   transition: all 0.3s ease;
+  overflow: hidden; /* esto evita que contenido oculto expanda la caja */
+  outline: 2px dashed red;
+
 }
 
 .factor h2 {
@@ -168,13 +171,12 @@ body {
 
 /* === VISTA SIMPLE === */
 .wrapper.simple .factor {
-  align-items: center;
-  width: 180px;
-  padding: 12px;
-  height: 280px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  align-items: center;
+  height: 280px;
+  overflow: hidden;
 }
 
 .wrapper.simple .card-content {
