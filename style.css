@@ -200,15 +200,20 @@ body {
   color: #065f46;
 }
 
-.card-row.selected[data-value="2"] {
+.card-row.selected[data-value="2"] .label {
   background-color: #fde68a; /* naranja pastel */
   color: #78350f;
 }
 
-.card-row.selected[data-value="3"] {
+.card-row.selected[data-value="3"] .label {
   background-color: #fecaca; /* rojo claro */
   color: #7f1d1d;
 }
+
+.card-row.selected p {
+  color: #1e293b; /* azul gris oscuro, muy legible */
+}
+
 /* Colores pastel en las burbujas según valor */
 .bubble[data-value="1"] {
   background-color: #34d399;  /* Verde */
