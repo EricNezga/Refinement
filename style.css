@@ -219,6 +219,8 @@ body {
   background-color: #f87171;  /* Rojo suave */
   color: #7f1d1d;
 }
+
+/* Animación al pulsar casillas */
 @keyframes pulse {
   0%   { transform: scale(1); }
   50%  { transform: scale(1.03); }
@@ -231,4 +233,18 @@ body {
 
 .bubble.active {
   animation: pulse 0.25s ease;
+}
+
+/* Animación SP */
+@keyframes sp-shake {
+  0%   { transform: translateX(0); }
+  20%  { transform: translateX(-6px); }
+  40%  { transform: translateX(5px); }
+  60%  { transform: translateX(-3px); }
+  80%  { transform: translateX(2px); }
+  100% { transform: translateX(0); }
+}
+
+#story-point.shake {
+  animation: sp-shake 0.4s ease;
 }
