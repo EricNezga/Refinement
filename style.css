@@ -178,7 +178,6 @@ body {
   justify-content: flex-start;
   align-items: center;
   height: 280px;
-  overflow: hidden;
 }
 
 .wrapper.simple .card-content {
