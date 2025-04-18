@@ -169,6 +169,10 @@ body {
 .wrapper.simple .factor {
   width: 180px;
   padding: 12px;
+  height: 250px;
+  display: flex;
+  flex-direction: cloumn;
+  justify-content: flex-start;
 }
 
 .wrapper.simple .card-content {
