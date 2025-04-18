@@ -204,3 +204,18 @@ body {
   background-color: #fecaca; /* rojo claro */
   color: #7f1d1d;
 }
+/* Colores pastel en las burbujas según valor */
+.bubble[data-value="1"] {
+  background-color: #34d399;  /* Verde */
+  color: #064e3b;
+}
+
+.bubble[data-value="2"] {
+  background-color: #fbbf24;  /* Amarillo/naranja */
+  color: #78350f;
+}
+
+.bubble[data-value="3"] {
+  background-color: #f87171;  /* Rojo suave */
+  color: #7f1d1d;
+}
