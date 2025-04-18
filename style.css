@@ -79,7 +79,7 @@ body {
   font-size: 20px;
   color: #1e293b;
 }
-/* == Bloques con texto y label == */
+/* == Bloques con texto (cards) y label == */
 .card-row {
   background: #fff;
   border: 2px solid transparent;
@@ -173,9 +173,9 @@ body {
 }
 
 .wrapper.simple .label {
+  background: #facc15;
   writing-mode: horizontal-tb;
   transform: none;
-  background: none;
   border: 2px solid #facc15;
   color: #1e293b;
   padding: 6px 10px;
