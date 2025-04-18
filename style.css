@@ -217,8 +217,8 @@ body {
 }
 
 .wrapper.simple .card-row.selected {
-  background: none;
-  border: none;
+  background: #fff;
+  border: 2px solid #facc15;
   box-shadow: none;
 }
 
