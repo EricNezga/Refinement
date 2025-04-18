@@ -93,7 +93,7 @@ body {
   display: flex;
   margin: 10px 0;
   padding: 12px;
-  min-height: 68px;
+  min-height: 56px;
   align-items: center;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
@@ -193,7 +193,7 @@ body {
   justify-content: center; /* centra horizontalmente */
   align-items: center;     /* centra verticalmente */
   padding: 6px;
-  min-height: 68px;
+  min-height: 56px;
   background: #fff;  
   box-shadow: none;
   margin: 6px 0;
