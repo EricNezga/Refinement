@@ -31,6 +31,9 @@ function select(element, value) {
   else if (total === 9) sp = 21;
 
   storyPointDisplay.textContent = sp;
+  storyPointDisplay.classList.remove("shake");
+  void storyPointDisplay.offsetWidth;
+  storyPointDisplay.classList.add("shake");
 
   const factorName = container.dataset.factor.toLowerCase();
   const bubble = document.getElementById(`bubble-${factorName}`);
