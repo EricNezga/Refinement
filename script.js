@@ -67,6 +67,7 @@ toggleBtn.addEventListener("click", () => {
       setTimeout(() => {
         if (wrapper.classList.contains("simple")) {
           content.style.display = "none";
+        } 
       }, 300);
     } else {
       content.style.display = "block";
