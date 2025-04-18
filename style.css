@@ -219,16 +219,16 @@ body {
   background-color: #f87171;  /* Rojo suave */
   color: #7f1d1d;
 }
-@keyframes bounce {
+@keyframes pulse {
   0%   { transform: scale(1); }
-  50%  { transform: scale(1.15); }
+  50%  { transform: scale(1.03); }
   100% { transform: scale(1); }
 }
 
 .card-row.selected {
-  animation: bounce 0.3s ease;
+  animation: pulse 0.25s ease;
 }
 
 .bubble.active {
-  animation: bounce 0.3s ease;
+  animation: pulse 0.25s ease;
 }
