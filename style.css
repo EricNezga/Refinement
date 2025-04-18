@@ -95,6 +95,7 @@ body {
 }
 
 .card-content {
+  display: block; /* aseguras visibilidad por defecto */
   opacity: 1;
   visibility: visible;
   transition: opacity 0.3s ease 0.2s, visibility 0.3s ease 0.2s;
@@ -129,7 +130,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* === BURBUJAS === */
@@ -173,7 +174,8 @@ body {
 }
 
 .wrapper.simple .card-content {
-  display: none;
+  opacity: 0;
+  visibility: hidden;
 }
 
 .wrapper.simple .card-row {
@@ -267,6 +269,7 @@ body {
 }
 
 .card-row.selected {
+  will-change: background-color, transform;
   animation: pulse 0.25s ease;
 }
 
