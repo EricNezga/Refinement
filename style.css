@@ -157,6 +157,12 @@ body {
 }
 
 /* === VISTA SIMPLE === */
+
+.wrapper.simple .factor {
+  width: 180px;
+  padding: 12px;
+}
+
 .wrapper.simple .card-content {
   display: none;
 }
