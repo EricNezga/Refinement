@@ -248,7 +248,43 @@ body {
   color: #7f1d1d;
 }
 
-/* Animación al pulsar casillas */
+/* === AJUSTES VISTA SIMPLE COMPACTA === */
+.wrapper.simple .card-row {
+  justify-content: center;
+  background: none;
+  border: none;
+  box-shadow: none;
+  padding: 4px 0;
+  margin: 2px 0;
+  height: auto;
+  max-height: unset;
+}
+
+.wrapper.simple .label {
+  background: none;
+  border: 2px solid #facc15;
+  color: #1e293b;
+  padding: 6px 10px;
+  font-size: 15px;
+  border-radius: 10px;
+  width: auto;
+  min-width: unset;
+}
+
+/* Oculta el borde y sombra de columnas */
+.wrapper.simple .factor {
+  border: none;
+  box-shadow: none;
+  background: transparent;
+  padding: 10px 0;
+}
+
+/* Título alineado */
+.wrapper.simple .factor h2 {
+  margin-bottom: 6px;
+}
+
+/* === ANIMACIÓN AL PULSAR CASILLAS === */
 @keyframes pulse {
   0%   { transform: scale(1); }
   50%  { transform: scale(1.03); }
