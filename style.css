@@ -185,6 +185,12 @@ body {
   min-width: unset;
 }
 
+.wrapper.simple .card-row.selected {
+  background: none;
+  border: none;
+  box-shadow: none;
+}
+
 /* === RESPONSIVE === */
 @media (max-width: 768px) {
   .controls {
