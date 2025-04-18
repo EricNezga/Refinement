@@ -79,7 +79,7 @@ body {
   font-size: 20px;
   color: #1e293b;
 }
-
+/* == Bloques con texto y label == */
 .card-row {
   background: #fff;
   border: 2px solid transparent;
@@ -89,7 +89,7 @@ body {
   padding: 12px;
   align-items: center;
   cursor: pointer;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
 .card-row:hover {
@@ -100,6 +100,8 @@ body {
 /* Accesibilidad: enfoque visible */
 .card-row:focus {
   outline: 3px dashed #1e293b;
+  outline-offset: 4px;
+  transition: outline-offset 0.2s ease;
 }
 
 .card-content p {
@@ -192,8 +194,8 @@ body {
     display: none;
   }
 }
-/* Estilos para las casillas seleccionadas según su valor */
-.card-row.selected[data-value="1"] {
+/* === Estilos de los bloques Texto selected según valor === */
+.card-row.selected[data-value="1"] .label {
   background-color: #d1fae5; /* verde suave */
   color: #065f46;
 }
