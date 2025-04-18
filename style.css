@@ -236,15 +236,15 @@ body {
 }
 
 /* Animación SP */
-@keyframes sp-shake {
-  0%   { transform: translateX(0); }
-  20%  { transform: translateX(-6px); }
-  40%  { transform: translateX(5px); }
-  60%  { transform: translateX(-3px); }
-  80%  { transform: translateX(2px); }
-  100% { transform: translateX(0); }
+@keyframes sp-wobble {
+  0%   { transform: rotate(0deg); }
+  20%  { transform: rotate(-4deg); }
+  40%  { transform: rotate(3deg); }
+  60%  { transform: rotate(-2deg); }
+  80%  { transform: rotate(1deg); }
+  100% { transform: rotate(0deg); }
 }
 
-#story-point.shake {
-  animation: sp-shake 0.4s ease;
+.sp-badge.wobble {
+  animation: sp-wobble 0.4s ease;
 }
