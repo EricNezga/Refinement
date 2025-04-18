@@ -274,19 +274,22 @@ body {
   border: none;
   box-shadow: none;
 }
-.wrapper.simple .card-row.selected[data-value="1"],
-.wrapper.simple .card-row.selected[data-value="2"],
-.wrapper.simple .card-row.selected[data-value="3"] {
-  background-color: transparent;
-  color: #1e293b;
-  border: none;
-  box-shadow: none;
+
+.wrapper.simple .card-row.selected .label {
+  color: white;
 }
-.wrapper.simple .card-row.selected[data-value="1"] .label,
-.wrapper.simple .card-row.selected[data-value="2"] .label,
+
+/* Colores según valor */
+.wrapper.simple .card-row.selected[data-value="1"] .label {
+  background-color: #10b981;
+}
+
+.wrapper.simple .card-row.selected[data-value="2"] .label {
+  background-color: #f59e0b;
+}
+
 .wrapper.simple .card-row.selected[data-value="3"] .label {
-  background-color: #facc15;
-  color: #1e293b;
+  background-color: #ef4444;
 }
 
 /* === ANIMACIÓN AL PULSAR CASILLAS === */
