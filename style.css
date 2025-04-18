@@ -98,8 +98,7 @@ body {
 }
 
 .card-row.selected {
-  background-color: #60a5fa;
-  color: white;
+  animation: pulse 0.25s ease;
 }
 
 .card-content p {
