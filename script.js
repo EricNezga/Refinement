@@ -37,6 +37,9 @@ function select(element, value) {
   bubble.textContent = value;
   bubble.setAttribute("data-value", value); // Añade esto
   bubble.classList.add("active");
+  bubble.style.animation = "none";
+  void bubble.offsetWidth;
+  bubble.style.animation = "bounce 0.3s ease";
 }
 
 // Cambiar vista simplificada
