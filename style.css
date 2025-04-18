@@ -192,7 +192,7 @@ body {
   display: flex;
   justify-content: center; /* centra horizontalmente */
   align-items: center;     /* centra verticalmente */
-  padding: 6px;
+  padding: 12px;
   min-height: 56px;
   background: #fff;  
   box-shadow: none;
