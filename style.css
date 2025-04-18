@@ -72,6 +72,7 @@ body {
   position: relative;
   box-shadow: 4px 4px 0 #f59e0b;
   text-align: center;
+  transition: all 0.3s ease;
 }
 
 .factor h2 {
@@ -79,7 +80,8 @@ body {
   font-size: 20px;
   color: #1e293b;
 }
-/* == Bloques con texto (cards) y label == */
+
+/* === Bloques con texto (cards) y label === */
 .card-row {
   background: #fff;
   border: 2px solid transparent;
@@ -121,6 +123,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: all 0.3s ease;
 }
 
 /* === BURBUJAS === */
@@ -195,18 +198,6 @@ body {
   background: none;
   border: none;
   box-shadow: none;
-}
-
-/* === RESPONSIVE === */
-@media (max-width: 768px) {
-  .controls {
-    flex-direction: column;
-    align-items: flex-end;
-  }
-
-  #toggle-view {
-    display: none;
-  }
 }
 
 /* === Estilos de la tarjeta de Texto selected por valor === */
@@ -289,4 +280,16 @@ body {
 
 .sp-badge.wobble {
   animation: sp-wobble 0.4s ease;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .controls {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  #toggle-view {
+    display: none;
+  }
 }
