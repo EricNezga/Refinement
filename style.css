@@ -189,3 +189,18 @@ body {
     display: none;
   }
 }
+/* Estilos para las casillas seleccionadas según su valor */
+.card-row.selected[data-value="1"] {
+  background-color: #d1fae5; /* verde suave */
+  color: #065f46;
+}
+
+.card-row.selected[data-value="2"] {
+  background-color: #fde68a; /* naranja pastel */
+  color: #78350f;
+}
+
+.card-row.selected[data-value="3"] {
+  background-color: #fecaca; /* rojo claro */
+  color: #7f1d1d;
+}
