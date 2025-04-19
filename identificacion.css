@@ -284,3 +284,13 @@ button.guest:hover {
   text-align: center;
   display: block;
 }
+
+@keyframes avatarSelect {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+.avatar.selected.animate {
+  animation: avatarSelect 0.3s ease;
+}
