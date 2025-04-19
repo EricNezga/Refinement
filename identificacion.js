@@ -7,27 +7,57 @@ document.addEventListener("DOMContentLoaded", () => {
   const emailError = document.getElementById("email-error");
 
   const avatarModal = document.getElementById("avatarModal");
-  const avatarImages = avatarModal?.querySelectorAll("img");
+  const avatarIcons = avatarModal?.querySelectorAll(".avatar");
+  const colorOptions = avatarModal?.querySelectorAll(".color-option");
 
-  // === FUNCIÓN PARA MOSTRAR MODAL AVATAR ===
+  let selectedAvatar = null;
+  let selectedColor = "#f9fafb"; // default
+
+  // === MOSTRAR MODAL AVATAR ===
   const showAvatarModal = () => {
     avatarModal.classList.remove("hidden");
   };
 
-  // === FUNCIÓN PARA GUARDAR AVATAR Y REDIRIGIR ===
-  const selectAvatar = (avatarId) => {
-    localStorage.setItem("avatar", avatarId);
+  // === FINALIZAR Y GUARDAR AVATAR + COLOR ===
+  const finalizeLogin = () => {
+    if (selectedAvatar) {
+      localStorage.setItem("avatar", selectedAvatar.dataset.avatar || "svg");
+    }
+    localStorage.setItem("avatarColor", selectedColor);
     window.location.href = "index.html";
   };
 
-  avatarImages?.forEach(img => {
-    img.addEventListener("click", () => {
-      const avatarId = img.getAttribute("data-avatar");
-      selectAvatar(avatarId);
+  // === SELECCIÓN DE AVATAR ===
+  avatarIcons?.forEach(icon => {
+    icon.addEventListener("click", () => {
+      avatarIcons.forEach(i => {
+        i.classList.remove("selected");
+        i.querySelector("svg")?.setAttribute("stroke", "#1f2937");
+        i.style.backgroundColor = "#f9fafb";
+      });
+
+      icon.classList.add("selected");
+      icon.querySelector("svg")?.setAttribute("stroke", "#ffffff");
+      icon.style.backgroundColor = selectedColor;
+
+      selectedAvatar = icon;
+      finalizeLogin();
     });
   });
 
-  // === BOTÓN LOGIN NORMAL ===
+  // === SELECCIÓN DE COLOR ===
+  colorOptions?.forEach(option => {
+    option.addEventListener("click", () => {
+      selectedColor = option.dataset.color;
+
+      // Actualizar color en el avatar seleccionado
+      if (selectedAvatar) {
+        selectedAvatar.style.backgroundColor = selectedColor;
+      }
+    });
+  });
+
+  // === LOGIN NORMAL ===
   loginButton.addEventListener("click", () => {
     const name = inputName.value.trim();
     const email = inputEmail.value.trim();
@@ -51,7 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
     showAvatarModal();
   });
 
-  // === BOTÓN INVITADO ===
+  // === LOGIN COMO INVITADO ===
   guestButton.addEventListener("click", () => {
     localStorage.setItem("username", `Invitado_${Math.floor(Math.random() * 1000)}`);
     localStorage.setItem("guest", "true");
