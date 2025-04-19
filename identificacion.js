@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const columns = 6;
   const rowsVisible = 3;
-  const totalRows = 5; // 3 visibles + 3 adicionales
+  const totalRows = 4; // 3 visibles + 3 adicionales
 
   const cellSize = Math.ceil(window.innerHeight / rowsVisible);
   const fontSize = cellSize * 2;
