@@ -10,6 +10,21 @@ if (user) {
   window.location.href = "identificacion.html";
 }
 
+const username = localStorage.getItem("username");
+
+if (!username) {
+  window.location.href = "identificacion.html";
+}
+
+
+/* === CIERRE DE SESSION === */
+document.getElementById("logout-btn").addEventListener("click", () => {
+  localStorage.removeItem("username");
+  window.location.href = "identificacion.html";
+});
+
+/* ===  === */
+
 const storyPointDisplay = document.getElementById("story-point");
 const toggleBtn = document.getElementById("toggle-view");
 const wrapper = document.querySelector(".wrapper");
