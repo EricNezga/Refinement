@@ -51,7 +51,7 @@ canvas.background-binary {
   z-index: 0;
   width: 100%;
   height: 100%;
-  opacity: 0.06; /* sutil */
+  opacity: 1; /* ya controlamos con el fillStyle */
   pointer-events: none;
 }
 
