@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Dongle:wght@700&display=swap');
 
-/* === CUERPO Y FONDO === */
+/* === BASE === */
 body {
   font-family: 'Fredoka', sans-serif;
   background: #fef3c7;
@@ -16,6 +16,7 @@ body {
   align-items: center;
 }
 
+/* === FONDO BINARIO === */
 canvas.background-binary {
   position: absolute;
   top: 0;
@@ -26,7 +27,7 @@ canvas.background-binary {
   font-weight: 700;
 }
 
-/* === LOGIN WRAPPER === */
+/* === LOGIN === */
 .login-wrapper {
   position: relative;
   z-index: 2;
@@ -45,7 +46,7 @@ canvas.background-binary {
   font-weight: bold;
 }
 
-/* === CONTENEDOR DE FORMULARIO === */
+/* === CONTENEDOR DEL FORMULARIO === */
 .login-container {
   background: white;
   padding: 40px;
@@ -56,7 +57,7 @@ canvas.background-binary {
   box-sizing: border-box;
 }
 
-/* === CAMPOS DE TEXTO === */
+/* === INPUTS === */
 input {
   width: 100%;
   padding: 12px 20px;
@@ -65,6 +66,28 @@ input {
   border-radius: 12px;
   margin-bottom: 20px;
   box-sizing: border-box;
+}
+
+/* === MENSAJES DE ERROR === */
+.error-message {
+  color: #ef4444;
+  font-size: 14px;
+  margin-top: -15px;
+  margin-bottom: 15px;
+  text-align: left;
+  display: none;
+}
+
+/* === ANIMACIÓN SHAKE === */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-6px); }
+  40%, 80% { transform: translateX(6px); }
+}
+
+.shake {
+  animation: shake 0.3s;
+  border-color: #ef4444;
 }
 
 /* === BOTONES === */
@@ -103,28 +126,6 @@ button.guest:hover {
   font-weight: bold;
 }
 
-/* === ERRORES DE VALIDACIÓN === */
-.error-message {
-  color: #ef4444;
-  font-size: 14px;
-  margin-top: -15px;
-  margin-bottom: 15px;
-  text-align: left;
-  display: none;
-}
-
-/* === ANIMACIÓN SHAKE === */
-@keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  20%, 60% { transform: translateX(-6px); }
-  40%, 80% { transform: translateX(6px); }
-}
-
-.shake {
-  animation: shake 0.3s;
-  border-color: #ef4444;
-}
-
 /* === ACCESIBILIDAD === */
 .sr-only {
   position: absolute;
@@ -140,43 +141,73 @@ button.guest:hover {
 /* === MODAL DE AVATAR === */
 .avatar-modal {
   position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0, 0, 0, 0.4);
+  inset: 0;
+  background: rgba(30, 41, 59, 0.6);
   display: flex;
-  align-items: center;
   justify-content: center;
-  z-index: 100;
+  align-items: center;
+  z-index: 50;
+  backdrop-filter: blur(6px);
+}
+
+.avatar-modal.hidden {
+  display: none;
 }
 
 .avatar-modal-content {
   background: white;
-  padding: 30px;
   border-radius: 16px;
+  padding: 40px;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
   text-align: center;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  font-family: 'Fredoka', sans-serif;
 }
 
+.avatar-modal-content h2 {
+  font-size: 28px;
+  margin-bottom: 24px;
+  color: #1e293b;
+  font-weight: 600;
+}
+
+/* === GRID DE AVATARES === */
 .avatar-grid {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  justify-items: center;
 }
 
-.avatar-grid img {
+.avatar {
   width: 64px;
   height: 64px;
-  border-radius: 50%;
+  padding: 12px;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  background: #f9fafb;
+  transition: all 0.2s ease;
   cursor: pointer;
-  transition: transform 0.2s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.avatar-grid img:hover {
-  transform: scale(1.1);
+.avatar:hover {
+  border-color: #facc15;
+  background-color: #fffbea;
+  transform: scale(1.05);
 }
 
-.hidden {
-  display: none;
+.avatar svg {
+  width: 32px;
+  height: 32px;
+  stroke: #1f2937;
 }
 
+/* Avatar seleccionado (si se necesita marcar) */
+.avatar.selected {
+  border-color: #facc15;
+  background-color: #fff8dc;
+}
