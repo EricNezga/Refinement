@@ -244,3 +244,31 @@ button.guest:hover {
   transform: scale(1.1);
   border-color: #facc15;
 }
+
+// CERRAR VENTANA AVATAR
+.avatar-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: #f9fafb;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.avatar-close:hover {
+  background: #fef3c7;
+  border-color: #facc15;
+}
+
+.avatar-close i {
+  stroke: #1f2937;
+  width: 20px;
+  height: 20px;
+}
