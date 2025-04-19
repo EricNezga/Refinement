@@ -18,12 +18,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const fibonacciValues = [1, 2, 3, 5, 8, 13, 21];
   const fontSize = 1000;
-  const cellSize = 400; // tamaño fijo de celda
+  const cellSize = 400;
   const columns = 10;
   const rows = 8;
   const elements = [];
 
-  // 📐 canvas fijo al cargar, sin regenerarse en resize
+  const fixedSpeed = 0.4; // 🔁 velocidad vertical uniforme
+
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 
@@ -31,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
 
-  // 🧱 generar grilla fija
+  // generar grilla con velocidad y opacidad fijas por fila
   for (let y = 0; y < rows; y++) {
     for (let x = 0; x < columns; x++) {
       elements.push({
@@ -40,8 +41,6 @@ document.addEventListener("DOMContentLoaded", () => {
         value: fibonacciValues[Math.floor(Math.random() * fibonacciValues.length)],
         opacity: Math.random() * 0.7 + 0.2,
         direction: Math.random() > 0.5 ? 1 : -1,
-        speed: Math.random() * 0.005 + 0.002,
-        ySpeed: Math.random() * 0.3 + 0.1
       });
     }
   }
@@ -50,8 +49,8 @@ document.addEventListener("DOMContentLoaded", () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     elements.forEach(el => {
-      el.opacity += el.speed * el.direction;
-
+      // Transición de opacidad
+      el.opacity += 0.005 * el.direction;
       if (el.opacity > 0.9) {
         el.opacity = 0.9;
         el.direction = -1;
@@ -60,7 +59,10 @@ document.addEventListener("DOMContentLoaded", () => {
         el.direction = 1;
       }
 
-      el.y += el.ySpeed;
+      // Movimiento descendente uniforme
+      el.y += fixedSpeed;
+
+      // Recicla al salir por abajo
       if (el.y > canvas.height + cellSize / 2) {
         el.y = -cellSize / 2;
         el.value = fibonacciValues[Math.floor(Math.random() * fibonacciValues.length)];
