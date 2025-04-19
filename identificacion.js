@@ -18,8 +18,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const fibonacciValues = [1, 2, 3, 5, 8, 13, 21];
   const fontSize = 700;
-  const cellSize = 720; // tamaño fijo de celda
-  const columns = 7;
+  const cellSize = 400; // tamaño fijo de celda
+  const columns = 9;
   const rows = 7;
   const elements = [];
 
