@@ -250,25 +250,21 @@ button.guest:hover {
   position: absolute;
   top: 16px;
   right: 16px;
-  background: #f9fafb;
-  border: 2px solid #e5e7eb;
+  background: #ef4444;
+  border: none;
   border-radius: 8px;
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding: 6px;
   cursor: pointer;
-  transition: background 0.2s, border-color 0.2s;
+  transition: background-color 0.2s ease;
+  z-index: 10;
 }
 
 .avatar-close:hover {
-  background: #fef3c7;
-  border-color: #facc15;
+  background: #dc2626;
 }
 
 .avatar-close i {
-  stroke: #1f2937;
   width: 20px;
   height: 20px;
+  stroke: white;
 }
