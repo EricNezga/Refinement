@@ -103,6 +103,28 @@ button.guest:hover {
   font-weight: bold;
 }
 
+/* === ERRORES DE VALIDACIÓN === */
+.error-message {
+  color: #ef4444;
+  font-size: 14px;
+  margin-top: -15px;
+  margin-bottom: 15px;
+  text-align: left;
+  display: none;
+}
+
+/* === ANIMACIÓN SHAKE === */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-6px); }
+  40%, 80% { transform: translateX(6px); }
+}
+
+.shake {
+  animation: shake 0.3s;
+  border-color: #ef4444;
+}
+
 /* === ACCESIBILIDAD === */
 .sr-only {
   position: absolute;
