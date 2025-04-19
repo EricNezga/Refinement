@@ -8,8 +8,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const avatarModal = document.getElementById("avatarModal");
   const avatarCloseBtn = document.getElementById("avatarCloseBtn");
   const avatarIcons = avatarModal?.querySelectorAll(".avatar");
-  const confirmButton = document.getElementById("confirm-avatar");
-
+  const confirmButton = document.getElementById("confirmAvatarBtn");
+  
   let selectedAvatar = null;
   let selectedColor = null;
 
