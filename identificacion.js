@@ -1,10 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // === ELEMENTOS LOGIN ===
   const inputName = document.getElementById("username-input");
   const inputEmail = document.getElementById("email-input");
   const loginButton = document.getElementById("login-button");
   const guestButton = document.getElementById("guest-button");
 
-  // Botón normal de login
+  // === BOTÓN NORMAL ===
   loginButton.addEventListener("click", () => {
     const name = inputName.value.trim();
     const email = inputEmail.value.trim();
@@ -22,22 +23,20 @@ document.addEventListener("DOMContentLoaded", () => {
     window.location.href = "index.html";
   });
 
-  // Botón para entrar como invitado
+  // === BOTÓN INVITADO ===
   guestButton.addEventListener("click", () => {
     localStorage.setItem("username", `Invitado_${Math.floor(Math.random() * 1000)}`);
     localStorage.setItem("guest", "true");
-    localStorage.removeItem("email"); // limpiamos email
+    localStorage.removeItem("email");
 
     window.location.href = "index.html";
   });
-});
 
   // === ANIMACIÓN DE FONDO ===
   const canvas = document.querySelector(".background-binary");
-  if (!canvas) return; // solo si existe el canvas
+  if (!canvas) return;
 
   const ctx = canvas.getContext("2d");
-
   const fibonacciValues = [1, 2, 3, 5, 8, 13, 21];
 
   const columns = 6;
@@ -47,7 +46,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const cellSize = Math.ceil(window.innerHeight / rowsVisible);
   const fontSize = cellSize * 2;
   const elements = [];
-
   const fixedSpeed = 0.4;
 
   canvas.width = window.innerWidth;
