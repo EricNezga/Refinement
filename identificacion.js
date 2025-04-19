@@ -34,21 +34,24 @@ resizeCanvas();
 window.addEventListener("resize", resizeCanvas);
 
 function draw() {
-  // Fondo con opacidad para "arrastrar" el rastro, da efecto de brillo suave
-  ctx.fillStyle = 'rgba(254, 243, 199, 0.08)';
+  // Fondo con opacidad baja para crear efecto de arrastre muy suave
+  ctx.fillStyle = 'rgba(254, 243, 199, 0.02)';
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-  // Usa Dongle en 90px
-  ctx.font = '90px Dongle, sans-serif';
-  ctx.fillStyle = '#1f2937';
+  ctx.font = '200px Dongle, sans-serif';
 
   for (let i = 0; i < drops.length; i++) {
-    const text = fibonacciValues[Math.floor(Math.random() * fibonacciValues.length)];
+    const value = fibonacciValues[Math.floor(Math.random() * fibonacciValues.length)];
     const x = i * 40;
-    const y = drops[i] * 90; // usar altura proporcional al tamaño
+    const y = drops[i] * 90;
 
-    ctx.fillText(text, x, y);
+    // Color con opacidad aleatoria entre 10% y 40%
+    const opacity = 0.1 + Math.random() * 0.3;
+    ctx.fillStyle = `rgba(240, 240, 240, ${opacity})`; // gris muy claro tirando a blanco
 
+    ctx.fillText(value, x, y);
+
+    // Reiniciar si se sale
     if (y > canvas.height + Math.random() * 200) {
       drops[i] = 0;
     } else {
