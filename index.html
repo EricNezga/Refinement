@@ -6,16 +6,13 @@
   <title>Refinamiento Ágil</title>
   <link rel="stylesheet" href="style.css" />
 </head>
-  
+
 <body>
   <div class="header">
     <h1 class="title">Refinamiento Ágil</h1>
-    <!-- En el HTML donde quieras saludar -->
     <h2 id="user-greeting"></h2>
     <div class="controls">
-      <!-- BOTON CIERRE SESSION -->
       <button id="logout-btn">Cerrar sesión</button>
-      <!-- BOTON TOGGLE VIEW -->
       <button id="toggle-view" title="Cambiar vista">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye-icon"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg>
       </button>
@@ -26,27 +23,37 @@
     </div>
   </div>
 
-<div class="wrapper"> <!-- JS alternará .simple aquí -->
-  <div class="factor" data-factor="Complejidad">
+  <!-- NUEVO BLOQUE: Enlace y Vista Previa -->
+  <div class="task-link-wrapper">
+    <label for="task-url">Enlace de la tarea:</label>
+    <input type="url" id="task-url" placeholder="https://ejemplo.com/tarea" />
+    <button id="load-preview">Ver tarea</button>
+  </div>
+
+  <div id="preview-container" class="hidden">
+    <div class="preview-header">
+      <span id="preview-url-display"></span>
+      <button id="toggle-preview">Minimizar</button>
+    </div>
+    <iframe id="task-preview" src="" frameborder="0"></iframe>
+  </div>
+
+  <!-- FACTORES -->
+  <div class="wrapper"> <!-- JS alternará .simple aquí -->
+    <div class="factor" data-factor="Complejidad">
       <div class="bubble" id="bubble-complejidad"></div>
       <h2>Complejidad</h2>
       <div class="card-row" onclick="select(this, 1)" data-value="1">
         <div class="label">Baja</div>
-        <div class="card-content">
-          <p>Fix puntual, DDBB, sin riesgo técnico</p>
-        </div>
+        <div class="card-content"><p>Fix puntual, DDBB, sin riesgo técnico</p></div>
       </div>
       <div class="card-row" onclick="select(this, 2)" data-value="2">
         <div class="label">Media</div>
-        <div class="card-content">
-          <p>Cambios en código existente, requiere investigación previa</p>
-        </div>
+        <div class="card-content"><p>Cambios en código existente, requiere investigación previa</p></div>
       </div>
       <div class="card-row" onclick="select(this, 3)" data-value="3">
         <div class="label">Alta</div>
-        <div class="card-content">
-          <p>Nueva lógica, múltiples areas de impacto</p>
-        </div>
+        <div class="card-content"><p>Nueva lógica, múltiples areas de impacto</p></div>
       </div>
     </div>
 
@@ -55,21 +62,15 @@
       <h2>Incertidumbre</h2>
       <div class="card-row" onclick="select(this, 1)" data-value="1">
         <div class="label">Baja</div>
-        <div class="card-content">
-          <p>Todo claro, historia bien definida</p>
-        </div>
+        <div class="card-content"><p>Todo claro, historia bien definida</p></div>
       </div>
       <div class="card-row" onclick="select(this, 2)" data-value="2">
         <div class="label">Media</div>
-        <div class="card-content">
-          <p>Falta algún criterio, depende de terceros</p>
-        </div>
+        <div class="card-content"><p>Falta algún criterio, depende de terceros</p></div>
       </div>
       <div class="card-row" onclick="select(this, 3)" data-value="3">
         <div class="label">Alta</div>
-        <div class="card-content">
-          <p>Definición ambigua, faltan datos clave para avanzar</p>
-        </div>
+        <div class="card-content"><p>Definición ambigua, faltan datos clave para avanzar</p></div>
       </div>
     </div>
 
@@ -78,21 +79,15 @@
       <h2>Esfuerzo</h2>
       <div class="card-row" onclick="select(this, 1)" data-value="1">
         <div class="label">Bajo</div>
-        <div class="card-content">
-          <p>Rápido de ejecutar, es cosa de unas pocas líneas</p>
-        </div>
+        <div class="card-content"><p>Rápido de ejecutar, es cosa de unas pocas líneas</p></div>
       </div>
       <div class="card-row" onclick="select(this, 2)" data-value="2">
         <div class="label">Medio</div>
-        <div class="card-content">
-          <p>Podría necesitar algo de revisión y soporte</p>
-        </div>
+        <div class="card-content"><p>Podría necesitar algo de revisión y soporte</p></div>
       </div>
       <div class="card-row" onclick="select(this, 3)" data-value="3">
         <div class="label">Alto</div>
-        <div class="card-content">
-          <p>Trabajo intenso y con muchos frentes</p>
-        </div>
+        <div class="card-content"><p>Trabajo intenso y con muchos frentes</p></div>
       </div>
     </div>
   </div>
