@@ -11,17 +11,18 @@ document.addEventListener("DOMContentLoaded", () => {
   const colorOptions = avatarModal?.querySelectorAll(".color-option");
 
   let selectedAvatar = null;
-  let selectedColor = "#f9fafb"; // default
+  let selectedColor = "#f9fafb"; // Color por defecto
 
-  // === MOSTRAR MODAL AVATAR ===
+  // === MOSTRAR MODAL DE AVATAR ===
   const showAvatarModal = () => {
     avatarModal.classList.remove("hidden");
   };
 
-  // === FINALIZAR Y GUARDAR AVATAR + COLOR ===
+  // === FINALIZAR Y GUARDAR AVATAR Y COLOR ===
   const finalizeLogin = () => {
     if (selectedAvatar) {
-      localStorage.setItem("avatar", selectedAvatar.dataset.avatar || "svg");
+      const iconId = selectedAvatar.getAttribute("data-avatar");
+      localStorage.setItem("avatar", iconId);
     }
     localStorage.setItem("avatarColor", selectedColor);
     window.location.href = "index.html";
@@ -32,12 +33,12 @@ document.addEventListener("DOMContentLoaded", () => {
     icon.addEventListener("click", () => {
       avatarIcons.forEach(i => {
         i.classList.remove("selected");
-        i.querySelector("svg")?.setAttribute("stroke", "#1f2937");
+        i.setAttribute("stroke", "#1f2937");
         i.style.backgroundColor = "#f9fafb";
       });
 
       icon.classList.add("selected");
-      icon.querySelector("svg")?.setAttribute("stroke", "#ffffff");
+      icon.setAttribute("stroke", "#ffffff");
       icon.style.backgroundColor = selectedColor;
 
       selectedAvatar = icon;
@@ -48,9 +49,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // === SELECCIÓN DE COLOR ===
   colorOptions?.forEach(option => {
     option.addEventListener("click", () => {
-      selectedColor = option.dataset.color;
+      selectedColor = option.getAttribute("data-color");
 
-      // Actualizar color en el avatar seleccionado
       if (selectedAvatar) {
         selectedAvatar.style.backgroundColor = selectedColor;
       }
