@@ -168,6 +168,7 @@ button.guest:hover {
 .avatar-modal-content h2 {
   font-size: 24px;
   margin-bottom: 20px;
+  margin-top: 8px; /* subido un poco */
   color: #1e293b;
   font-weight: 600;
 }
@@ -217,19 +218,19 @@ button.guest:hover {
 .avatar-close {
   position: absolute;
   top: 16px;
-  left: 16px;
-  background: #e5e7eb; /* mismo gris que el botón de invitado */
+  right: 24px; /* alineado mejor respecto al botón de continuar */
+  background: #e5e7eb;
   color: #1f2937;
   border: none;
   border-radius: 12px;
-  padding: 8px 12px;
+  padding: 10px;
+  height: 44px;
+  width: 44px;
   cursor: pointer;
   transition: background-color 0.2s ease;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 40px; /* similar al botón de continuar */
-  width: 40px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
@@ -238,17 +239,13 @@ button.guest:hover {
 }
 
 .avatar-close i {
-  width: 20px;
-  height: 20px;
-  stroke: #1f2937;
+  width: 22px;
+  height: 22px;
+  stroke: #6b7280; /* gris medio */
+  stroke-width: 1.5; /* más gordito */
 }
 
 /* === BOTÓN CONFIRMAR AVATAR === */
-.avatar-footer {
-  margin-top: 24px;
-  text-align: center;
-}
-
 .confirm-button {
   background: #facc15;
   border: none;
@@ -256,6 +253,12 @@ button.guest:hover {
   border-radius: 12px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
 }
 
 .confirm-button:hover {
