@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // === ELEMENTOS LOGIN ===
   const inputName = document.getElementById("username-input");
   const inputEmail = document.getElementById("email-input");
   const loginButton = document.getElementById("login-button");
@@ -7,71 +6,60 @@ document.addEventListener("DOMContentLoaded", () => {
   const emailError = document.getElementById("email-error");
 
   const avatarModal = document.getElementById("avatarModal");
-  const avatarIcons = avatarModal?.querySelectorAll(".avatar");
   const avatarCloseBtn = document.getElementById("avatarCloseBtn");
-  const confirmButton = document.getElementById("confirmAvatarBtn");
+  const avatarIcons = avatarModal?.querySelectorAll(".avatar");
+  const confirmButton = document.getElementById("confirm-avatar");
 
   let selectedAvatar = null;
-  let selectedColor = "#facc15"; // por defecto
+  let selectedColor = null;
 
-  const avatarColors = ["#facc15", "#38bdf8", "#f472b6", "#a78bfa", "#4ade80", "#fb923c"];
+  const colorOptions = ["#facc15", "#38bdf8", "#4ade80", "#a78bfa", "#f472b6"];
 
-  // === UTILIDADES ===
-  const getRandomColor = () => avatarColors[Math.floor(Math.random() * avatarColors.length)];
+  const getRandomColor = () => {
+    return colorOptions[Math.floor(Math.random() * colorOptions.length)];
+  };
 
+  // === Mostrar modal de avatar ===
   const showAvatarModal = () => {
     avatarModal.classList.remove("hidden");
   };
 
-  const hideAvatarModal = () => {
+  // === Cerrar modal de avatar ===
+  avatarCloseBtn?.addEventListener("click", () => {
     avatarModal.classList.add("hidden");
     selectedAvatar = null;
-    avatarIcons?.forEach(icon => {
-      icon.classList.remove("selected");
-      icon.style.backgroundColor = "#f9fafb";
-      icon.setAttribute("stroke", "#1f2937");
-    });
-  };
+  });
 
-  const finalizeLogin = () => {
-    if (selectedAvatar) {
-      const avatarId = selectedAvatar.getAttribute("data-avatar");
-      localStorage.setItem("avatar", avatarId);
-      localStorage.setItem("avatarColor", selectedColor);
-      window.location.href = "index.html";
-    }
-  };
+  // === Confirmar avatar y continuar ===
+  confirmButton.addEventListener("click", () => {
+    if (!selectedAvatar) return;
 
-  // === SELECCIÓN DE AVATAR ===
+    const iconId = selectedAvatar.getAttribute("data-avatar");
+    localStorage.setItem("avatar", iconId);
+    localStorage.setItem("avatarColor", selectedColor || "#facc15");
+
+    window.location.href = "index.html";
+  });
+
+  // === Selección de avatar ===
   avatarIcons?.forEach(icon => {
     icon.addEventListener("click", () => {
-      // Limpiar estado anterior
       avatarIcons.forEach(i => {
         i.classList.remove("selected");
-        i.style.backgroundColor = "#f9fafb";
         i.setAttribute("stroke", "#1f2937");
+        i.style.backgroundColor = "#f9fafb";
       });
 
-      // Aplicar color aleatorio al fondo y stroke blanco
-      selectedColor = getRandomColor();
-      icon.classList.add("selected");
-      icon.style.backgroundColor = selectedColor;
-      icon.setAttribute("stroke", "#ffffff");
       selectedAvatar = icon;
+      selectedColor = getRandomColor();
+
+      icon.classList.add("selected");
+      icon.setAttribute("stroke", "#ffffff");
+      icon.style.backgroundColor = selectedColor;
     });
   });
 
-  // === CONFIRMAR AVATAR ===
-  confirmButton?.addEventListener("click", () => {
-    finalizeLogin();
-  });
-
-  // === CERRAR MODAL ===
-  avatarCloseBtn?.addEventListener("click", () => {
-    hideAvatarModal();
-  });
-
-  // === BOTÓN LOGIN NORMAL ===
+  // === Login con email ===
   loginButton.addEventListener("click", () => {
     const name = inputName.value.trim();
     const email = inputEmail.value.trim();
@@ -95,7 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
     showAvatarModal();
   });
 
-  // === BOTÓN INVITADO ===
+  // === Login como invitado ===
   guestButton.addEventListener("click", () => {
     localStorage.setItem("username", `Invitado_${Math.floor(Math.random() * 1000)}`);
     localStorage.setItem("guest", "true");
@@ -104,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
     showAvatarModal();
   });
 
-  // === ANIMACIÓN BINARIA ===
+  // === Animación de fondo ===
   const canvas = document.querySelector(".background-binary");
   if (!canvas) return;
 
