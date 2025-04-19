@@ -1,76 +1,130 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <title>Identificación</title>
-  <link rel="stylesheet" href="identificacion.css">
-  <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@700&display=swap" rel="stylesheet">
-  <script src="https://unpkg.com/lucide@latest"></script>
-</head>
-<body>
-  <!-- Fondo binario -->
-  <canvas class="background-binary"></canvas>
+/* === FUENTES === */
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dongle:wght@700&display=swap');
 
-  <!-- Login principal -->
-  <div class="login-wrapper">
-    <h1 class="login-title">Identifícate</h1>
-  
-    <div class="login-container">
-      <label for="username-input" class="sr-only">Nombre</label>
-      <input type="text" id="username-input" placeholder="Tu nombre (opcional)">
+/* === BASE === */
+body {
+  font-family: 'Fredoka', sans-serif;
+  background: #fef3c7;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-      <label for="email-input" class="sr-only">Correo electrónico</label>
-      <input type="email" id="email-input" placeholder="Correo electrónico">
-      <span class="error-message" id="email-error"></span>
+/* === FONDO BINARIO === */
+canvas.background-binary {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  pointer-events: none;
+  font-family: 'Dongle', sans-serif;
+  font-weight: 700;
+}
 
-      <button id="login-button">Entrar</button>
+/* === LOGIN === */
+.login-wrapper {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+}
 
-      <div class="divider">o</div>
+.login-title {
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: #1e293b;
+  font-weight: bold;
+}
 
-      <button id="guest-button" class="guest">Entrar como invitado</button>
-    </div>
-  </div>
+/* === CONTENEDOR DEL FORMULARIO === */
+.login-container {
+  background: white;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 360px;
+  box-sizing: border-box;
+}
 
-  <!-- === MODAL DE AVATAR === -->
-  <div class="avatar-modal hidden" id="avatarModal">
-    <div class="avatar-modal-content">
-      <h2>Elige tu avatar</h2>
-      <div class="avatar-grid">
-        <i data-lucide="cookie" class="avatar"></i>
-        <i data-lucide="handshake" class="avatar"></i>
-        <i data-lucide="chef-hat" class="avatar"></i>
-        <i data-lucide="club" class="avatar"></i>
-        <i data-lucide="diamond" class="avatar"></i>
-        <i data-lucide="heart" class="avatar"></i>
-        <i data-lucide="spade" class="avatar"></i>
-        <i data-lucide="bird" class="avatar"></i>
-        <i data-lucide="rabbit" class="avatar"></i>
-        <i data-lucide="turtle" class="avatar"></i>
-        <!-- === SELECTOR DE COLOR DE FONDO === -->
-        <h3 class="color-title">Color de fondo</h3>
-        <div class="color-picker">
-          <div class="color-option" data-color="#fef3c7" style="background-color: #fef3c7;"></div>
-          <div class="color-option" data-color="#facc15" style="background-color: #facc15;"></div>
-          <div class="color-option" data-color="#38bdf8" style="background-color: #38bdf8;"></div>
-          <div class="color-option" data-color="#a78bfa" style="background-color: #a78bfa;"></div>
-          <div class="color-option" data-color="#f472b6" style="background-color: #f472b6;"></div>
-        </div>
-      </div>
-    </div>
-  </div>
- 
-  <!-- Selector de color -->
-<div class="color-picker">
-  <button class="color-option" style="background: #facc15;" data-color="#facc15"></button>
-  <button class="color-option" style="background: #38bdf8;" data-color="#38bdf8"></button>
-  <button class="color-option" style="background: #4ade80;" data-color="#4ade80"></button>
-  <button class="color-option" style="background: #f472b6;" data-color="#f472b6"></button>
-  <button class="color-option" style="background: #a78bfa;" data-color="#a78bfa"></button>
-</div>
+/* === INPUTS === */
+input {
+  width: 100%;
+  padding: 12px 20px;
+  font-size: 16px;
+  border: 2px solid #facc15;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
 
-  <script src="identificacion.js"></script>
-  <script>
-    lucide.createIcons();
-  </script>
-</body>
-</html>
+/* === MENSAJES DE ERROR === */
+.error-message {
+  color: #ef4444;
+  font-size: 14px;
+  margin-top: -15px;
+  margin-bottom: 15px;
+  text-align: left;
+  display: none;
+}
+
+/* === ANIMACIÓN SHAKE === */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-6px); }
+  40%, 80% { transform: translateX(6px); }
+}
+
+.shake {
+  animation: shake 0.3s;
+  border-color: #ef4444;
+}
+
+/* === BOTONES === */
+button {
+  width: 100%;
+  background: #facc15;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 12px;
+  font-weight: bold;
+  font-family: 'Fredoka', sans-serif;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #fbbf24;
+}
+
+button.guest {
+  background: #e5e7eb;
+  color: #1f2937;
+  margin-top: 10px;
+}
+
+button.guest:hover {
+  background: #d1d5db;
+}
+
+/* === SEPARADOR === */
+.divider {
+  text-align: center;
+  margin: 10px 0;
+  color: #9ca3af;
+  font-weight: bold;
+}
+
+/* === ACCESIBILIDAD === */
+.sr-only {
+  position: absolute;
