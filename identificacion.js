@@ -11,53 +11,55 @@ document.addEventListener("DOMContentLoaded", () => {
       alert("Por favor introduce tu nombre");
     }
   });
-});
 
-// ANIMACIÓN DE FONDO
+  // === FONDO ANIMADO ===
+  const canvas = document.querySelector('.background-binary');
+  const ctx = canvas.getContext('2d');
+  const fibonacciValues = [1, 2, 3, 5, 8, 13, 21];
+  const fontSize = 90;
+  const columns = 4; // columnas de números
+  const rows = 4;    // filas de números
+  const elements = [];
 
-const canvas = document.querySelector('.background-binary');
-const ctx = canvas.getContext('2d');
+  // Ajustar tamaño canvas
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    elements.length = 0;
 
-let columns = 0;
-let drops = [];
-const fibonacciValues = [1, 2, 3, 5, 8, 13, 21];
-
-function resizeCanvas() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-
-  columns = Math.floor(canvas.width / 40); // más grande = menos columnas
-  drops = Array(columns).fill(0);
-}
-
-resizeCanvas();
-window.addEventListener("resize", resizeCanvas);
-
-function draw() {
-  // Fondo con opacidad baja para crear efecto de arrastre muy suave
-  ctx.fillStyle = 'rgba(254, 243, 199, 0.02)';
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-  ctx.font = '140px Dongle, sans-serif';
-
-  for (let i = 0; i < drops.length; i++) {
-    const value = fibonacciValues[Math.floor(Math.random() * fibonacciValues.length)];
-    const x = i * 40;
-    const y = drops[i] * 90;
-
-    // Color con opacidad aleatoria entre 10% y 40%
-    const opacity = 0.1 + Math.random() * 0.3;
-    ctx.fillStyle = `rgba(240, 240, 240, ${opacity})`; // gris muy claro tirando a blanco
-
-    ctx.fillText(value, x, y);
-
-    // Reiniciar si se sale
-    if (y > canvas.height + Math.random() * 200) {
-      drops[i] = 0;
-    } else {
-      drops[i]++;
+    for (let i = 0; i < columns * rows; i++) {
+      elements.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        value: fibonacciValues[Math.floor(Math.random() * fibonacciValues.length)],
+        opacity: Math.random() * 0.3 + 0.1,
+        direction: Math.random() > 0.5 ? 1 : -1,
+        speed: Math.random() * 0.005 + 0.002
+      });
     }
   }
-}
 
-setInterval(draw, 150);
+  resizeCanvas();
+  window.addEventListener("resize", resizeCanvas);
+
+  // Animación suave de opacidad
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.font = `${fontSize}px 'Dongle', sans-serif`;
+    ctx.textAlign = "center";
+
+    elements.forEach(el => {
+      el.opacity += el.speed * el.direction;
+
+      if (el.opacity >= 0.4) el.direction = -1;
+      if (el.opacity <= 0.1) el.direction = 1;
+
+      ctx.fillStyle = `rgba(245, 245, 245, ${el.opacity})`;
+      ctx.fillText(el.value, el.x, el.y);
+    });
+
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+});
