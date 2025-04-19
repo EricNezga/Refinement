@@ -9,6 +9,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const avatarCloseBtn = document.getElementById("avatarCloseBtn");
   const avatarIcons = avatarModal?.querySelectorAll(".avatar");
   const confirmButton = document.getElementById("confirmAvatarBtn");
+
+  if (confirmButton) {
+  confirmButton.addEventListener("click", () => {
+  });
+  }
   
   let selectedAvatar = null;
   let selectedColor = null;
