@@ -13,36 +13,48 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// ANIMACIÓN BINARIA DE FONDO
+// ANIMACION DE FONDO
+
 const canvas = document.querySelector('.background-binary');
 const ctx = canvas.getContext('2d');
 
-let ypos = [];
+let columns = 0;
+let drops = [];
+const fibonacciValues = [1, 2, 3, 5, 8, 13, 21];
 
 function resizeCanvas() {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
-  const cols = Math.floor(canvas.width / 20);
-  ypos = Array(cols).fill(0);
+
+  columns = Math.floor(canvas.width / 40); // más grande = menos columnas
+  drops = Array(columns).fill(0);
 }
 
-resizeCanvas(); // Inicial
+resizeCanvas();
 window.addEventListener("resize", resizeCanvas);
 
-function binaryMatrix() {
-  ctx.fillStyle = 'rgba(254, 243, 199, 0.05)';
+function draw() {
+  // Fondo con opacidad para "arrastrar" el rastro, da efecto de brillo suave
+  ctx.fillStyle = 'rgba(254, 243, 199, 0.08)';
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
+  ctx.font = "32px Fredoka, sans-serif";
   ctx.fillStyle = '#1f2937';
-  ctx.font = '18px monospace';
 
-  ypos.forEach((y, i) => {
-    const text = Math.round(Math.random());
-    const x = i * 20;
+  for (let i = 0; i < drops.length; i++) {
+    const text = fibonacciValues[Math.floor(Math.random() * fibonacciValues.length)];
+    const x = i * 40;
+    const y = drops[i] * 40;
+
     ctx.fillText(text, x, y);
 
-    ypos[i] = y > canvas.height + Math.random() * 100 ? 0 : y + 20;
-  });
+    // Reinicia si sale del canvas, de lo contrario continúa cayendo
+    if (y > canvas.height + Math.random() * 200) {
+      drops[i] = 0;
+    } else {
+      drops[i]++;
+    }
+  }
 }
 
-setInterval(binaryMatrix, 80);
+setInterval(draw, 100);
