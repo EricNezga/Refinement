@@ -1,5 +1,3 @@
-const username = localStorage.getItem("username"); /* y usarlo como quieras */
-
 const user = localStorage.getItem("username");
 const greetingEl = document.getElementById("user-greeting");
 
@@ -10,6 +8,7 @@ if (user) {
   window.location.href = "identificacion.html";
 }
 
+// Redirección si no hay usuario
 const username = localStorage.getItem("username");
 
 if (!username) {
@@ -22,6 +21,10 @@ document.getElementById("logout-btn").addEventListener("click", () => {
   localStorage.removeItem("username");
   window.location.href = "identificacion.html";
 });
+
+// Mostrar saludo
+const greetingEl = document.getElementById("user-greeting");
+greetingEl.textContent = `Hola, ${username}!`;
 
 /* ===  === */
 
