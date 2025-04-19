@@ -17,8 +17,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const colorOptions = ["#facc15", "#38bdf8", "#4ade80", "#a78bfa", "#f472b6"];
   const getRandomColor = () => colorOptions[Math.floor(Math.random() * colorOptions.length)];
 
-  // === Mostrar modal de avatar ===
-  const showAvatarModal = () => {
+  // === Mostrar y resetear modal de avatar ===
+  const openAvatarModal = () => {
+    selectedAvatar = null;
+    avatarError.textContent = "";
+
+    avatarIcons?.forEach(icon => {
+      icon.classList.remove("selected", "animate");
+      icon.setAttribute("stroke", "#1f2937");
+      icon.style.backgroundColor = "#f9fafb";
+    });
+
     avatarModal.classList.remove("hidden");
   };
 
@@ -26,6 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
   avatarCloseBtn?.addEventListener("click", () => {
     avatarModal.classList.add("hidden");
     avatarError.textContent = "";
+
     if (selectedAvatar) {
       selectedAvatar.classList.remove("selected", "animate");
       selectedAvatar.setAttribute("stroke", "#1f2937");
@@ -49,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
     window.location.href = "index.html";
   });
 
-  // === Selección de avatar con animación reiniciada siempre ===
+  // === Selección de avatar con reinicio de animación siempre ===
   avatarIcons?.forEach(icon => {
     icon.addEventListener("click", () => {
       avatarIcons.forEach(i => {
@@ -65,9 +75,9 @@ document.addEventListener("DOMContentLoaded", () => {
       icon.setAttribute("stroke", "#ffffff");
       icon.style.backgroundColor = selectedColor;
 
-      // Reinicia animación aunque esté ya seleccionada
+      // Forzar reinicio de animación
       icon.classList.remove("animate");
-      void icon.offsetWidth; // <-- fuerza reflow
+      void icon.offsetWidth;
       icon.classList.add("animate");
 
       avatarError.textContent = "";
@@ -95,7 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.setItem("email", email);
     localStorage.setItem("guest", "false");
 
-    showAvatarModal();
+    openAvatarModal();
   });
 
   // === Login como invitado ===
@@ -104,7 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.setItem("guest", "true");
     localStorage.removeItem("email");
 
-    showAvatarModal();
+    openAvatarModal();
   });
 
   // === Animación de fondo ===
