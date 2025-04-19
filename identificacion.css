@@ -216,30 +216,31 @@ button.guest:hover {
 /* === BOTÓN DE CIERRE === */
 .avatar-close {
   position: absolute;
-  top: -12px;
-  right: -12px;
-  background: #ef4444;
+  top: 16px;
+  left: 16px;
+  background: #e5e7eb; /* mismo gris que el botón de invitado */
+  color: #1f2937;
   border: none;
   border-radius: 12px;
-  padding: 6px;
-  width: 32px;
-  height: 32px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  padding: 8px 12px;
   cursor: pointer;
   transition: background-color 0.2s ease;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px; /* similar al botón de continuar */
+  width: 40px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
 .avatar-close:hover {
-  background: #dc2626;
+  background: #d1d5db;
 }
 
 .avatar-close i {
   width: 20px;
   height: 20px;
-  stroke: white;
+  stroke: #1f2937;
 }
 
 /* === BOTÓN CONFIRMAR AVATAR === */
