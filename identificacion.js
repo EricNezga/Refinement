@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // === ANIMACIÓN DE FONDO (6x6 grid fija) ===
+  // === ANIMACIÓN DE FONDO (6x6 grid fija con tamaño y padding personalizados) ===
   const canvas = document.querySelector(".background-binary");
   const ctx = canvas.getContext("2d");
 
@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const cols = 6;
   const rows = 6;
   const padding = 20;
+  const fontSize = 700; // Tamaño fijo como pediste
 
   const canvasWidth = window.innerWidth;
   const canvasHeight = window.innerHeight;
@@ -27,9 +28,8 @@ document.addEventListener("DOMContentLoaded", () => {
   canvas.width = canvasWidth;
   canvas.height = canvasHeight;
 
-  const cellWidth = canvasWidth / cols;
-  const cellHeight = canvasHeight / rows;
-  const fontSize = Math.min(cellWidth, cellHeight) - padding;
+  const cellWidth = fontSize + padding;
+  const cellHeight = fontSize + padding;
 
   ctx.font = `${fontSize}px 'Dongle', sans-serif`;
   ctx.textAlign = "center";
