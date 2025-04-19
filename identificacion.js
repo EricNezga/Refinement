@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// ANIMACION DE FONDO
+// ANIMACIÓN DE FONDO
 
 const canvas = document.querySelector('.background-binary');
 const ctx = canvas.getContext('2d');
@@ -38,17 +38,17 @@ function draw() {
   ctx.fillStyle = 'rgba(254, 243, 199, 0.08)';
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-  ctx.font = "32px Fredoka, sans-serif";
+  // Usa Dongle en 90px
+  ctx.font = '90px Dongle, sans-serif';
   ctx.fillStyle = '#1f2937';
 
   for (let i = 0; i < drops.length; i++) {
     const text = fibonacciValues[Math.floor(Math.random() * fibonacciValues.length)];
     const x = i * 40;
-    const y = drops[i] * 40;
+    const y = drops[i] * 90; // usar altura proporcional al tamaño
 
     ctx.fillText(text, x, y);
 
-    // Reinicia si sale del canvas, de lo contrario continúa cayendo
     if (y > canvas.height + Math.random() * 200) {
       drops[i] = 0;
     } else {
