@@ -12,3 +12,31 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+// ANIMACIÓN BINARIA DE FONDO
+const canvas = document.querySelector('.background-binary');
+const ctx = canvas.getContext('2d');
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const cols = Math.floor(canvas.width / 20);
+const ypos = Array(cols).fill(0);
+
+function binaryMatrix() {
+  ctx.fillStyle = 'rgba(254, 243, 199, 0.05)';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  ctx.fillStyle = '#1f2937';
+  ctx.font = '18px monospace';
+
+  ypos.forEach((y, i) => {
+    const text = Math.round(Math.random());
+    const x = i * 20;
+    ctx.fillText(text, x, y);
+
+    ypos[i] = y > canvas.height + Math.random() * 100 ? 0 : y + 20;
+  });
+}
+
+setInterval(binaryMatrix, 80);
