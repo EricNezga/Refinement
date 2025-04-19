@@ -1,25 +1,36 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // === LOGIN ===
-  const nameInput = document.getElementById("username-input");
-  const emailInput = document.getElementById("email-input");
+  const inputName = document.getElementById("username-input");
+  const inputEmail = document.getElementById("email-input");
   const loginButton = document.getElementById("login-button");
+  const guestButton = document.getElementById("guest-button");
 
-  loginButton?.addEventListener("click", () => {
-    const name = nameInput?.value.trim();
-    const email = emailInput?.value.trim();
+  // Botón normal de login
+  loginButton.addEventListener("click", () => {
+    const name = inputName.value.trim();
+    const email = inputEmail.value.trim();
 
-    if (!email || !email.includes("@")) {
-      alert("Por favor introduce un correo válido.");
+    if (!email) {
+      alert("Por favor introduce tu correo electrónico.");
       return;
     }
 
-    const username = name || email.split("@")[0];
-
-    localStorage.setItem("username", username);
+    const finalName = name || email.split("@")[0];
+    localStorage.setItem("username", finalName);
     localStorage.setItem("email", email);
+    localStorage.setItem("guest", "false");
 
     window.location.href = "index.html";
   });
+
+  // Botón para entrar como invitado
+  guestButton.addEventListener("click", () => {
+    localStorage.setItem("username", `Invitado_${Math.floor(Math.random() * 1000)}`);
+    localStorage.setItem("guest", "true");
+    localStorage.removeItem("email"); // limpiamos email
+
+    window.location.href = "index.html";
+  });
+});
 
   // === ANIMACIÓN DE FONDO ===
   const canvas = document.querySelector(".background-binary");
