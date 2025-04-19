@@ -12,44 +12,63 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // === FONDO ANIMADO ===
+  // === FONDO ANIMADO BINARIO ===
   const canvas = document.querySelector('.background-binary');
   const ctx = canvas.getContext('2d');
+
   const fibonacciValues = [1, 2, 3, 5, 8, 13, 21];
   const elements = [];
-  const fontSize = 500;
-  const cellSize = 180;
+  const fontSize = 600;
+  const cellSize = 300; // más espacio para evitar solapamientos
 
   function init() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
+    elements.length = 0;
 
     const cols = Math.ceil(canvas.width / cellSize) + 2;
     const rows = Math.ceil(canvas.height / cellSize) + 2;
 
     for (let y = 0; y < rows; y++) {
       for (let x = 0; x < cols; x++) {
+        const opacity = Math.random() * 0.7 + 0.2;
+
         elements.push({
           x: x * cellSize,
           y: y * cellSize,
           value: fibonacciValues[Math.floor(Math.random() * fibonacciValues.length)],
-          opacity: Math.random() * 0.7 + 0.2,
-          ySpeed: Math.random() * 0.05 + 0.02
+          opacity,
+          targetOpacity: opacity,
+          direction: Math.random() > 0.5 ? 1 : -1,
+          speed: Math.random() * 0.02 + 0.005,
+          ySpeed: Math.random() * 0.1 + 0.02
         });
       }
     }
   }
 
   init();
+  window.addEventListener("resize", init);
 
   function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.font = `${fontSize}px 'Dongle', sans-serif`;
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
-    ctx.font = `${fontSize}px 'Dongle', sans-serif`;
 
     elements.forEach(el => {
-      // Movimiento descendente suave
+      // Actualizamos opacidad suavemente
+      el.opacity += el.speed * el.direction;
+
+      if (el.opacity >= 0.9) {
+        el.direction = -1;
+        el.opacity = 0.9;
+      } else if (el.opacity <= 0.2) {
+        el.direction = 1;
+        el.opacity = 0.2;
+      }
+
+      // Movimiento descendente
       el.y += el.ySpeed;
       if (el.y > canvas.height + fontSize / 2) {
         el.y = -fontSize;
