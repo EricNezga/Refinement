@@ -4,14 +4,25 @@ document.addEventListener("DOMContentLoaded", () => {
   const inputEmail = document.getElementById("email-input");
   const loginButton = document.getElementById("login-button");
   const guestButton = document.getElementById("guest-button");
+  const emailError = document.getElementById("email-error");
 
   // === BOTÓN NORMAL ===
   loginButton.addEventListener("click", () => {
     const name = inputName.value.trim();
     const email = inputEmail.value.trim();
 
+    // Limpiar estado anterior
+    emailError.style.display = "none";
+    inputEmail.classList.remove("shake");
+
     if (!email) {
-      alert("Por favor introduce tu correo electrónico.");
+      emailError.textContent = "Por favor introduce tu correo electrónico.";
+      emailError.style.display = "block";
+      inputEmail.classList.add("shake");
+
+      setTimeout(() => {
+        inputEmail.classList.remove("shake");
+      }, 500);
       return;
     }
 
