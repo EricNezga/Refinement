@@ -1,3 +1,4 @@
+const username = localStorage.getItem("username"); /* y usarlo como quieras */
 const storyPointDisplay = document.getElementById("story-point");
 const toggleBtn = document.getElementById("toggle-view");
 const wrapper = document.querySelector(".wrapper");
