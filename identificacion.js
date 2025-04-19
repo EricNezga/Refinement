@@ -1,12 +1,37 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // === LOGIN ===
+  const nameInput = document.getElementById("username-input");
+  const emailInput = document.getElementById("email-input");
+  const loginButton = document.getElementById("login-button");
+
+  loginButton?.addEventListener("click", () => {
+    const name = nameInput?.value.trim();
+    const email = emailInput?.value.trim();
+
+    if (!email || !email.includes("@")) {
+      alert("Por favor introduce un correo válido.");
+      return;
+    }
+
+    const username = name || email.split("@")[0];
+
+    localStorage.setItem("username", username);
+    localStorage.setItem("email", email);
+
+    window.location.href = "index.html";
+  });
+
+  // === ANIMACIÓN DE FONDO ===
   const canvas = document.querySelector(".background-binary");
+  if (!canvas) return; // solo si existe el canvas
+
   const ctx = canvas.getContext("2d");
 
   const fibonacciValues = [1, 2, 3, 5, 8, 13, 21];
 
   const columns = 6;
   const rowsVisible = 3;
-  const totalRows = 4; // 3 visibles + 3 adicionales
+  const totalRows = 4;
 
   const cellSize = Math.ceil(window.innerHeight / rowsVisible);
   const fontSize = cellSize * 2;
@@ -29,7 +54,6 @@ document.addEventListener("DOMContentLoaded", () => {
     return newValue;
   }
 
-  // Crear grilla
   for (let y = 0; y < totalRows; y++) {
     for (let x = 0; x < columns; x++) {
       const prev = elements.length > 0 ? elements[elements.length - 1].value : null;
@@ -47,7 +71,6 @@ document.addEventListener("DOMContentLoaded", () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     elements.forEach((el, i) => {
-      // Oscilación de opacidad
       el.opacity += 0.003 * el.direction;
       if (el.opacity > 0.9) {
         el.opacity = 0.9;
@@ -57,7 +80,6 @@ document.addEventListener("DOMContentLoaded", () => {
         el.direction = 1;
       }
 
-      // Caída uniforme
       el.y += fixedSpeed;
 
       if (el.y > canvas.height + cellSize / 2) {
