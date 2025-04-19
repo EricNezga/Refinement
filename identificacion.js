@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const ctx = canvas.getContext("2d");
 
   const fibonacciValues = [1, 2, 3, 5, 8, 13, 21];
-  const fontSize = 700;
+  const fontSize = 900;
   const cellSize = 400; // tamaño fijo de celda
   const columns = 9;
   const rows = 7;
