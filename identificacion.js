@@ -19,9 +19,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const fibonacciValues = [1, 2, 3, 5, 8, 13, 21];
 
   const fontSize = 1000;
-  const padding = -200; // 🔽 reduce espacio entre números verticalmente
-  const columnSpacing = fontSize * 0.45; // 🔽 reduce espacio horizontal
-  const columns = Math.floor(window.innerWidth / columnSpacing);
+  const padding = -150; // 🔽 reduce espacio entre números verticalmente
+  const columnSpacing = fontSize * 0.35; // 🔽 reduce espacio horizontal
+  const columns = 6;
 
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
