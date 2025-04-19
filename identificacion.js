@@ -4,12 +4,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const fibonacciValues = [1, 2, 3, 5, 8, 13, 21];
 
-  const columns = 10;
+  const columns = 6;
   const rowsVisible = 3;
   const totalRows = 6; // 3 visibles + 3 adicionales
 
   const cellSize = Math.ceil(window.innerHeight / rowsVisible);
-  const fontSize = cellSize * 0.95;
+  const fontSize = cellSize * 2;
   const elements = [];
 
   const fixedSpeed = 0.4;
