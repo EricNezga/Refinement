@@ -18,12 +18,23 @@ document.addEventListener("DOMContentLoaded", () => {
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
 
+  // 🔁 Función para evitar repetición de valor inmediato
+  function getNonRepeatingRandom(prevValue) {
+    let newValue;
+    do {
+      newValue = fibonacciValues[Math.floor(Math.random() * fibonacciValues.length)];
+    } while (newValue === prevValue);
+    return newValue;
+  }
+
+  // 🎯 Generamos los elementos con valores únicos por celda
   for (let y = 0; y < rows; y++) {
     for (let x = 0; x < columns; x++) {
+      const prev = elements.length > 0 ? elements[elements.length - 1].value : null;
       elements.push({
         x: x * cellSize + cellSize / 2,
         y: y * cellSize + cellSize / 2,
-        value: fibonacciValues[Math.floor(Math.random() * fibonacciValues.length)],
+        value: getNonRepeatingRandom(prev),
         opacity: Math.random() * 0.7 + 0.2,
         direction: Math.random() > 0.5 ? 1 : -1,
       });
@@ -33,9 +44,9 @@ document.addEventListener("DOMContentLoaded", () => {
   function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    elements.forEach(el => {
-      // Opacidad suave
-      el.opacity += 0.005 * el.direction;
+    elements.forEach((el, i) => {
+      // 🌫️ Oscilación de opacidad suave
+      el.opacity += 0.003 * el.direction;
       if (el.opacity > 0.9) {
         el.opacity = 0.9;
         el.direction = -1;
@@ -44,12 +55,13 @@ document.addEventListener("DOMContentLoaded", () => {
         el.direction = 1;
       }
 
-      // Caída uniforme
+      // ⬇️ Movimiento descendente
       el.y += fixedSpeed;
 
       if (el.y > canvas.height + cellSize / 2) {
         el.y = -cellSize / 2;
-        el.value = fibonacciValues[Math.floor(Math.random() * fibonacciValues.length)];
+        const previous = elements[i - columns] ? elements[i - columns].value : null;
+        el.value = getNonRepeatingRandom(previous); // interpolación
       }
 
       ctx.fillStyle = `rgba(255, 255, 255, ${el.opacity.toFixed(2)})`;
