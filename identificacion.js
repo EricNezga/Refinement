@@ -38,7 +38,7 @@ function draw() {
   ctx.fillStyle = 'rgba(254, 243, 199, 0.02)';
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-  ctx.font = '200px Dongle, sans-serif';
+  ctx.font = '140px Dongle, sans-serif';
 
   for (let i = 0; i < drops.length; i++) {
     const value = fibonacciValues[Math.floor(Math.random() * fibonacciValues.length)];
@@ -60,4 +60,4 @@ function draw() {
   }
 }
 
-setInterval(draw, 100);
+setInterval(draw, 150);
