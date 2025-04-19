@@ -7,6 +7,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const emailError = document.getElementById("email-error");
 
   const avatarModal = document.getElementById("avatarModal");
+  const avatarCloseBtn = document.getElementById("avatarCloseBtn");
+  avatarCloseBtn?.addEventListener("click", () => {
+  avatarModal.classList.add("hidden");
+  });
   const avatarIcons = avatarModal?.querySelectorAll(".avatar");
   const colorOptions = avatarModal?.querySelectorAll(".color-option");
 
