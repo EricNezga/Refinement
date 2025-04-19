@@ -163,7 +163,6 @@ button.guest:hover {
   text-align: center;
   font-family: 'Fredoka', sans-serif;
   position: relative;
-
 }
 
 .avatar-modal-content h2 {
@@ -173,7 +172,7 @@ button.guest:hover {
   font-weight: 600;
 }
 
-/* === GRID DE AVATARES === */
+/* === AVATAR GRID === */
 .avatar-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -212,53 +211,19 @@ button.guest:hover {
 /* Avatar seleccionado */
 .avatar.selected {
   border-color: #facc15;
-  background-color: #fff8dc;
 }
 
-/* === SELECTOR DE COLOR === */
-.color-title {
-  margin-top: 10px;
-  margin-bottom: 8px;
-  font-size: 16px;
-  font-weight: 500;
-  color: #1e293b;
-  text-align: left;
-}
-
-.color-picker {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 4px;
-}
-
-.color-option {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  border: 2px solid white;
-  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-  transition: transform 0.2s ease, border-color 0.2s ease;
-}
-
-.color-option:hover {
-  transform: scale(1.1);
-  border-color: #facc15;
-}
-
-// CERRAR VENTANA AVATAR
+/* === BOTÓN DE CIERRE === */
 .avatar-close {
   position: absolute;
-  top: 16px;
-  right: 16px;
+  top: 12px;
+  right: 12px;
   background: #ef4444;
   border: none;
   border-radius: 8px;
   padding: 6px;
   cursor: pointer;
   transition: background-color 0.2s ease;
-  z-index: 10;
 }
 
 .avatar-close:hover {
@@ -269,4 +234,29 @@ button.guest:hover {
   width: 20px;
   height: 20px;
   stroke: white;
+}
+
+/* === BOTÓN CONFIRMAR AVATAR === */
+.avatar-footer {
+  margin-top: 24px;
+  text-align: center;
+}
+
+.confirm-button {
+  background: #facc15;
+  border: none;
+  padding: 10px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.confirm-button:hover {
+  background: #fbbf24;
+}
+
+.confirm-button i {
+  stroke: #1f2937;
+  width: 24px;
+  height: 24px;
 }
