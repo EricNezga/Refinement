@@ -17,10 +17,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const ctx = canvas.getContext("2d");
 
   const fibonacciValues = [1, 2, 3, 5, 8, 13, 21];
-  const fontSize = 900;
+  const fontSize = 1000;
   const cellSize = 400; // tamaño fijo de celda
-  const columns = 9;
-  const rows = 7;
+  const columns = 10;
+  const rows = 8;
   const elements = [];
 
   // 📐 canvas fijo al cargar, sin regenerarse en resize
