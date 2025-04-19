@@ -12,24 +12,19 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // === ANIMACIÓN DE FONDO (6x6 grid fija con tamaño y padding personalizados) ===
+  // === ANIMACIÓN DE FONDO ===
   const canvas = document.querySelector(".background-binary");
   const ctx = canvas.getContext("2d");
 
   const fibonacciValues = [1, 2, 3, 5, 8, 13, 21];
-  const cols = 6;
+
+  const fontSize = 700;
+  const cellSize = 710; // tamaño de celda fijo
+  const columns = 6;
   const rows = 6;
-  const padding = 20;
-  const fontSize = 700; // Tamaño fijo como pediste
 
-  const canvasWidth = window.innerWidth;
-  const canvasHeight = window.innerHeight;
-
-  canvas.width = canvasWidth;
-  canvas.height = canvasHeight;
-
-  const cellWidth = fontSize + padding;
-  const cellHeight = fontSize + padding;
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
 
   ctx.font = `${fontSize}px 'Dongle', sans-serif`;
   ctx.textAlign = "center";
@@ -38,10 +33,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const elements = [];
 
   for (let y = 0; y < rows; y++) {
-    for (let x = 0; x < cols; x++) {
+    for (let x = 0; x < columns; x++) {
       elements.push({
-        x: x * cellWidth + cellWidth / 2,
-        y: y * cellHeight + cellHeight / 2,
+        x: x * cellSize + cellSize / 2,
+        y: y * cellSize + cellSize / 2,
         value: fibonacciValues[Math.floor(Math.random() * fibonacciValues.length)],
         opacity: Math.random() * 0.7 + 0.2,
         direction: Math.random() > 0.5 ? 1 : -1,
@@ -52,22 +47,23 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function animate() {
-    ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     elements.forEach(el => {
+      // Oscilación de opacidad
       el.opacity += el.speed * el.direction;
-
       if (el.opacity > 0.9) {
-        el.direction = -1;
         el.opacity = 0.9;
+        el.direction = -1;
       } else if (el.opacity < 0.2) {
-        el.direction = 1;
         el.opacity = 0.2;
+        el.direction = 1;
       }
 
+      // Movimiento descendente
       el.y += el.ySpeed;
-      if (el.y > canvasHeight + cellHeight) {
-        el.y = -cellHeight;
+      if (el.y > canvas.height + cellSize / 2) {
+        el.y = -cellSize / 2;
         el.value = fibonacciValues[Math.floor(Math.random() * fibonacciValues.length)];
       }
 
