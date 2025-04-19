@@ -1,7 +1,8 @@
-/* === ESTILO GENERAL === */
-@import url('https://fonts.googleapis.com/css2?family=Dongle:wght@700&family=Fredoka:wght@500&display=swap');
+/* === IMPORTS DE FUENTES === */
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Dongle:wght@700&display=swap');
 
+/* === CONFIGURACIÓN BASE DEL BODY === */
 body {
   font-family: 'Fredoka', sans-serif;
   background: #fef3c7;
@@ -15,7 +16,7 @@ body {
   align-items: center;
 }
 
-/* === FONDO CANVAS ANIMADO === */
+/* === CANVAS DE FONDO ANIMADO === */
 canvas.background-binary {
   position: absolute;
   top: 0;
@@ -26,10 +27,10 @@ canvas.background-binary {
   font-weight: 700;
 }
 
-/* === CONTENEDOR DE LOGIN === */
+/* === ENVOLTORIO PRINCIPAL DE LOGIN === */
 .login-wrapper {
   position: relative;
-  z-index: 2; /* Por encima del canvas */
+  z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -45,6 +46,7 @@ canvas.background-binary {
   font-weight: bold;
 }
 
+/* === CONTENEDOR DEL FORMULARIO === */
 .login-container {
   background: white;
   padding: 40px;
@@ -54,7 +56,7 @@ canvas.background-binary {
   max-width: 360px;
 }
 
-/* === INPUT Y BOTÓN === */
+/* === CAMPOS DE ENTRADA E INTERACTIVOS === */
 input {
   padding: 10px;
   font-size: 16px;
@@ -62,6 +64,7 @@ input {
   border-radius: 12px;
   width: 100%;
   margin-bottom: 20px;
+  font-family: 'Fredoka', sans-serif;
 }
 
 button {
@@ -72,8 +75,21 @@ button {
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  font-family: 'Fredoka', sans-serif;
 }
 
 button:hover {
   background-color: #fbbf24;
+}
+
+/* === ACCESIBILIDAD: LABELS OCULTOS PERO PRESENTES === */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
 }
