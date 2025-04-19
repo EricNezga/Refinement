@@ -18,21 +18,19 @@ document.addEventListener("DOMContentLoaded", () => {
   const drops = Array.from({ length: columns }, (_, i) => ({
     x: i * horizontalSpacing + horizontalSpacing / 2,
     y: Math.random() * -canvas.height,
+    value: fibonacciValues[Math.floor(Math.random() * fibonacciValues.length)],
     opacity: Math.random() * 0.6 + 0.2,
     direction: Math.random() > 0.5 ? 1 : -1,
-    opacitySpeed: Math.random() * 0.001 + 0.0005, // 🔁 más lento
-    ySpeed: 0.3 + Math.random() * 0.15 // 👇 más lento
+    opacitySpeed: Math.random() * 0.001 + 0.0005,
+    ySpeed: 0.3 + Math.random() * 0.15
   }));
 
   function draw() {
-    // Fondo translúcido suave
     ctx.fillStyle = "rgba(254, 243, 199, 0.015)";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     drops.forEach(drop => {
-      const value = fibonacciValues[Math.floor(Math.random() * fibonacciValues.length)];
-
-      // Oscilación de opacidad mucho más lenta
+      // Actualiza opacidad
       drop.opacity += drop.opacitySpeed * drop.direction;
       if (drop.opacity > 0.9) {
         drop.opacity = 0.9;
@@ -42,16 +40,15 @@ document.addEventListener("DOMContentLoaded", () => {
         drop.direction = 1;
       }
 
-      // Dibujar número
       ctx.fillStyle = `rgba(255, 255, 255, ${drop.opacity.toFixed(2)})`;
-      ctx.fillText(value, drop.x, drop.y);
+      ctx.fillText(drop.value, drop.x, drop.y);
 
-      // Mover hacia abajo suavemente
       drop.y += drop.ySpeed;
 
-      // Si se sale, vuelve arriba
+      // Al salir, reiniciar en la parte superior con otro número
       if (drop.y > canvas.height + verticalSpacing) {
         drop.y = -verticalSpacing * 2;
+        drop.value = fibonacciValues[Math.floor(Math.random() * fibonacciValues.length)];
       }
     });
 
