@@ -18,18 +18,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const fibonacciValues = [1, 2, 3, 5, 8, 13, 21];
   const fontSize = 700;
-  const cellSize = 710; // Celda ligeramente mayor que la fuente
+  const cellSize = 720; // tamaño fijo de celda
   const columns = 7;
   const rows = 7;
   const elements = [];
 
+  // 📐 canvas fijo al cargar, sin regenerarse en resize
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 
+  ctx.font = `${fontSize}px 'Dongle', sans-serif`;
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
 
-  // Crear elementos una sola vez
+  // 🧱 generar grilla fija
   for (let y = 0; y < rows; y++) {
     for (let x = 0; x < columns; x++) {
       elements.push({
@@ -46,11 +48,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.font = `${fontSize}px 'Dongle', sans-serif`;
 
     elements.forEach(el => {
-      // Oscilación de opacidad
       el.opacity += el.speed * el.direction;
+
       if (el.opacity > 0.9) {
         el.opacity = 0.9;
         el.direction = -1;
@@ -59,7 +60,6 @@ document.addEventListener("DOMContentLoaded", () => {
         el.direction = 1;
       }
 
-      // Movimiento descendente suave
       el.y += el.ySpeed;
       if (el.y > canvas.height + cellSize / 2) {
         el.y = -cellSize / 2;
