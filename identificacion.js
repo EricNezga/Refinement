@@ -7,61 +7,71 @@ document.addEventListener("DOMContentLoaded", () => {
   const emailError = document.getElementById("email-error");
 
   const avatarModal = document.getElementById("avatarModal");
-  const avatarCloseBtn = document.getElementById("avatarCloseBtn");
-  avatarCloseBtn?.addEventListener("click", () => {
-  avatarModal.classList.add("hidden");
-  });
   const avatarIcons = avatarModal?.querySelectorAll(".avatar");
-  const colorOptions = avatarModal?.querySelectorAll(".color-option");
+  const avatarCloseBtn = document.getElementById("avatarCloseBtn");
+  const confirmButton = document.getElementById("confirmAvatarBtn");
 
   let selectedAvatar = null;
-  let selectedColor = "#f9fafb"; // Color por defecto
+  let selectedColor = "#facc15"; // por defecto
 
-  // === MOSTRAR MODAL DE AVATAR ===
+  const avatarColors = ["#facc15", "#38bdf8", "#f472b6", "#a78bfa", "#4ade80", "#fb923c"];
+
+  // === UTILIDADES ===
+  const getRandomColor = () => avatarColors[Math.floor(Math.random() * avatarColors.length)];
+
   const showAvatarModal = () => {
     avatarModal.classList.remove("hidden");
   };
 
-  // === FINALIZAR Y GUARDAR AVATAR Y COLOR ===
+  const hideAvatarModal = () => {
+    avatarModal.classList.add("hidden");
+    selectedAvatar = null;
+    avatarIcons?.forEach(icon => {
+      icon.classList.remove("selected");
+      icon.style.backgroundColor = "#f9fafb";
+      icon.setAttribute("stroke", "#1f2937");
+    });
+  };
+
   const finalizeLogin = () => {
     if (selectedAvatar) {
-      const iconId = selectedAvatar.getAttribute("data-avatar");
-      localStorage.setItem("avatar", iconId);
+      const avatarId = selectedAvatar.getAttribute("data-avatar");
+      localStorage.setItem("avatar", avatarId);
+      localStorage.setItem("avatarColor", selectedColor);
+      window.location.href = "index.html";
     }
-    localStorage.setItem("avatarColor", selectedColor);
-    window.location.href = "index.html";
   };
 
   // === SELECCIÓN DE AVATAR ===
   avatarIcons?.forEach(icon => {
     icon.addEventListener("click", () => {
+      // Limpiar estado anterior
       avatarIcons.forEach(i => {
         i.classList.remove("selected");
-        i.setAttribute("stroke", "#1f2937");
         i.style.backgroundColor = "#f9fafb";
+        i.setAttribute("stroke", "#1f2937");
       });
 
+      // Aplicar color aleatorio al fondo y stroke blanco
+      selectedColor = getRandomColor();
       icon.classList.add("selected");
-      icon.setAttribute("stroke", "#ffffff");
       icon.style.backgroundColor = selectedColor;
-
+      icon.setAttribute("stroke", "#ffffff");
       selectedAvatar = icon;
-      finalizeLogin();
     });
   });
 
-  // === SELECCIÓN DE COLOR ===
-  colorOptions?.forEach(option => {
-    option.addEventListener("click", () => {
-      selectedColor = option.getAttribute("data-color");
-
-      if (selectedAvatar) {
-        selectedAvatar.style.backgroundColor = selectedColor;
-      }
-    });
+  // === CONFIRMAR AVATAR ===
+  confirmButton?.addEventListener("click", () => {
+    finalizeLogin();
   });
 
-  // === LOGIN NORMAL ===
+  // === CERRAR MODAL ===
+  avatarCloseBtn?.addEventListener("click", () => {
+    hideAvatarModal();
+  });
+
+  // === BOTÓN LOGIN NORMAL ===
   loginButton.addEventListener("click", () => {
     const name = inputName.value.trim();
     const email = inputEmail.value.trim();
@@ -85,7 +95,7 @@ document.addEventListener("DOMContentLoaded", () => {
     showAvatarModal();
   });
 
-  // === LOGIN COMO INVITADO ===
+  // === BOTÓN INVITADO ===
   guestButton.addEventListener("click", () => {
     localStorage.setItem("username", `Invitado_${Math.floor(Math.random() * 1000)}`);
     localStorage.setItem("guest", "true");
@@ -94,7 +104,7 @@ document.addEventListener("DOMContentLoaded", () => {
     showAvatarModal();
   });
 
-  // === ANIMACIÓN DE FONDO ===
+  // === ANIMACIÓN BINARIA ===
   const canvas = document.querySelector(".background-binary");
   if (!canvas) return;
 
