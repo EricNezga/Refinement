@@ -1,4 +1,15 @@
 const username = localStorage.getItem("username"); /* y usarlo como quieras */
+
+const user = localStorage.getItem("username");
+const greetingEl = document.getElementById("user-greeting");
+
+if (user) {
+  greetingEl.textContent = `Hola, ${user}!`;
+} else {
+  // Redirige si no hay usuario (por seguridad)
+  window.location.href = "identificacion.html";
+}
+
 const storyPointDisplay = document.getElementById("story-point");
 const toggleBtn = document.getElementById("toggle-view");
 const wrapper = document.querySelector(".wrapper");
