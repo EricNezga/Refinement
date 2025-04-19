@@ -2,7 +2,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Dongle:wght@700&display=swap');
 
-/* === CONFIGURACIÓN BASE DEL BODY === */
 body {
   font-family: 'Fredoka', sans-serif;
   background: #fef3c7;
@@ -16,7 +15,7 @@ body {
   align-items: center;
 }
 
-/* === CANVAS DE FONDO ANIMADO === */
+/* === FONDO BINARIO === */
 canvas.background-binary {
   position: absolute;
   top: 0;
@@ -27,7 +26,7 @@ canvas.background-binary {
   font-weight: 700;
 }
 
-/* === ENVOLTORIO PRINCIPAL DE LOGIN === */
+/* === LOGIN === */
 .login-wrapper {
   position: relative;
   z-index: 2;
@@ -46,7 +45,6 @@ canvas.background-binary {
   font-weight: bold;
 }
 
-/* === CONTENEDOR DEL FORMULARIO === */
 .login-container {
   background: white;
   padding: 40px;
@@ -56,7 +54,7 @@ canvas.background-binary {
   max-width: 360px;
 }
 
-/* === CAMPOS DE ENTRADA E INTERACTIVOS === */
+/* === FORM === */
 input {
   padding: 10px;
   font-size: 16px;
@@ -64,7 +62,6 @@ input {
   border-radius: 12px;
   width: 100%;
   margin-bottom: 20px;
-  font-family: 'Fredoka', sans-serif;
 }
 
 button {
@@ -74,22 +71,39 @@ button {
   border-radius: 12px;
   font-weight: bold;
   cursor: pointer;
+  width: 100%;
   transition: background-color 0.3s ease;
-  font-family: 'Fredoka', sans-serif;
 }
 
 button:hover {
   background-color: #fbbf24;
 }
 
-/* === ACCESIBILIDAD: LABELS OCULTOS PERO PRESENTES === */
+button.guest {
+  background: #e5e7eb;
+  color: #1f2937;
+  margin-top: 10px;
+}
+
+button.guest:hover {
+  background: #d1d5db;
+}
+
+.divider {
+  text-align: center;
+  margin: 10px 0;
+  color: #9ca3af;
+  font-weight: bold;
+}
+
+/* Accesibilidad oculto */
 .sr-only {
   position: absolute;
   width: 1px;
   height: 1px;
   padding: 0;
+  margin: -1px;
   overflow: hidden;
-  clip: rect(0 0 0 0);
-  white-space: nowrap;
+  clip: rect(0, 0, 0, 0);
   border: 0;
 }
