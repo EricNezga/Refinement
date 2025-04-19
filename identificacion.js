@@ -17,13 +17,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const ctx = canvas.getContext("2d");
 
   const fibonacciValues = [1, 2, 3, 5, 8, 13, 21];
-  const fontSize = 600;
-  const padding = 20;
+
+  const fontSize = 850;          // 📏 MÁS GRANDE
+  const padding = 10;            // 📐 MÁS AJUSTADO
   const cellSize = fontSize + padding;
 
   const elements = [];
 
-  // Cálculo de filas y columnas solo una vez
   const cols = Math.ceil(window.innerWidth / cellSize);
   const rows = Math.ceil(window.innerHeight / cellSize);
 
@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
   generateGridElements();
 
   window.addEventListener("resize", () => {
-    resizeCanvas(); // Solo redimensiona, sin reiniciar los elementos
+    resizeCanvas(); // No se regeneran los elementos
   });
 
   function animate() {
@@ -74,13 +74,12 @@ document.addEventListener("DOMContentLoaded", () => {
         el.opacity = 0.2;
       }
 
-      // Movimiento descendente suave
       el.y += el.ySpeed;
       if (el.y > canvas.height + fontSize) {
         el.y = -fontSize;
       }
 
-      ctx.fillStyle = `rgba(255, 255, 255, ${el.opacity.toFixed(3)})`;
+      ctx.fillStyle = `rgba(255, 255, 255, ${el.opacity.toFixed(2)})`;
       ctx.fillText(el.value, el.x + cellSize / 2, el.y + cellSize / 2);
     });
 
