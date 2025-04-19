@@ -16,12 +16,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const canvas = document.querySelector(".background-binary");
   const ctx = canvas.getContext("2d");
 
-  const fibonacciValues = [1, 2, 3, 5, 8, 13, 21];
+  const fibonacciValues = [1, 2, 3, 5, 08, 13, 21];
 
   const fontSize = 700;
   const cellSize = 710; // tamaño de celda fijo
-  const columns = 6;
-  const rows = 6;
+  const columns = 7;
+  const rows = 7;
 
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
