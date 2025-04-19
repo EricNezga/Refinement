@@ -25,8 +25,13 @@ document.addEventListener("DOMContentLoaded", () => {
   // === Cerrar modal de avatar ===
   avatarCloseBtn?.addEventListener("click", () => {
     avatarModal.classList.add("hidden");
-    selectedAvatar = null;
     avatarError.textContent = "";
+    if (selectedAvatar) {
+      selectedAvatar.classList.remove("selected", "animate");
+      selectedAvatar.setAttribute("stroke", "#1f2937");
+      selectedAvatar.style.backgroundColor = "#f9fafb";
+      selectedAvatar = null;
+    }
   });
 
   // === Confirmar avatar y continuar ===
@@ -44,11 +49,11 @@ document.addEventListener("DOMContentLoaded", () => {
     window.location.href = "index.html";
   });
 
-  // === Selección de avatar ===
+  // === Selección de avatar con animación ===
   avatarIcons?.forEach(icon => {
     icon.addEventListener("click", () => {
       avatarIcons.forEach(i => {
-        i.classList.remove("selected");
+        i.classList.remove("selected", "animate");
         i.setAttribute("stroke", "#1f2937");
         i.style.backgroundColor = "#f9fafb";
       });
@@ -56,11 +61,11 @@ document.addEventListener("DOMContentLoaded", () => {
       selectedAvatar = icon;
       selectedColor = getRandomColor();
 
-      icon.classList.add("selected");
+      icon.classList.add("selected", "animate");
       icon.setAttribute("stroke", "#ffffff");
       icon.style.backgroundColor = selectedColor;
 
-      avatarError.textContent = ""; // Limpia mensaje de error al seleccionar
+      avatarError.textContent = "";
     });
   });
 
