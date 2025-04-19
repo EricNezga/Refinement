@@ -1,14 +1,13 @@
 // Obtener usuario
 const username = localStorage.getItem("username");
 
-// Redirigir si no hay usuario
+// Redirigir si no hay usuario y Saludo si existe
 if (!username) {
   window.location.href = "identificacion.html";
+} else {
+  const greetingEl = document.getElementById("user-greeting");
+  greetingEl.textContent = `Hola, ${username}!`;
 }
-
-// Mostrar saludo
-const greetingEl = document.getElementById("user-greeting");
-greetingEl.textContent = `Hola, ${username}!`;
 
 // Cierre de sesión
 document.getElementById("logout-btn").addEventListener("click", () => {
