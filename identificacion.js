@@ -9,20 +9,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const avatarCloseBtn = document.getElementById("avatarCloseBtn");
   const avatarIcons = avatarModal?.querySelectorAll(".avatar");
   const confirmButton = document.getElementById("confirmAvatarBtn");
+  const avatarError = document.getElementById("avatar-error");
 
-  if (confirmButton) {
-  confirmButton.addEventListener("click", () => {
-  });
-  }
-  
   let selectedAvatar = null;
   let selectedColor = null;
 
   const colorOptions = ["#facc15", "#38bdf8", "#4ade80", "#a78bfa", "#f472b6"];
-
-  const getRandomColor = () => {
-    return colorOptions[Math.floor(Math.random() * colorOptions.length)];
-  };
+  const getRandomColor = () => colorOptions[Math.floor(Math.random() * colorOptions.length)];
 
   // === Mostrar modal de avatar ===
   const showAvatarModal = () => {
@@ -33,12 +26,17 @@ document.addEventListener("DOMContentLoaded", () => {
   avatarCloseBtn?.addEventListener("click", () => {
     avatarModal.classList.add("hidden");
     selectedAvatar = null;
+    avatarError.textContent = "";
   });
 
   // === Confirmar avatar y continuar ===
-  confirmButton.addEventListener("click", () => {
-    if (!selectedAvatar) return;
+  confirmButton?.addEventListener("click", () => {
+    if (!selectedAvatar) {
+      avatarError.textContent = "Por favor selecciona un avatar antes de continuar.";
+      return;
+    }
 
+    avatarError.textContent = "";
     const iconId = selectedAvatar.getAttribute("data-avatar");
     localStorage.setItem("avatar", iconId);
     localStorage.setItem("avatarColor", selectedColor || "#facc15");
@@ -61,6 +59,8 @@ document.addEventListener("DOMContentLoaded", () => {
       icon.classList.add("selected");
       icon.setAttribute("stroke", "#ffffff");
       icon.style.backgroundColor = selectedColor;
+
+      avatarError.textContent = ""; // Limpia mensaje de error al seleccionar
     });
   });
 
