@@ -18,13 +18,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const fibonacciValues = [1, 2, 3, 5, 8, 13, 21];
   const fontSize = 1000;
-  const cellSize = 400;
+  const cellSize = 410; // altura total de celda, incluyendo padding interno
   const columns = 10;
-  const rows = 8;
+
+  const visibleRows = Math.ceil(window.innerHeight / cellSize);
+  const bufferRows = 3; // arriba y abajo
+  const totalRows = visibleRows + bufferRows * 2;
+
   const elements = [];
+  const speed = 0.4;
 
-  const fixedSpeed = 0.4; // 🔁 velocidad vertical uniforme
-
+  // Fijamos dimensiones del canvas una vez
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 
@@ -32,15 +36,15 @@ document.addEventListener("DOMContentLoaded", () => {
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
 
-  // generar grilla con velocidad y opacidad fijas por fila
-  for (let y = 0; y < rows; y++) {
+  // Generamos las posiciones fijas
+  for (let y = -bufferRows; y < visibleRows + bufferRows; y++) {
     for (let x = 0; x < columns; x++) {
       elements.push({
         x: x * cellSize + cellSize / 2,
         y: y * cellSize + cellSize / 2,
         value: fibonacciValues[Math.floor(Math.random() * fibonacciValues.length)],
         opacity: Math.random() * 0.7 + 0.2,
-        direction: Math.random() > 0.5 ? 1 : -1,
+        direction: Math.random() > 0.5 ? 1 : -1
       });
     }
   }
@@ -48,8 +52,8 @@ document.addEventListener("DOMContentLoaded", () => {
   function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    elements.forEach(el => {
-      // Transición de opacidad
+    for (const el of elements) {
+      // Opacidad suave
       el.opacity += 0.005 * el.direction;
       if (el.opacity > 0.9) {
         el.opacity = 0.9;
@@ -59,10 +63,10 @@ document.addEventListener("DOMContentLoaded", () => {
         el.direction = 1;
       }
 
-      // Movimiento descendente uniforme
-      el.y += fixedSpeed;
+      // Movimiento descendente fijo
+      el.y += speed;
 
-      // Recicla al salir por abajo
+      // Reciclaje al salir por abajo
       if (el.y > canvas.height + cellSize / 2) {
         el.y = -cellSize / 2;
         el.value = fibonacciValues[Math.floor(Math.random() * fibonacciValues.length)];
@@ -70,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       ctx.fillStyle = `rgba(255, 255, 255, ${el.opacity.toFixed(2)})`;
       ctx.fillText(el.value, el.x, el.y);
-    });
+    }
 
     requestAnimationFrame(animate);
   }
