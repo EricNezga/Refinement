@@ -16,22 +16,20 @@ document.addEventListener("DOMContentLoaded", () => {
   const canvas = document.querySelector(".background-binary");
   const ctx = canvas.getContext("2d");
 
-  const fibonacciValues = [1, 2, 3, 5, 08, 13, 21];
-
+  const fibonacciValues = [1, 2, 3, 5, 8, 13, 21];
   const fontSize = 700;
-  const cellSize = 710; // tamaño de celda fijo
+  const cellSize = 710; // Celda ligeramente mayor que la fuente
   const columns = 7;
   const rows = 7;
+  const elements = [];
 
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 
-  ctx.font = `${fontSize}px 'Dongle', sans-serif`;
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
 
-  const elements = [];
-
+  // Crear elementos una sola vez
   for (let y = 0; y < rows; y++) {
     for (let x = 0; x < columns; x++) {
       elements.push({
@@ -48,6 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.font = `${fontSize}px 'Dongle', sans-serif`;
 
     elements.forEach(el => {
       // Oscilación de opacidad
@@ -60,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
         el.direction = 1;
       }
 
-      // Movimiento descendente
+      // Movimiento descendente suave
       el.y += el.ySpeed;
       if (el.y > canvas.height + cellSize / 2) {
         el.y = -cellSize / 2;
