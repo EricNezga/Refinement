@@ -34,11 +34,14 @@
   <!-- Modal de selección de avatar -->
   <div class="avatar-modal hidden" id="avatarModal">
     <div class="avatar-modal-content">
+      
       <!-- Botón de cierre -->
       <button class="avatar-close" id="avatarCloseBtn" aria-label="Cerrar">
         <i data-lucide="x"></i>
       </button>
-      <h2>Elige tu avatar</h2>
+
+      <!-- Título -->
+      <h2>Elige un avatar</h2>
 
       <!-- Avatares -->
       <div class="avatar-grid">
@@ -53,6 +56,9 @@
         <i data-lucide="rabbit" class="avatar" data-avatar="rabbit"></i>
         <i data-lucide="turtle" class="avatar" data-avatar="turtle"></i>
       </div>
+
+      <!-- Mensaje de error para validación -->
+      <span class="error-message" id="avatar-error"></span>
 
       <!-- Botón para continuar -->
       <div class="avatar-footer">
