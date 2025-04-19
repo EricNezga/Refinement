@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Planificador de Story Points</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css">
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #fef9c3;
+      margin: 0;
+      padding: 0 20px;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+    }
+
+    .user-info {
+      font-weight: bold;
+    }
+
+    .participants {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .task-box, .vote-box, .result-box {
+      background: #fffbe6;
+      border-radius: 12px;
+      padding: 20px;
+      margin: 20px 0;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .votes button {
+      margin: 5px;
+      padding: 10px 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background-color: #facc15;
+      color: #1e293b;
+      font-weight: bold;
+      transition: background 0.2s;
+    }
+
+    .votes button:hover {
+      background-color: #fbbf24;
+    }
+
+    .result {
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="user-info" id="user-name-display"></div>
+    <div class="participants">
+      <i class="fas fa-user"></i>
+      <span id="participant-count">0</span>
+    </div>
+  </header>
+
+  <div class="task-box">
+    <h3>Historia a votar</h3>
+    <input type="text" id="task-input" placeholder="Introduce la historia/tarea..." style="width: 100%; padding: 10px;">
+    <button onclick="submitTask()">Publicar historia</button>
+    <div id="current-task" style="margin-top: 10px; font-weight: bold;"></div>
+  </div>
+
+  <div class="vote-box">
+    <h3>Tu voto</h3>
+    <div class="votes">
+      <button onclick="castVote(1)">1</button>
+      <button onclick="castVote(2)">2</button>
+      <button onclick="castVote(3)">3</button>
+      <button onclick="castVote(5)">5</button>
+      <button onclick="castVote(8)">8</button>
+      <button onclick="castVote(13)">13</button>
+      <button onclick="castVote(21)">21</button>
+    </div>
+  </div>
+
+  <div class="result-box">
+    <h3>Resultado</h3>
+    <div class="result" id="average-result">Esperando votos...</div>
+  </div>
+
+  <script>
+    let userName = localStorage.getItem("username");
+    if (!userName) {
+      userName = prompt("Introduce tu nombre:");
+      localStorage.setItem("username", userName);
+    }
+    document.getElementById("user-name-display").textContent = `Hola, ${userName}`;
+
+    // Simulación inicial de participantes
+    document.getElementById("participant-count").textContent = Math.floor(Math.random() * 4 + 2);
+
+    function submitTask() {
+      const task = document.getElementById("task-input").value;
+      document.getElementById("current-task").textContent = task ? `Tarea actual: ${task}` : "";
+    }
+
+    let votes = [];
+
+    function castVote(value) {
+      votes.push(parseInt(value));
+      const sum = votes.reduce((a, b) => a + b, 0);
+      const avg = (sum / votes.length).toFixed(1);
+      document.getElementById("average-result").textContent = `Media actual: ${avg} puntos (de ${votes.length} votos)`;
+    }
+  </script>
+
+</body>
+</html>
