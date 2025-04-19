@@ -1,12 +1,8 @@
-/* ================================
-   FONTS
-================================= */
-@import url('https://fonts.googleapis.com/css2?family=Dongle:wght@700&display=swap');
+/* === FUENTES === */
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dongle:wght@700&display=swap');
 
-/* ================================
-   RESET & BODY
-================================= */
+/* === CUERPO Y FONDO === */
 body {
   font-family: 'Fredoka', sans-serif;
   background: #fef3c7;
@@ -20,9 +16,6 @@ body {
   align-items: center;
 }
 
-/* ================================
-   CANVAS DE FONDO
-================================= */
 canvas.background-binary {
   position: absolute;
   top: 0;
@@ -33,9 +26,7 @@ canvas.background-binary {
   font-weight: 700;
 }
 
-/* ================================
-   CONTENEDOR LOGIN
-================================= */
+/* === LOGIN WRAPPER === */
 .login-wrapper {
   position: relative;
   z-index: 2;
@@ -54,6 +45,7 @@ canvas.background-binary {
   font-weight: bold;
 }
 
+/* === CONTENEDOR DE FORMULARIO === */
 .login-container {
   background: white;
   padding: 40px;
@@ -61,11 +53,10 @@ canvas.background-binary {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
   width: 100%;
   max-width: 360px;
+  box-sizing: border-box;
 }
 
-/* ================================
-   CAMPOS DE TEXTO
-================================= */
+/* === CAMPOS DE TEXTO === */
 input {
   width: 100%;
   padding: 12px 20px;
@@ -76,9 +67,7 @@ input {
   box-sizing: border-box;
 }
 
-/* ================================
-   BOTONES
-================================= */
+/* === BOTONES === */
 button {
   width: 100%;
   background: #facc15;
@@ -93,4 +82,35 @@ button {
 
 button:hover {
   background-color: #fbbf24;
+}
+
+/* === BOTÓN INVITADO === */
+button.guest {
+  background: #e5e7eb;
+  color: #1f2937;
+  margin-top: 10px;
+}
+
+button.guest:hover {
+  background: #d1d5db;
+}
+
+/* === SEPARADOR === */
+.divider {
+  text-align: center;
+  margin: 10px 0;
+  color: #9ca3af;
+  font-weight: bold;
+}
+
+/* === ACCESIBILIDAD === */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
 }
