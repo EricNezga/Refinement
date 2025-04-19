@@ -6,12 +6,32 @@ document.addEventListener("DOMContentLoaded", () => {
   const guestButton = document.getElementById("guest-button");
   const emailError = document.getElementById("email-error");
 
-  // === BOTÓN NORMAL ===
+  const avatarModal = document.getElementById("avatarModal");
+  const avatarImages = avatarModal?.querySelectorAll("img");
+
+  // === FUNCIÓN PARA MOSTRAR MODAL AVATAR ===
+  const showAvatarModal = () => {
+    avatarModal.classList.remove("hidden");
+  };
+
+  // === FUNCIÓN PARA GUARDAR AVATAR Y REDIRIGIR ===
+  const selectAvatar = (avatarId) => {
+    localStorage.setItem("avatar", avatarId);
+    window.location.href = "index.html";
+  };
+
+  avatarImages?.forEach(img => {
+    img.addEventListener("click", () => {
+      const avatarId = img.getAttribute("data-avatar");
+      selectAvatar(avatarId);
+    });
+  });
+
+  // === BOTÓN LOGIN NORMAL ===
   loginButton.addEventListener("click", () => {
     const name = inputName.value.trim();
     const email = inputEmail.value.trim();
 
-    // Limpiar estado anterior
     emailError.style.display = "none";
     inputEmail.classList.remove("shake");
 
@@ -19,10 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
       emailError.textContent = "Por favor introduce tu correo electrónico.";
       emailError.style.display = "block";
       inputEmail.classList.add("shake");
-
-      setTimeout(() => {
-        inputEmail.classList.remove("shake");
-      }, 500);
+      setTimeout(() => inputEmail.classList.remove("shake"), 500);
       return;
     }
 
@@ -31,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.setItem("email", email);
     localStorage.setItem("guest", "false");
 
-    window.location.href = "index.html";
+    showAvatarModal();
   });
 
   // === BOTÓN INVITADO ===
@@ -40,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.setItem("guest", "true");
     localStorage.removeItem("email");
 
-    window.location.href = "index.html";
+    showAvatarModal();
   });
 
   // === ANIMACIÓN DE FONDO ===
@@ -49,11 +66,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const ctx = canvas.getContext("2d");
   const fibonacciValues = [1, 2, 3, 5, 8, 13, 21];
-
   const columns = 6;
   const rowsVisible = 3;
   const totalRows = 4;
-
   const cellSize = Math.ceil(window.innerHeight / rowsVisible);
   const fontSize = cellSize * 2;
   const elements = [];
