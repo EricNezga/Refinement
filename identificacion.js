@@ -12,43 +12,50 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // === FONDO ANIMADO BINARIO ===
-  const canvas = document.querySelector('.background-binary');
-  const ctx = canvas.getContext('2d');
+  // === ANIMACIÓN DE FONDO ===
+  const canvas = document.querySelector(".background-binary");
+  const ctx = canvas.getContext("2d");
 
   const fibonacciValues = [1, 2, 3, 5, 8, 13, 21];
-  const elements = [];
   const fontSize = 600;
-  const cellSize = 300; // más espacio para evitar solapamientos
+  const padding = 20;
+  const cellSize = fontSize + padding;
 
-  function init() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    elements.length = 0;
+  const elements = [];
 
-    const cols = Math.ceil(canvas.width / cellSize) + 2;
-    const rows = Math.ceil(canvas.height / cellSize) + 2;
+  // Cálculo de filas y columnas solo una vez
+  const cols = Math.ceil(window.innerWidth / cellSize);
+  const rows = Math.ceil(window.innerHeight / cellSize);
 
+  function generateGridElements() {
     for (let y = 0; y < rows; y++) {
       for (let x = 0; x < cols; x++) {
-        const opacity = Math.random() * 0.7 + 0.2;
+        const value = fibonacciValues[Math.floor(Math.random() * fibonacciValues.length)];
 
         elements.push({
           x: x * cellSize,
           y: y * cellSize,
-          value: fibonacciValues[Math.floor(Math.random() * fibonacciValues.length)],
-          opacity,
-          targetOpacity: opacity,
+          value: value,
+          opacity: Math.random() * 0.7 + 0.2,
           direction: Math.random() > 0.5 ? 1 : -1,
-          speed: Math.random() * 0.02 + 0.005,
-          ySpeed: Math.random() * 0.1 + 0.02
+          speed: Math.random() * 0.005 + 0.002,
+          ySpeed: Math.random() * 0.15 + 0.05
         });
       }
     }
   }
 
-  init();
-  window.addEventListener("resize", init);
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+
+  resizeCanvas();
+  generateGridElements();
+
+  window.addEventListener("resize", () => {
+    resizeCanvas(); // Solo redimensiona, sin reiniciar los elementos
+  });
 
   function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -57,7 +64,6 @@ document.addEventListener("DOMContentLoaded", () => {
     ctx.textBaseline = "middle";
 
     elements.forEach(el => {
-      // Actualizamos opacidad suavemente
       el.opacity += el.speed * el.direction;
 
       if (el.opacity >= 0.9) {
@@ -68,14 +74,14 @@ document.addEventListener("DOMContentLoaded", () => {
         el.opacity = 0.2;
       }
 
-      // Movimiento descendente
+      // Movimiento descendente suave
       el.y += el.ySpeed;
-      if (el.y > canvas.height + fontSize / 2) {
+      if (el.y > canvas.height + fontSize) {
         el.y = -fontSize;
       }
 
       ctx.fillStyle = `rgba(255, 255, 255, ${el.opacity.toFixed(3)})`;
-      ctx.fillText(el.value, el.x, el.y);
+      ctx.fillText(el.value, el.x + cellSize / 2, el.y + cellSize / 2);
     });
 
     requestAnimationFrame(animate);
