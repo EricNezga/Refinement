@@ -33,3 +33,40 @@ button {
   font-weight: bold;
   cursor: pointer;
 }
+
+body {
+  font-family: 'Fredoka', sans-serif;
+  background: #fef3c7;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+  height: 100vh;
+}
+
+canvas.background-binary {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.06; /* sutil */
+  pointer-events: none;
+}
+
+.login-wrapper {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.login-title {
+  font-size: 32px;
+  margin-bottom: 20px;
+  color: #1e293b;
+}
