@@ -1,27 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const input = document.getElementById("username-input");
-  const button = document.getElementById("login-button");
-
-  button.addEventListener("click", () => {
-    const name = input.value.trim();
-    if (name) {
-      localStorage.setItem("username", name);
-      window.location.href = "index.html";
-    } else {
-      alert("Por favor introduce tu nombre");
-    }
-  });
-
-  // === ANIMACIÓN DE FONDO ===
   const canvas = document.querySelector(".background-binary");
   const ctx = canvas.getContext("2d");
 
   const fibonacciValues = [1, 2, 3, 5, 8, 13, 21];
-
   const fontSize = 1000;
-  const padding = -150; // 🔽 reduce espacio entre números verticalmente
-  const columnSpacing = fontSize * 0.35; // 🔽 reduce espacio horizontal
-  const columns = 6;
+  const columnSpacing = fontSize * 0.6;
+  const columns = Math.floor(window.innerWidth / columnSpacing);
 
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
@@ -30,55 +14,36 @@ document.addEventListener("DOMContentLoaded", () => {
   ctx.textAlign = "center";
   ctx.textBaseline = "top";
 
-  const elements = [];
+  const drops = new Array(columns).fill(0).map(() => ({
+    y: Math.random() * canvas.height,
+    opacity: Math.random() * 0.7 + 0.2
+  }));
 
-  // Crear columnas con pilas de números
-  for (let col = 0; col < columns; col++) {
-    const x = col * columnSpacing + columnSpacing / 2;
-    let y = -Math.random() * canvas.height;
+  function draw() {
+    ctx.fillStyle = "rgba(254, 243, 199, 0.03)";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    while (y < canvas.height + fontSize) {
-      elements.push({
-        x,
-        y,
-        value: fibonacciValues[Math.floor(Math.random() * fibonacciValues.length)],
-        opacity: Math.random() * 0.7 + 0.2,
-        direction: Math.random() > 0.5 ? 1 : -1
-      });
-      y += fontSize + padding;
-    }
-  }
+    for (let i = 0; i < columns; i++) {
+      const x = i * columnSpacing + columnSpacing / 2;
+      const drop = drops[i];
 
-  const speed = 0.4;
+      // Alternar valor y opacidad levemente
+      const value = fibonacciValues[Math.floor(Math.random() * fibonacciValues.length)];
+      drop.opacity += (Math.random() - 0.5) * 0.01;
+      drop.opacity = Math.max(0.2, Math.min(0.9, drop.opacity));
 
-  function animate() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = `rgba(255, 255, 255, ${drop.opacity.toFixed(2)})`;
+      ctx.fillText(value, x, drop.y);
 
-    for (const el of elements) {
-      el.y += speed;
+      drop.y += fontSize * 0.1;
 
-      // Oscilación de opacidad
-      el.opacity += 0.005 * el.direction;
-      if (el.opacity > 0.9) {
-        el.opacity = 0.9;
-        el.direction = -1;
-      } else if (el.opacity < 0.2) {
-        el.opacity = 0.2;
-        el.direction = 1;
-      }
-
-      ctx.fillStyle = `rgba(255, 255, 255, ${el.opacity.toFixed(2)})`;
-      ctx.fillText(el.value, el.x, el.y);
-
-      // Si sale por abajo, reaparece arriba
-      if (el.y > canvas.height + fontSize) {
-        el.y = -fontSize;
-        el.value = fibonacciValues[Math.floor(Math.random() * fibonacciValues.length)];
+      if (drop.y > canvas.height + fontSize) {
+        drop.y = -fontSize;
       }
     }
 
-    requestAnimationFrame(animate);
+    requestAnimationFrame(draw);
   }
 
-  animate();
+  draw();
 });
