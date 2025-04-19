@@ -216,14 +216,20 @@ button.guest:hover {
 /* === BOTÓN DE CIERRE === */
 .avatar-close {
   position: absolute;
-  top: 12px;
-  right: 12px;
+  top: -12px;
+  right: -12px;
   background: #ef4444;
   border: none;
-  border-radius: 8px;
+  border-radius: 12px;
   padding: 6px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
   transition: background-color 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
 
 .avatar-close:hover {
