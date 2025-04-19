@@ -136,3 +136,47 @@ button.guest:hover {
   clip: rect(0, 0, 0, 0);
   border: 0;
 }
+
+/* === MODAL DE AVATAR === */
+.avatar-modal {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.avatar-modal-content {
+  background: white;
+  padding: 30px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.avatar-grid {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.avatar-grid img {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.avatar-grid img:hover {
+  transform: scale(1.1);
+}
+
+.hidden {
+  display: none;
+}
+
