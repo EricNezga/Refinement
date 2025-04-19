@@ -214,6 +214,14 @@ button.guest:hover {
 }
 
 /* === SELECTOR DE COLOR === */
+.color-title {
+  margin-top: 30px;
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #1e293b;
+}
+
 .color-picker {
   display: flex;
   justify-content: center;
@@ -233,4 +241,5 @@ button.guest:hover {
 
 .color-option:hover {
   transform: scale(1.1);
+  border-color: #facc15;
 }
