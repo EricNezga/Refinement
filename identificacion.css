@@ -53,6 +53,8 @@ canvas.background-binary {
   height: 100%;
   opacity: 1; /* ya controlamos con el fillStyle */
   pointer-events: none;
+  font-family: 'Dongle', sans-serif;
+  font-weight: 700;
 }
 
 .login-wrapper {
