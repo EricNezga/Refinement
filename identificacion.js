@@ -18,28 +18,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const fibonacciValues = [1, 2, 3, 5, 8, 13, 21];
 
-  const fontSize = 850;          // 📏 MÁS GRANDE
-  const padding = 10;            // 📐 MÁS AJUSTADO
+  const fontSize = 850;       // Muy grande
+  const padding = 10;
   const cellSize = fontSize + padding;
 
-  const elements = [];
+  let elements = [];
+  let cols, rows;
 
-  const cols = Math.ceil(window.innerWidth / cellSize);
-  const rows = Math.ceil(window.innerHeight / cellSize);
+  function setupGrid() {
+    cols = Math.ceil(window.innerWidth / cellSize);
+    rows = Math.ceil(window.innerHeight / cellSize);
+    elements = [];
 
-  function generateGridElements() {
-    for (let y = 0; y < rows; y++) {
+    for (let y = 0; y < rows + 2; y++) {
       for (let x = 0; x < cols; x++) {
-        const value = fibonacciValues[Math.floor(Math.random() * fibonacciValues.length)];
-
         elements.push({
           x: x * cellSize,
-          y: y * cellSize,
-          value: value,
+          y: y * cellSize - cellSize,
+          value: fibonacciValues[Math.floor(Math.random() * fibonacciValues.length)],
           opacity: Math.random() * 0.7 + 0.2,
           direction: Math.random() > 0.5 ? 1 : -1,
           speed: Math.random() * 0.005 + 0.002,
-          ySpeed: Math.random() * 0.15 + 0.05
+          ySpeed: Math.random() * 0.25 + 0.1
         });
       }
     }
@@ -51,10 +51,11 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   resizeCanvas();
-  generateGridElements();
+  setupGrid();
 
   window.addEventListener("resize", () => {
-    resizeCanvas(); // No se regeneran los elementos
+    resizeCanvas();
+    setupGrid(); // ⚠️ También regeneramos para evitar vacíos
   });
 
   function animate() {
@@ -63,7 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
 
-    elements.forEach(el => {
+    for (const el of elements) {
       el.opacity += el.speed * el.direction;
 
       if (el.opacity >= 0.9) {
@@ -75,13 +76,15 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       el.y += el.ySpeed;
-      if (el.y > canvas.height + fontSize) {
-        el.y = -fontSize;
+
+      if (el.y > canvas.height + cellSize) {
+        el.y = -cellSize;
+        el.value = fibonacciValues[Math.floor(Math.random() * fibonacciValues.length)];
       }
 
       ctx.fillStyle = `rgba(255, 255, 255, ${el.opacity.toFixed(2)})`;
       ctx.fillText(el.value, el.x + cellSize / 2, el.y + cellSize / 2);
-    });
+    }
 
     requestAnimationFrame(animate);
   }
