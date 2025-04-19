@@ -19,28 +19,33 @@ document.addEventListener("DOMContentLoaded", () => {
   const fibonacciValues = [1, 2, 3, 5, 8, 13, 21];
 
   const fontSize = 1000;
-  const cellSize = 1010; // justo por encima del fontSize para evitar solapamiento
-  const columns = Math.floor(window.innerWidth / cellSize) + 2;
-  const rows = Math.floor(window.innerHeight / cellSize) + 4;
+  const padding = 10;
+  const columnSpacing = fontSize * 0.6; // espacio entre columnas basado en tamaño del número
+  const columns = Math.floor(window.innerWidth / columnSpacing);
 
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 
   ctx.font = `${fontSize}px 'Dongle', sans-serif`;
   ctx.textAlign = "center";
-  ctx.textBaseline = "middle";
+  ctx.textBaseline = "top";
 
   const elements = [];
 
-  for (let row = -2; row < rows; row++) {
-    for (let col = 0; col < columns; col++) {
+  // Crear columnas con pilas de números
+  for (let col = 0; col < columns; col++) {
+    const x = col * columnSpacing + columnSpacing / 2;
+    let y = -Math.random() * canvas.height;
+
+    while (y < canvas.height + fontSize) {
       elements.push({
-        x: col * cellSize + cellSize / 2,
-        y: row * cellSize + cellSize / 2,
+        x,
+        y,
         value: fibonacciValues[Math.floor(Math.random() * fibonacciValues.length)],
         opacity: Math.random() * 0.7 + 0.2,
         direction: Math.random() > 0.5 ? 1 : -1
       });
+      y += fontSize + padding;
     }
   }
 
@@ -49,11 +54,10 @@ document.addEventListener("DOMContentLoaded", () => {
   function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    elements.forEach(el => {
-      // Movimiento descendente
+    for (const el of elements) {
       el.y += speed;
 
-      // Opacidad pulsante
+      // Oscilación de opacidad
       el.opacity += 0.005 * el.direction;
       if (el.opacity > 0.9) {
         el.opacity = 0.9;
@@ -63,15 +67,15 @@ document.addEventListener("DOMContentLoaded", () => {
         el.direction = 1;
       }
 
-      // Cuando sale por abajo, reaparece arriba
-      if (el.y - cellSize / 2 > canvas.height) {
-        el.y = -cellSize / 2;
-        el.value = fibonacciValues[Math.floor(Math.random() * fibonacciValues.length)];
-      }
-
       ctx.fillStyle = `rgba(255, 255, 255, ${el.opacity.toFixed(2)})`;
       ctx.fillText(el.value, el.x, el.y);
-    });
+
+      // Si sale por abajo, reaparece arriba
+      if (el.y > canvas.height + fontSize) {
+        el.y = -fontSize;
+        el.value = fibonacciValues[Math.floor(Math.random() * fibonacciValues.length)];
+      }
+    }
 
     requestAnimationFrame(animate);
   }
