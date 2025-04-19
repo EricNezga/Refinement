@@ -1,30 +1,20 @@
-const user = localStorage.getItem("username");
-const greetingEl = document.getElementById("user-greeting");
-
-if (user) {
-  greetingEl.textContent = `Hola, ${user}!`;
-} else {
-  // Redirige si no hay usuario (por seguridad)
-  window.location.href = "identificacion.html";
-}
-
-// Redirección si no hay usuario
+// Obtener usuario
 const username = localStorage.getItem("username");
 
+// Redirigir si no hay usuario
 if (!username) {
   window.location.href = "identificacion.html";
 }
 
+// Mostrar saludo
+const greetingEl = document.getElementById("user-greeting");
+greetingEl.textContent = `Hola, ${username}!`;
 
-/* === CIERRE DE SESSION === */
+// Cierre de sesión
 document.getElementById("logout-btn").addEventListener("click", () => {
   localStorage.removeItem("username");
   window.location.href = "identificacion.html";
 });
-
-// Mostrar saludo
-const greetingEl = document.getElementById("user-greeting");
-greetingEl.textContent = `Hola, ${username}!`;
 
 /* ===  === */
 
