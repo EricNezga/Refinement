@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
     window.location.href = "index.html";
   });
 
-  // === Selección de avatar con animación ===
+  // === Selección de avatar con animación reiniciada siempre ===
   avatarIcons?.forEach(icon => {
     icon.addEventListener("click", () => {
       avatarIcons.forEach(i => {
@@ -61,9 +61,14 @@ document.addEventListener("DOMContentLoaded", () => {
       selectedAvatar = icon;
       selectedColor = getRandomColor();
 
-      icon.classList.add("selected", "animate");
+      icon.classList.add("selected");
       icon.setAttribute("stroke", "#ffffff");
       icon.style.backgroundColor = selectedColor;
+
+      // Reinicia animación aunque esté ya seleccionada
+      icon.classList.remove("animate");
+      void icon.offsetWidth; // <-- fuerza reflow
+      icon.classList.add("animate");
 
       avatarError.textContent = "";
     });
