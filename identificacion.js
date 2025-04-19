@@ -17,11 +17,17 @@ document.addEventListener("DOMContentLoaded", () => {
 const canvas = document.querySelector('.background-binary');
 const ctx = canvas.getContext('2d');
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+let ypos = [];
 
-const cols = Math.floor(canvas.width / 20);
-const ypos = Array(cols).fill(0);
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  const cols = Math.floor(canvas.width / 20);
+  ypos = Array(cols).fill(0);
+}
+
+resizeCanvas(); // Inicial
+window.addEventListener("resize", resizeCanvas);
 
 function binaryMatrix() {
   ctx.fillStyle = 'rgba(254, 243, 199, 0.05)';
