@@ -473,8 +473,7 @@ body {
   left: 20px;
   z-index: 1000;
 }
-
-/* === BOTON DE CIERRE DE SESSION === */
+/* === BOTÓN DE CIERRE DE SESIÓN === */
 .logout-container {
   position: fixed;
   bottom: 20px;
@@ -508,25 +507,21 @@ body {
   flex-shrink: 0;
 }
 
-/* Ocultar texto por defecto */
+/* Texto oculto suavemente por defecto */
 #logout-btn .logout-text {
-  visibility: hidden;
   opacity: 0;
-  transform: translateX(-10px);
-  transition: visibility 0s linear 0.2s, opacity 0.2s ease, transform 0.2s ease;
+  transform: translateX(-12px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
   display: inline-block;
-}
-
-/* Al hacer hover, mostrar texto y expandir */
-#logout-btn:hover .logout-text {
-  visibility: visible;
-  opacity: 1;
-  transform: translateX(0);
-  transition-delay: 0s; /* se muestra inmediatamente */
 }
 
 /* Al hacer hover, mostrar texto y expandir */
 #logout-btn:hover {
   width: 160px;
   background-color: #374151;
+}
+
+#logout-btn:hover .logout-text {
+  opacity: 1;
+  transform: translateX(0);
 }
