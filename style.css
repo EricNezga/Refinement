@@ -1,6 +1,12 @@
 /* === ESTILO GENERAL === */
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500&display=swap');
 
+.main-container {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
 body {
   font-family: 'Fredoka', sans-serif;
   background: #fef3c7;
