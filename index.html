@@ -8,9 +8,8 @@
 </head>
 
 <body>
-  <!-- ========== CABECERA ========== -->
+  <!-- ========== CABECERA GENERAL ========== -->
   <div class="header">
-    <h1 class="title">Refinador</h1>
     <h2 id="user-greeting"></h2>
 
     <!-- === Controles superiores === -->
@@ -31,74 +30,81 @@
     </div>
   </div>
 
-  <!-- ========== BANNER DE TAREA ACTIVA ========== -->
-  <div id="active-task-banner" class="hidden">
-    <span id="active-task-id"></span>
-  </div>
+  <!-- ========== CONTENIDO PRINCIPAL CENTRALIZADO ========== -->
+  <main class="main-container">
 
-  <!-- ========== INPUT DE ENLACE DE TAREA ========== -->
-  <div class="task-link-wrapper">
-    <label for="task-url">Enlace de la tarea:</label>
-    <input type="url" id="task-url" placeholder="https://ejemplo.com/tarea" />
-    <button id="load-preview">Mostrar</button>
-  </div>
+    <!-- === Título de página === -->
+    <h1 class="title">Refinador</h1>
 
-  <!-- ========== FACTORES DE VALORACIÓN ========== -->
-  <div class="wrapper">
-    <!-- === COMPLEJIDAD === -->
-    <div class="factor" data-factor="Complejidad">
-      <div class="bubble" id="bubble-complejidad"></div>
-      <h2>Complejidad</h2>
-      <div class="card-row" onclick="select(this, 1)" data-value="1">
-        <div class="label">Baja</div>
-        <div class="card-content"><p>Fix puntual, DDBB, sin riesgo técnico</p></div>
-      </div>
-      <div class="card-row" onclick="select(this, 2)" data-value="2">
-        <div class="label">Media</div>
-        <div class="card-content"><p>Cambios en código existente, requiere investigación previa</p></div>
-      </div>
-      <div class="card-row" onclick="select(this, 3)" data-value="3">
-        <div class="label">Alta</div>
-        <div class="card-content"><p>Nueva lógica, múltiples áreas de impacto</p></div>
-      </div>
+    <!-- === Banner de tarea activa === -->
+    <div id="active-task-banner" class="hidden">
+      <span id="active-task-id"></span>
     </div>
 
-    <!-- === INCERTIDUMBRE === -->
-    <div class="factor" data-factor="Incertidumbre">
-      <div class="bubble" id="bubble-incertidumbre"></div>
-      <h2>Incertidumbre</h2>
-      <div class="card-row" onclick="select(this, 1)" data-value="1">
-        <div class="label">Baja</div>
-        <div class="card-content"><p>Todo claro, historia bien definida</p></div>
-      </div>
-      <div class="card-row" onclick="select(this, 2)" data-value="2">
-        <div class="label">Media</div>
-        <div class="card-content"><p>Falta algún criterio, depende de terceros</p></div>
-      </div>
-      <div class="card-row" onclick="select(this, 3)" data-value="3">
-        <div class="label">Alta</div>
-        <div class="card-content"><p>Definición ambigua, faltan datos clave para avanzar</p></div>
-      </div>
+    <!-- === Input para enlace de tarea === -->
+    <div class="task-link-wrapper">
+      <label for="task-url">Enlace de la tarea:</label>
+      <input type="url" id="task-url" placeholder="https://ejemplo.com/tarea" />
+      <button id="load-preview">Mostrar</button>
     </div>
 
-    <!-- === ESFUERZO === -->
-    <div class="factor" data-factor="Esfuerzo">
-      <div class="bubble" id="bubble-esfuerzo"></div>
-      <h2>Esfuerzo</h2>
-      <div class="card-row" onclick="select(this, 1)" data-value="1">
-        <div class="label">Bajo</div>
-        <div class="card-content"><p>Rápido de ejecutar, es cosa de unas pocas líneas</p></div>
+    <!-- === Factores de estimación === -->
+    <div class="wrapper">
+      <!-- COMPLEJIDAD -->
+      <div class="factor" data-factor="Complejidad">
+        <div class="bubble" id="bubble-complejidad"></div>
+        <h2>Complejidad</h2>
+        <div class="card-row" onclick="select(this, 1)" data-value="1">
+          <div class="label">Baja</div>
+          <div class="card-content"><p>Fix puntual, DDBB, sin riesgo técnico</p></div>
+        </div>
+        <div class="card-row" onclick="select(this, 2)" data-value="2">
+          <div class="label">Media</div>
+          <div class="card-content"><p>Cambios en código existente, requiere investigación previa</p></div>
+        </div>
+        <div class="card-row" onclick="select(this, 3)" data-value="3">
+          <div class="label">Alta</div>
+          <div class="card-content"><p>Nueva lógica, múltiples áreas de impacto</p></div>
+        </div>
       </div>
-      <div class="card-row" onclick="select(this, 2)" data-value="2">
-        <div class="label">Medio</div>
-        <div class="card-content"><p>Podría necesitar algo de revisión y soporte</p></div>
+
+      <!-- INCERTIDUMBRE -->
+      <div class="factor" data-factor="Incertidumbre">
+        <div class="bubble" id="bubble-incertidumbre"></div>
+        <h2>Incertidumbre</h2>
+        <div class="card-row" onclick="select(this, 1)" data-value="1">
+          <div class="label">Baja</div>
+          <div class="card-content"><p>Todo claro, historia bien definida</p></div>
+        </div>
+        <div class="card-row" onclick="select(this, 2)" data-value="2">
+          <div class="label">Media</div>
+          <div class="card-content"><p>Falta algún criterio, depende de terceros</p></div>
+        </div>
+        <div class="card-row" onclick="select(this, 3)" data-value="3">
+          <div class="label">Alta</div>
+          <div class="card-content"><p>Definición ambigua, faltan datos clave para avanzar</p></div>
+        </div>
       </div>
-      <div class="card-row" onclick="select(this, 3)" data-value="3">
-        <div class="label">Alto</div>
-        <div class="card-content"><p>Trabajo intenso y con muchos frentes</p></div>
+
+      <!-- ESFUERZO -->
+      <div class="factor" data-factor="Esfuerzo">
+        <div class="bubble" id="bubble-esfuerzo"></div>
+        <h2>Esfuerzo</h2>
+        <div class="card-row" onclick="select(this, 1)" data-value="1">
+          <div class="label">Bajo</div>
+          <div class="card-content"><p>Rápido de ejecutar, es cosa de unas pocas líneas</p></div>
+        </div>
+        <div class="card-row" onclick="select(this, 2)" data-value="2">
+          <div class="label">Medio</div>
+          <div class="card-content"><p>Podría necesitar algo de revisión y soporte</p></div>
+        </div>
+        <div class="card-row" onclick="select(this, 3)" data-value="3">
+          <div class="label">Alto</div>
+          <div class="card-content"><p>Trabajo intenso y con muchos frentes</p></div>
+        </div>
       </div>
     </div>
-  </div>
+  </main>
 
   <!-- ========== BOTÓN DE CIERRE DE SESIÓN FIJO ========== -->
   <div class="logout-container">
@@ -108,7 +114,7 @@
         <polyline points="16 17 21 12 16 7"/>
         <line x1="21" y1="12" x2="9" y2="12"/>
       </svg>
-      <span>Cerrar sesión</span>
+      <span class="logout-text">Cerrar sesión</span>
     </button>
   </div>
 
