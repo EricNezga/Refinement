@@ -494,9 +494,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 8px;
-  background: #1f2937; /* oscuro uniforme */
-  color: white;
+  background: #e5e7eb; /* gris clarito */
+  color: #1f2937; /* texto e ícono oscuros */
   border: none;
   padding: 10px 14px;
   border-radius: 16px;
@@ -506,31 +505,32 @@ body {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   white-space: nowrap;
-  width: 48px; /* solo icono por defecto */
-  transition: width 0.3s ease, background-color 0.3s ease;
+  max-width: 44px; /* contraído por defecto */
+  transition: max-width 0.3s ease, background-color 0.3s ease;
 }
 
-/* === ÍCONO SVG === */
+/* === ICONO SVG === */
 #logout-btn svg {
-  stroke: white;
+  stroke: #1f2937; /* oscuro como el texto */
   flex-shrink: 0;
 }
 
-/* === TEXTO OCULTO === */
-#logout-btn .logout-text {
-  transform: translateX(60px); /* desplazado más lejos */
+/* === CONTENEDOR DE TEXTO === */
+.logout-text {
+  margin-left: 8px;
   opacity: 0;
-  margin-left: auto; /* empuja a la derecha */
-  color: white;
+  transform: translateX(20px); /* desplazado fuera */
   transition: transform 0.3s ease, opacity 0.3s ease;
+  pointer-events: none; /* evita que el mouse lo active fuera del hover */
 }
 
-/* === HOVER: EXPANDIR Y MOSTRAR TEXTO === */
+/* === EXPANSIÓN CON HOVER === */
 #logout-btn:hover {
-  width: 160px;
+  max-width: 160px;
 }
 
 #logout-btn:hover .logout-text {
-  transform: translateX(0);
   opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
 }
