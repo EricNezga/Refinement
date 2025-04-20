@@ -481,48 +481,56 @@ body {
   z-index: 1000;
 }
 
-/* Estilo base del botón */
+/* === CONTENEDOR FIJO === */
+.logout-container {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 1000;
+}
+
+/* === BOTÓN BASE === */
 #logout-btn {
   display: flex;
   align-items: center;
+  justify-content: flex-start;
   gap: 8px;
-  background: #e5e7eb;
-  color: #111827;
+  background: #1f2937; /* oscuro uniforme */
+  color: white;
   border: none;
   padding: 10px 14px;
-  border-radius: 12px;
+  border-radius: 16px;
   font-family: 'Fredoka', sans-serif;
   font-weight: bold;
   cursor: pointer;
-  transition: width 0.3s ease, background-color 0.3s ease;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   white-space: nowrap;
-  width: 44px; /* solo icono por defecto */
+  width: 48px; /* solo icono por defecto */
+  transition: width 0.3s ease, background-color 0.3s ease;
 }
 
-/* SVG alineado */
+/* === ÍCONO SVG === */
 #logout-btn svg {
   stroke: white;
   flex-shrink: 0;
 }
 
-/* Texto oculto suavemente por defecto */
+/* === TEXTO OCULTO === */
 #logout-btn .logout-text {
-  padding: 10px;
-  transform: translateX(40px); /* lo empuja completamente fuera del botón */
+  transform: translateX(60px); /* desplazado más lejos */
   opacity: 0;
+  margin-left: auto; /* empuja a la derecha */
+  color: white;
   transition: transform 0.3s ease, opacity 0.3s ease;
-  display: inline-block;
 }
 
-/* Al hacer hover, mostrar texto y expandir */
+/* === HOVER: EXPANDIR Y MOSTRAR TEXTO === */
 #logout-btn:hover {
   width: 160px;
-  background-color: #e5e7eb;
 }
 
 #logout-btn:hover .logout-text {
-  opacity: 1;
   transform: translateX(0);
+  opacity: 1;
 }
