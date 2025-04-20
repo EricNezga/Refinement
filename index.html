@@ -23,19 +23,16 @@
     </div>
   </div>
 
-  <!-- NUEVO BLOQUE: Enlace y Vista Previa -->
+  <!-- NUEVO: Banner visual para mostrar el ID de la tarea -->
+  <div id="active-task-banner" class="hidden">
+    <span id="active-task-id"></span>
+  </div>
+
+  <!-- NUEVO BLOQUE: Input para enlace -->
   <div class="task-link-wrapper">
     <label for="task-url">Enlace de la tarea:</label>
     <input type="url" id="task-url" placeholder="https://ejemplo.com/tarea" />
-    <button id="load-preview">Ver tarea</button>
-  </div>
-
-  <div id="preview-container" class="hidden">
-    <div class="preview-header">
-      <span id="preview-url-display"></span>
-      <button id="toggle-preview">Minimizar</button>
-    </div>
-    <iframe id="task-preview" src="" frameborder="0"></iframe>
+    <button id="load-preview">Mostrar</button>
   </div>
 
   <!-- FACTORES -->
