@@ -489,13 +489,20 @@ body {
   z-index: 1000;
 }
 
+/* === CONTENEDOR FIJO === */
+.logout-container {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 1000;
+}
+
 /* === BOTÓN BASE === */
 #logout-btn {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  background: #e5e7eb; /* gris clarito */
-  color: #1f2937; /* texto e ícono oscuros */
+  background: #e5e7eb;
+  color: #1f2937;
   border: none;
   padding: 10px 14px;
   border-radius: 16px;
@@ -505,32 +512,33 @@ body {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   white-space: nowrap;
-  max-width: 44px; /* contraído por defecto */
+  max-width: 44px;
   transition: max-width 0.3s ease, background-color 0.3s ease;
 }
 
-/* === ICONO SVG === */
+/* === ICONO === */
 #logout-btn svg {
-  stroke: #1f2937; /* oscuro como el texto */
+  stroke: #1f2937;
   flex-shrink: 0;
 }
 
-/* === CONTENEDOR DE TEXTO === */
+/* === CONTENEDOR DEL TEXTO === */
 .logout-text {
-  margin-left: 8px;
+  overflow: hidden;
+  display: inline-block;
+  white-space: nowrap;
+  width: 0;
   opacity: 0;
-  transform: translateX(20px); /* desplazado fuera */
-  transition: transform 0.3s ease, opacity 0.3s ease;
-  pointer-events: none; /* evita que el mouse lo active fuera del hover */
+  transition: width 0.3s ease, opacity 0.3s ease;
 }
 
-/* === EXPANSIÓN CON HOVER === */
+/* === AL HACER HOVER: EXPANDE EL BOTÓN Y MUESTRA EL TEXTO === */
 #logout-btn:hover {
   max-width: 160px;
 }
 
 #logout-btn:hover .logout-text {
+  width: auto;
   opacity: 1;
-  transform: translateX(0);
-  pointer-events: auto;
+  margin-left: 8px;
 }
