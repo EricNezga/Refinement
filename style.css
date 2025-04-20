@@ -493,7 +493,7 @@ body {
   overflow: hidden;
   white-space: nowrap;
   width: 44px;
-  transition: max-width 0.3s ease, background-color 0.3s ease;
+  transition: width 0.3s ease, background-color 0.3s ease;
 }
 
 /* === ICONO === */
