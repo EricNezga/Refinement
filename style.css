@@ -486,11 +486,12 @@ body {
 #logout-btn {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   background: #1f2937;
   color: white;
   border: none;
-  padding: 10px 14px;
+  padding: 10px;
   border-radius: 12px;
   font-family: 'Fredoka', sans-serif;
   font-weight: bold;
@@ -499,7 +500,7 @@ body {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   white-space: nowrap;
-  width: 44px; /* solo icono por defecto */
+  width: 0; /* solo icono por defecto */
 }
 
 /* SVG alineado */
@@ -519,6 +520,8 @@ body {
 /* Al hacer hover, mostrar texto y expandir */
 #logout-btn:hover {
   width: 160px;
+  justify-content: flex-start;
+  padding-left: 14px;
   background-color: #374151;
 }
 
