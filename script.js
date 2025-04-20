@@ -1,27 +1,24 @@
-// Obtener usuario
+// === USUARIO ===
 const username = localStorage.getItem("username");
-
-// Redirigir si no hay usuario y Saludo si existe
 if (!username) {
   window.location.href = "identificacion.html";
 } else {
-  const greetingEl = document.getElementById("user-greeting");
-  greetingEl.textContent = `Hola, ${username}!`;
+  document.getElementById("user-greeting").textContent = `Hola, ${username}!`;
 }
 
-// Cierre de sesión
+// === CIERRE DE SESIÓN ===
 document.getElementById("logout-btn").addEventListener("click", () => {
   localStorage.removeItem("username");
   window.location.href = "identificacion.html";
 });
 
-/* === Variables globales === */
+// === VARIABLES ===
 const storyPointDisplay = document.getElementById("story-point");
 const toggleBtn = document.getElementById("toggle-view");
 const wrapper = document.querySelector(".wrapper");
 const cardContents = document.querySelectorAll(".card-content");
 
-/* === Lógica para SP y selección de tarjetas === */
+// === SELECTOR DE TARJETAS ===
 function select(element, value) {
   const container = element.closest(".factor");
   const cards = container.querySelectorAll(".card-row");
@@ -69,7 +66,7 @@ function select(element, value) {
   bubble.style.animation = "pulse 0.25s ease";
 }
 
-/* === Toggle vista simple === */
+// === TOGGLE VISTA SIMPLE ===
 let isSimple = false;
 toggleBtn.addEventListener("click", () => {
   isSimple = !isSimple;
@@ -98,31 +95,20 @@ toggleBtn.addEventListener("click", () => {
     : `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye-icon"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg>`;
 });
 
-/* === FUNCIONALIDAD DE ENLACE Y PREVISUALIZACIÓN === */
-const taskUrlInput = document.getElementById("task-url");
-const previewContainer = document.getElementById("preview-container");
-const taskPreview = document.getElementById("task-preview");
-const previewUrlDisplay = document.getElementById("preview-url-display");
+// === MOSTRAR TAREA ACTIVA ===
+const taskInput = document.getElementById("task-url");
 const loadPreviewBtn = document.getElementById("load-preview");
-const togglePreviewBtn = document.getElementById("toggle-preview");
+const taskBanner = document.getElementById("active-task-banner");
+const taskIdDisplay = document.getElementById("active-task-id");
 
 loadPreviewBtn.addEventListener("click", () => {
-  const url = taskUrlInput.value.trim();
+  const url = taskInput.value.trim();
   if (!url) return;
 
-  // Validación básica del enlace
-  const hasProtocol = /^https?:\/\//i.test(url);
-  const fullUrl = hasProtocol ? url : `https://${url}`;
+  // Extrae algo tipo SM-2060 de la URL
+  const match = url.match(/([A-Z]+-\d+)/i);
+  const taskId = match ? match[1].toUpperCase() : "Tarea no reconocida";
 
-  taskPreview.src = fullUrl;
-  previewUrlDisplay.textContent = fullUrl;
-  previewContainer.classList.remove("hidden");
-  previewContainer.classList.remove("minimized");
-});
-
-togglePreviewBtn.addEventListener("click", () => {
-  previewContainer.classList.toggle("minimized");
-  togglePreviewBtn.textContent = previewContainer.classList.contains("minimized")
-    ? "Mostrar"
-    : "Ocultar";
+  taskIdDisplay.textContent = `Tarea activa: ${taskId}`;
+  taskBanner.classList.remove("hidden");
 });
