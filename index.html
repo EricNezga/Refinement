@@ -3,19 +3,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Refinamiento Ágil</title>
+  <title>Refinador</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
+  <!-- ========== CABECERA ========== -->
   <div class="header">
-    <h1 class="title">Refinamiento Ágil</h1>
+    <h1 class="title">Refinador</h1>
     <h2 id="user-greeting"></h2>
+
+    <!-- === Controles superiores === -->
     <div class="controls">
-      <button id="logout-btn">Cerrar sesión</button>
+      <!-- Botón de cambiar vista -->
       <button id="toggle-view" title="Cambiar vista">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye-icon"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye-icon">
+          <path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/>
+          <circle cx="12" cy="12" r="3"/>
+        </svg>
       </button>
+
+      <!-- Display de Story Points -->
       <div class="sp-badge">
         <div class="sp-title">SP</div>
         <div id="story-point">-</div>
@@ -23,20 +31,21 @@
     </div>
   </div>
 
-  <!-- NUEVO: Banner visual para mostrar el ID de la tarea -->
+  <!-- ========== BANNER DE TAREA ACTIVA ========== -->
   <div id="active-task-banner" class="hidden">
     <span id="active-task-id"></span>
   </div>
 
-  <!-- NUEVO BLOQUE: Input para enlace -->
+  <!-- ========== INPUT DE ENLACE DE TAREA ========== -->
   <div class="task-link-wrapper">
     <label for="task-url">Enlace de la tarea:</label>
     <input type="url" id="task-url" placeholder="https://ejemplo.com/tarea" />
     <button id="load-preview">Mostrar</button>
   </div>
 
-  <!-- FACTORES -->
-  <div class="wrapper"> <!-- JS alternará .simple aquí -->
+  <!-- ========== FACTORES DE VALORACIÓN ========== -->
+  <div class="wrapper">
+    <!-- === COMPLEJIDAD === -->
     <div class="factor" data-factor="Complejidad">
       <div class="bubble" id="bubble-complejidad"></div>
       <h2>Complejidad</h2>
@@ -50,10 +59,11 @@
       </div>
       <div class="card-row" onclick="select(this, 3)" data-value="3">
         <div class="label">Alta</div>
-        <div class="card-content"><p>Nueva lógica, múltiples areas de impacto</p></div>
+        <div class="card-content"><p>Nueva lógica, múltiples áreas de impacto</p></div>
       </div>
     </div>
 
+    <!-- === INCERTIDUMBRE === -->
     <div class="factor" data-factor="Incertidumbre">
       <div class="bubble" id="bubble-incertidumbre"></div>
       <h2>Incertidumbre</h2>
@@ -71,6 +81,7 @@
       </div>
     </div>
 
+    <!-- === ESFUERZO === -->
     <div class="factor" data-factor="Esfuerzo">
       <div class="bubble" id="bubble-esfuerzo"></div>
       <h2>Esfuerzo</h2>
@@ -89,6 +100,19 @@
     </div>
   </div>
 
+  <!-- ========== BOTÓN DE CIERRE DE SESIÓN FIJO ========== -->
+  <div class="logout-container">
+    <button id="logout-btn" title="Cerrar sesión">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-log-out">
+        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+        <polyline points="16 17 21 12 16 7"/>
+        <line x1="21" y1="12" x2="9" y2="12"/>
+      </svg>
+      <span>Cerrar sesión</span>
+    </button>
+  </div>
+
+  <!-- ========== SCRIPT PRINCIPAL ========== -->
   <script src="script.js"></script>
 </body>
 </html>
