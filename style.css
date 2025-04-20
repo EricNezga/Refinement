@@ -1,12 +1,6 @@
 /* === ESTILO GENERAL === */
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500&display=swap');
 
-.main-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 24px;
-}
-
 body {
   font-family: 'Fredoka', sans-serif;
   background: #fef3c7;
@@ -19,75 +13,99 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 30px;
-  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .title {
   font-size: 28px;
   font-weight: bold;
-  margin: 0;
+  margin: 0 0 16px;
 }
 
-.controls {
+.main-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.task-link-wrapper {
   display: flex;
   gap: 12px;
-  position: absolute;
-  right: 30px;
-  top: 30px;
-}
-
-#toggle-view {
-  display: none;
-  /* background: white;
-  border: none;
-  padding: 6px 8px;
-  border-radius: 8px;
-  cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); */
-}
-
-.sp-badge {
-  display: flex;
-  gap: 8px;
   align-items: center;
-  background: #1f2937;
-  padding: 10px 16px;
-  border-radius: 16px;
-  color: white;
-  font-size: 16px;
-  font-weight: bold;
+  margin-bottom: 24px;
 }
 
-/* === WRAPPER Y COLUMNAS === */
+.task-link-wrapper input {
+  flex: 0 1 400px;
+}
+
 .wrapper {
   display: flex;
+  flex-direction: row;
+  gap: 40px;
+  align-items: flex-start;
   justify-content: center;
-  gap: 30px;
   flex-wrap: wrap;
-  padding: 0 20px 50px;
-  position: relative;
-  top: 10px; /* desplaza hacia abajo 10px */
-  align-items: stretch; /* fuerza altura igualada */
 }
 
-.factor {
-  background: #f9fafb; /* Antes: #fef3c7 - Cambiado a gris claro */
-  /* border: 2px solid #fcd34d; /* Antes: 4px - más fino, más elegante */
-  border-radius: 16px; /* Antes: 24px - menos redondo, más uniforme con el login */
-  padding: 32px 24px; /* Más espacioso, como el login */
-  min-height: 280px;
+.factors-column {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex: 1;
+}
+
+.summary-column {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  width: 280px;
-  position: relative;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);  text-align: center;
+  align-items: stretch;
+  gap: 20px;
+  width: 240px;
+}
+
+.sp-result-box {
+  background: #1f2937;
+  color: white;
+  font-weight: bold;
+  font-size: 24px;
+  padding: 20px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+}
+
+.confirm-selection-btn {
+  background: #facc15;
+  border: none;
+  border-radius: 12px;
+  padding: 12px;
+  font-weight: bold;
+  font-family: 'Fredoka', sans-serif;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.confirm-selection-btn:hover {
+  background-color: #fbbf24;
+}
+
+/* === FACTOR CARD BASE (el resto permanece igual) === */
+.factor {
+  background: #f9fafb;
+  border-radius: 16px;
+  padding: 24px 20px;
+  min-height: 250px;
+  width: 240px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  text-align: center;
   transition: all 0.3s ease;
 }
 
 .factor h2 {
   margin: 0 0 10px;
-  font-size: 20px;
+  font-size: 18px;
   color: #111827;
 }
 
