@@ -200,7 +200,7 @@ body {
 /* === Colores pastel en las burbujas según valor === */
 .bubble[data-value="1"] {
   background-color: #34d399;  /* Verde */
-  color: #064e3b;
+  color: white;
 }
 
 .bubble[data-value="2"] {
