@@ -75,15 +75,14 @@ body {
   justify-content: flex-start;
   width: 280px;
   position: relative;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Sombra tipo login */
-  text-align: center;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);  text-align: center;
   transition: all 0.3s ease;
 }
 
 .factor h2 {
   margin: 0 0 10px;
   font-size: 20px;
-  color: #1e293b;
+  color: #111827;
 }
 
 /* === CARDS - Bloques con texto (cards) y label === */
@@ -200,7 +199,7 @@ body {
 /* === Colores pastel en las burbujas según valor === */
 .bubble[data-value="1"] {
   background-color: #34d399;  /* Verde */
-  color: white;
+  color: white; 
 }
 
 .bubble[data-value="2"] {
