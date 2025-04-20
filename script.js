@@ -111,4 +111,5 @@ loadPreviewBtn.addEventListener("click", () => {
 
   taskIdDisplay.textContent = `Tarea activa: ${taskId}`;
   taskBanner.classList.remove("hidden");
+  taskBanner.classList.add("visible");
 });
