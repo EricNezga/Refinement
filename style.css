@@ -509,10 +509,9 @@ body {
 
 /* Texto oculto suavemente por defecto */
 #logout-btn .logout-text {
-  margin-left: auto;
+  transform: translateX(40px); /* lo empuja completamente fuera del botón */
   opacity: 0;
-  transform: translateX(-12px);
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  transition: transform 0.3s ease, opacity 0.3s ease;
   display: inline-block;
 }
 
