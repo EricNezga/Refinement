@@ -108,7 +108,7 @@ body {
 .card-row:hover {
   border-color: #fcd34d;
   background: #fef9c3;
-  transform: scale(1.05);
+  /*transform: scale(1.05);*/
 }
 
 /* Accesibilidad: enfoque visible */
