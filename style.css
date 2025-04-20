@@ -491,7 +491,7 @@ body {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   white-space: nowrap;
-  max-width: 44px;
+  width: 44px;
   transition: max-width 0.3s ease, background-color 0.3s ease;
 }
 
@@ -508,6 +508,7 @@ body {
   white-space: nowrap;
   width: 0;
   opacity: 0;
+  margin-left: 12px;
   transition: width 0.3s ease, opacity 0.3s ease;
 }
 
@@ -519,5 +520,5 @@ body {
 #logout-btn:hover .logout-text {
   width: auto;
   opacity: 1;
-  margin-left: 8px;
+  margin-left: 12px;
 }
