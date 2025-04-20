@@ -27,27 +27,26 @@
 
   <!-- ========== CONTENIDO PRINCIPAL CENTRALIZADO ========== -->
   <main class="main-container">
-    <h1 class="title">Refinador</h1>
-
-    <!-- === Input para enlace de tarea === -->
-    <div class="task-link-wrapper compact">
-      <label for="task-url">Enlace de la tarea:</label>
-      <div class="input-button-row">
-        <input type="url" id="task-url" placeholder="https://ejemplo.com/tarea" />
-        <button id="load-preview">Mostrar</button>
-      </div>
-    </div>
-
-    <!-- === Banner de tarea activa === -->
-    <div id="active-task-banner" class="hidden">
-      <span id="active-task-id"></span>
-    </div>
-
-    <!-- === Layout dividido: factores + resumen === -->
     <div class="content-layout">
-
-      <!-- === FACTORES === -->
+      <!-- === FACTORES Y FORMULARIO === -->
       <div class="factors-column">
+        <h1 class="title">Refinador</h1>
+
+        <!-- Input para enlace de tarea -->
+        <div class="task-link-wrapper compact">
+          <label for="task-url">Enlace de la tarea:</label>
+          <div class="input-button-row">
+            <input type="url" id="task-url" placeholder="https://ejemplo.com/tarea" />
+            <button id="load-preview">Mostrar</button>
+          </div>
+        </div>
+
+        <!-- Banner de tarea activa -->
+        <div id="active-task-banner" class="hidden">
+          <span id="active-task-id"></span>
+        </div>
+
+        <!-- === FACTORES === -->
         <div class="wrapper">
           <!-- COMPLEJIDAD -->
           <div class="factor" data-factor="Complejidad">
@@ -105,7 +104,7 @@
         </div>
       </div>
 
-      <!-- === RESUMEN + CONFIRMACIÓN === -->
+      <!-- === PANEL RESUMEN === -->
       <div class="summary-column">
         <div class="sp-result-box">
           <span class="label">Story Points globales:</span>
