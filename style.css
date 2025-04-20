@@ -502,24 +502,28 @@ body {
   flex-shrink: 0;
 }
 
-/* === CONTENEDOR DEL TEXTO === */
+
+/* === TEXTO OCULTO (animación suave) === */
 .logout-text {
-  overflow: hidden;
   display: inline-block;
+  overflow: hidden;
   white-space: nowrap;
   width: 0;
   opacity: 0;
-  margin-left: 12px;
-  transition: width 0.3s ease, opacity 0.3s ease;
+  transform: translateX(-10px);
+  transition: 
+    width 0.3s ease,
+    opacity 0.3s ease,
+    transform 0.3s ease;
 }
 
-/* === AL HACER HOVER: EXPANDE EL BOTÓN Y MUESTRA EL TEXTO === */
+/* === AL HACER HOVER: EXPANDE BOTÓN Y MUESTRA TEXTO SUAVEMENTE === */
 #logout-btn:hover {
   width: 160px;
 }
 
 #logout-btn:hover .logout-text {
-  width: auto;
+  width: 100px;          /* Fijo para animar suavemente */
   opacity: 1;
-  margin-left: 12px;
+  transform: translateX(0);
 }
