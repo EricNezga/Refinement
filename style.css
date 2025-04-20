@@ -467,29 +467,8 @@ body {
   text-decoration: underline;
 }
 
-.logout-container {
-  position: fixed;
-  bottom: 20px;
-  left: 20px;
-  z-index: 1000;
-}
+
 /* === BOTÓN DE CIERRE DE SESIÓN === */
-.logout-container {
-  position: fixed;
-  bottom: 20px;
-  left: 20px;
-  z-index: 1000;
-}
-
-/* === CONTENEDOR FIJO === */
-.logout-container {
-  position: fixed;
-  bottom: 20px;
-  left: 20px;
-  z-index: 1000;
-}
-
-/* === CONTENEDOR FIJO === */
 .logout-container {
   position: fixed;
   bottom: 20px;
@@ -534,7 +513,7 @@ body {
 
 /* === AL HACER HOVER: EXPANDE EL BOTÓN Y MUESTRA EL TEXTO === */
 #logout-btn:hover {
-  max-width: 160px;
+  width: 160px;
 }
 
 #logout-btn:hover .logout-text {
