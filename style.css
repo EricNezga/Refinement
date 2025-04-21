@@ -585,39 +585,39 @@ body {
 
 /*  ------------ SP GLOBAL ------------- */
 
-.fixed-actions-wrapper {
+.top-actions {
   display: flex;
   gap: 12px;
-  position: absolute;
-  right: 0;
-  top: -90px; /* posicionado por encima */
+  justify-content: flex-end;
+  margin: -10px 0 10px;
+  padding-right: 10px;
 }
 
-.fixed-actions-wrapper .sp-result-box {
+.top-actions .sp-result-box.compact {
   width: 70px;
   height: 70px;
-  font-size: 20px;
-  padding: 10px;
+  font-size: 16px;
+  padding: 8px;
+  border-radius: 12px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  justify-content: center;
 }
 
-.fixed-actions-wrapper .sp-result-box .label {
-  font-size: 11px;
+.top-actions .sp-result-box.compact .label {
+  font-size: 12px;
   margin-bottom: 4px;
   color: #facc15;
-  text-align: center;
 }
 
-.fixed-actions-wrapper .confirm-selection-btn {
+.top-actions .confirm-selection-btn.compact {
   width: 70px;
   height: 70px;
-  font-size: 11px;
+  padding: 8px;
+  font-size: 12px;
+  border-radius: 12px;
   text-align: center;
-  padding: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
