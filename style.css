@@ -490,39 +490,6 @@ body {
   height: 460px;
 }
 
-/* === BANNER DE TAREA ACTIVA === */
-#active-task-banner {
-  background: #fef3c7;
-  border: 4px solid #fcd34d;
-  color: #1e2937;
-  font-weight: bold;
-  font-size: 20px;
-  padding: 16px 32px;
-  margin: 10px 30px 20px;
-  border-radius: 16px;
-  text-align: center;
-  box-shadow: 4px 4px 0 #fbbf24;
-  display: none; /* oculto por defecto */
-}
-
-#active-task-banner.visible {
-  display: block;
-}
-
-#active-task-id {
-  font-size: 24px;
-  color: #b91c1c;
-  margin-top: 6px;
-  cursor: pointer;
-  transition: transform 0.2s ease;
-}
-
-#active-task-id:hover {
-  transform: scale(1.05);
-  text-decoration: underline;
-}
-
-
 /* === BOTÓN DE CIERRE DE SESIÓN === */
 .logout-container {
   position: fixed;
