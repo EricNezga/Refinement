@@ -27,91 +27,88 @@
 
   <!-- ========== CONTENIDO PRINCIPAL CENTRALIZADO ========== -->
   <main class="main-container">
-    <div class="content-layout">
-      <!-- === FACTORES Y FORMULARIO === -->
-      <div class="factors-column">
-        <h1 class="title">Refinador</h1>
+    <div class="left-column">
+      <h1 class="title">Refinador</h1>
 
-        <!-- Input para enlace de tarea -->
-        <div class="task-link-wrapper compact">
-          <label for="task-url">Enlace de la tarea:</label>
-          <div class="input-button-row">
-            <input type="url" id="task-url" placeholder="https://ejemplo.com/tarea" />
-            <button id="load-preview">Mostrar</button>
-          </div>
-        </div>
-
-        <!-- Banner de tarea activa -->
-        <div id="active-task-banner" class="hidden">
-          <span id="active-task-id"></span>
-        </div>
-
-        <!-- === FACTORES === -->
-        <div class="wrapper">
-          <!-- COMPLEJIDAD -->
-          <div class="factor" data-factor="Complejidad">
-            <div class="bubble" id="bubble-complejidad"></div>
-            <h2>Complejidad</h2>
-            <div class="card-row" onclick="select(this, 1)" data-value="1">
-              <div class="label">Baja</div>
-              <div class="card-content"><p>Fix puntual, DDBB, sin riesgo técnico</p></div>
-            </div>
-            <div class="card-row" onclick="select(this, 2)" data-value="2">
-              <div class="label">Media</div>
-              <div class="card-content"><p>Cambios en código existente, requiere investigación previa</p></div>
-            </div>
-            <div class="card-row" onclick="select(this, 3)" data-value="3">
-              <div class="label">Alta</div>
-              <div class="card-content"><p>Nueva lógica, múltiples áreas de impacto</p></div>
-            </div>
-          </div>
-
-          <!-- INCERTIDUMBRE -->
-          <div class="factor" data-factor="Incertidumbre">
-            <div class="bubble" id="bubble-incertidumbre"></div>
-            <h2>Incertidumbre</h2>
-            <div class="card-row" onclick="select(this, 1)" data-value="1">
-              <div class="label">Baja</div>
-              <div class="card-content"><p>Todo claro, historia bien definida</p></div>
-            </div>
-            <div class="card-row" onclick="select(this, 2)" data-value="2">
-              <div class="label">Media</div>
-              <div class="card-content"><p>Falta algún criterio, depende de terceros</p></div>
-            </div>
-            <div class="card-row" onclick="select(this, 3)" data-value="3">
-              <div class="label">Alta</div>
-              <div class="card-content"><p>Definición ambigua, faltan datos clave para avanzar</p></div>
-            </div>
-          </div>
-
-          <!-- ESFUERZO -->
-          <div class="factor" data-factor="Esfuerzo">
-            <div class="bubble" id="bubble-esfuerzo"></div>
-            <h2>Esfuerzo</h2>
-            <div class="card-row" onclick="select(this, 1)" data-value="1">
-              <div class="label">Bajo</div>
-              <div class="card-content"><p>Rápido de ejecutar, es cosa de unas pocas líneas</p></div>
-            </div>
-            <div class="card-row" onclick="select(this, 2)" data-value="2">
-              <div class="label">Medio</div>
-              <div class="card-content"><p>Podría necesitar algo de revisión y soporte</p></div>
-            </div>
-            <div class="card-row" onclick="select(this, 3)" data-value="3">
-              <div class="label">Alto</div>
-              <div class="card-content"><p>Trabajo intenso y con muchos frentes</p></div>
-            </div>
-          </div>
+      <!-- === Input para enlace de tarea === -->
+      <div class="task-link-wrapper compact">
+        <label for="task-url">Enlace de la tarea:</label>
+        <div class="input-button-row">
+          <input type="url" id="task-url" placeholder="https://ejemplo.com/tarea" />
+          <button id="load-preview">Mostrar</button>
         </div>
       </div>
 
-      <!-- === PANEL RESUMEN === -->
-      <div class="summary-column">
-        <div class="sp-result-box">
-          <span class="label">Story Points globales:</span>
-          <div id="average-sp">8</div>
-        </div>
-        <button class="confirm-selection-btn">Confirmar selección</button>
+      <!-- === Banner de tarea activa === -->
+      <div id="active-task-banner" class="hidden">
+        <span id="active-task-id"></span>
       </div>
+
+      <!-- === FACTORES === -->
+      <div class="wrapper compact">
+        <!-- COMPLEJIDAD -->
+        <div class="factor" data-factor="Complejidad">
+          <div class="bubble" id="bubble-complejidad"></div>
+          <h2>Complejidad</h2>
+          <div class="card-row" onclick="select(this, 1)" data-value="1">
+            <div class="label">Baja</div>
+            <div class="card-content"><p>Fix puntual, DDBB, sin riesgo técnico</p></div>
+          </div>
+          <div class="card-row" onclick="select(this, 2)" data-value="2">
+            <div class="label">Media</div>
+            <div class="card-content"><p>Cambios en código existente, requiere investigación previa</p></div>
+          </div>
+          <div class="card-row" onclick="select(this, 3)" data-value="3">
+            <div class="label">Alta</div>
+            <div class="card-content"><p>Nueva lógica, múltiples áreas de impacto</p></div>
+          </div>
+        </div>
+
+        <!-- INCERTIDUMBRE -->
+        <div class="factor" data-factor="Incertidumbre">
+          <div class="bubble" id="bubble-incertidumbre"></div>
+          <h2>Incertidumbre</h2>
+          <div class="card-row" onclick="select(this, 1)" data-value="1">
+            <div class="label">Baja</div>
+            <div class="card-content"><p>Todo claro, historia bien definida</p></div>
+          </div>
+          <div class="card-row" onclick="select(this, 2)" data-value="2">
+            <div class="label">Media</div>
+            <div class="card-content"><p>Falta algún criterio, depende de terceros</p></div>
+          </div>
+          <div class="card-row" onclick="select(this, 3)" data-value="3">
+            <div class="label">Alta</div>
+            <div class="card-content"><p>Definición ambigua, faltan datos clave para avanzar</p></div>
+          </div>
+        </div>
+
+        <!-- ESFUERZO -->
+        <div class="factor" data-factor="Esfuerzo">
+          <div class="bubble" id="bubble-esfuerzo"></div>
+          <h2>Esfuerzo</h2>
+          <div class="card-row" onclick="select(this, 1)" data-value="1">
+            <div class="label">Bajo</div>
+            <div class="card-content"><p>Rápido de ejecutar, es cosa de unas pocas líneas</p></div>
+          </div>
+          <div class="card-row" onclick="select(this, 2)" data-value="2">
+            <div class="label">Medio</div>
+            <div class="card-content"><p>Podría necesitar algo de revisión y soporte</p></div>
+          </div>
+          <div class="card-row" onclick="select(this, 3)" data-value="3">
+            <div class="label">Alto</div>
+            <div class="card-content"><p>Trabajo intenso y con muchos frentes</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- === RESUMEN + CONFIRMACIÓN === -->
+    <div class="summary-column">
+      <div class="sp-result-box">
+        <span class="label">Story Points globales:</span>
+        <div id="average-sp">8</div>
+      </div>
+      <button class="confirm-selection-btn">Confirmar selección</button>
     </div>
   </main>
 
