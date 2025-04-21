@@ -25,29 +25,32 @@
   <!-- ========== CONTENIDO PRINCIPAL ========== -->
   <main class="main-container">
 
-    <!-- Input de tarea y botón -->
-    <div class="task-link-wrapper">
-      <label for="task-url">Enlace de la tarea:</label>
-      <input type="url" id="task-url" placeholder="https://ejemplo.com/tarea" />
-      <button id="load-preview">Mostrar</button>
-    </div>
-
-    <!-- Carrusel de tareas -->
-    <div class="task-carousel">
-      <button class="arrow-btn" id="prev-task">&#8592;</button>
-      <div id="active-task-banner">
-        <span id="active-task-id">SM-2024</span>
+    <!-- Cabecera combinada con input, carrusel y SP/OK -->
+    <div class="task-header-row">
+      <!-- Input de tarea y botón -->
+      <div class="task-link-wrapper">
+        <label for="task-url">Enlace de la tarea:</label>
+        <input type="url" id="task-url" placeholder="https://ejemplo.com/tarea" />
+        <button id="load-preview">Mostrar</button>
       </div>
-      <button class="arrow-btn" id="next-task">&#8594;</button>
-    </div>
 
-    <!-- Acciones superiores: SP Global y Confirmar -->
-    <div class="top-actions">
-      <div class="sp-result-box compact">
-        <span class="label">SP</span>
-        <div id="average-sp">8</div>
+      <!-- Carrusel de tareas -->
+      <div class="task-carousel">
+        <button class="arrow-btn" id="prev-task">&#8592;</button>
+        <div id="active-task-banner">
+          <span id="active-task-id">SM-2024</span>
+        </div>
+        <button class="arrow-btn" id="next-task">&#8594;</button>
       </div>
-      <button class="confirm-selection-btn compact">OK</button>
+
+      <!-- Acciones superiores: SP Global y Confirmar -->
+      <div class="top-actions">
+        <div class="sp-result-box compact">
+          <span class="label">SP</span>
+          <div id="average-sp">8</div>
+        </div>
+        <button class="confirm-selection-btn compact">OK</button>
+      </div>
     </div>
 
     <!-- === FACTORES === -->
