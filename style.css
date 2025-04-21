@@ -24,7 +24,7 @@ body {
 }
 
 .main-container {
-  max-width: 1200px;
+  max-width: 1440px;
   margin: 0 auto;
   padding: 20px;
 }
@@ -43,7 +43,7 @@ body {
 .wrapper {
   display: flex;
   flex-direction: row;
-  gap: 24px; /* Reducido de 40px a 24px */
+  gap: 30px; /* Restauramos a 30px como antes */
   align-items: flex-start;
   justify-content: center;
   flex-wrap: wrap;
@@ -108,9 +108,10 @@ body {
 .factor {
   background: #f9fafb;
   border-radius: 16px;
-  padding: 24px 20px;
-  min-height: 250px;
-  width: 220px;
+  padding: 32px 24px;
+  min-height: 280px;
+  width: 280px;
+  position: relative;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
   text-align: center;
   transition: all 0.3s ease;
