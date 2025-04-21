@@ -23,7 +23,7 @@ body {
   gap: 12px;
   font-size: 32px;
   font-weight: bold;
-  margin: 0 0 20px;
+  margin: 0;
 }
 
 .title svg {
@@ -34,7 +34,7 @@ body {
 .main-container {
   max-width: 1440px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 0 30px 30px;
 }
 
 .task-link-wrapper {
@@ -42,8 +42,8 @@ body {
   flex-wrap: wrap;
   gap: 12px;
   align-items: center;
-  margin-bottom: 16px;
   justify-content: flex-start;
+  margin-bottom: 12px;
 }
 
 .task-link-wrapper label {
@@ -77,11 +77,25 @@ body {
 }
 
 .task-carousel {
-  position: relative;
-  margin: 10px 0 30px;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  margin-bottom: 24px;
+  gap: 12px;
+}
+
+.task-carousel .arrow-btn {
+  background: #fcd34d;
+  border: none;
+  border-radius: 8px;
+  padding: 6px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.task-carousel .arrow-btn:hover {
+  background: #fbbf24;
 }
 
 #active-task-banner {
@@ -94,107 +108,69 @@ body {
   min-width: 240px;
   text-align: center;
   border: 3px solid #fcd34d;
-  z-index: 1;
 }
 
-.task-carousel .arrow-btn {
-  background: #fcd34d;
-  border: none;
-  border-radius: 8px;
-  padding: 6px;
-  cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  margin: 0 10px;
-  transition: background 0.3s ease;
-}
-
-.task-carousel .arrow-btn:hover {
-  background: #fbbf24;
-}
-
-/* === SP BADGE REDISEÑADO === */
-.sp-badge {
-  background: #1f2937;
-  color: white;
-  font-weight: bold;
-  font-size: 14px;
-  padding: 10px;
-  border-radius: 12px;
-  width: 48px;
-  height: 48px;
+.top-actions {
   display: flex;
-  flex-direction: column;
+  justify-content: flex-end;
   align-items: center;
-  justify-content: center;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  gap: 12px;
+  margin-bottom: 24px;
 }
 
-.sp-badge .sp-title {
-  font-size: 10px;
-  background: #facc15;
-  color: #1f2937;
-  border-radius: 8px;
-  padding: 2px 6px;
-  margin-bottom: 2px;
-  font-weight: bold;
-}
-  
-.factors-column {
-  display: flex;
-  gap: 16px; /* Reducido de 30px a 16px */
-  flex-wrap: wrap;
-  justify-content: center;
-  flex: 1;
+.sp-result-box.compact,
+.confirm-selection-btn.compact {
+  width: 70px;
+  height: 70px;
 }
 
-.summary-column {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-  width: 100px;
-  min-width: 100px;
-}
-
-.sp-result-box {
-  width: 100px;
-  height: 100px;
+.sp-result-box.compact {
   background: #1f2937;
   color: white;
   font-weight: bold;
   font-size: 18px;
-  padding: 10px;
-  border-radius: 16px;
+  border-radius: 12px;
   text-align: center;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  padding: 8px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.confirm-selection-btn {
-  width: 100px;
-  height: 100px;
+.sp-result-box.compact .label {
+  font-size: 12px;
+  margin-bottom: 4px;
+  color: #facc15;
+}
+
+.confirm-selection-btn.compact {
   background: #facc15;
   border: none;
-  border-radius: 16px;
-  padding: 12px;
+  border-radius: 12px;
   font-weight: bold;
   font-family: 'Fredoka', sans-serif;
+  font-size: 12px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
+  transition: background-color 0.3s ease;
 }
 
-.confirm-selection-btn:hover {
+.confirm-selection-btn.compact:hover {
   background-color: #fbbf24;
 }
 
-/* === FACTOR CARD BASE (el resto permanece igual) === */
+.wrapper {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
 .factor {
   background: #f9fafb;
   border-radius: 16px;
@@ -213,7 +189,6 @@ body {
   color: #111827;
 }
 
-/* === CARDS - Bloques con texto (cards) y label === */
 .card-row {
   background: #fff;
   border: 2px solid transparent;
@@ -227,32 +202,14 @@ body {
   transition: all 0.2s ease-in-out;
 }
 
-.card-content {
-  opacity: 1;
-  visibility: visible;
-  transition: opacity 0.3s ease 0.2s, visibility 0.3s ease 0.2s;
-}
-
-.card-row:hover {
-  border-color: #fcd34d;
-  background: #fef9c3;
-  /*transform: scale(1.05);*/
-}
-
-/* Accesibilidad: enfoque visible */
-.card-row:focus {
-  outline: 3px dashed #1e293b;
-  outline-offset: 4px;
-  transition: outline-offset 0.2s ease;
-}
-
 .card-content p {
   margin: 0;
+  color: #111827;
 }
 
 .label {
   background: #facc15;
-  color: #1e293b;
+  color: #1e2937;
   padding: 8px;
   border-radius: 12px;
   font-weight: bold;
@@ -263,47 +220,44 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* === Estilos de la tarjeta de Texto selected por valor === */
+.card-row:hover {
+  border-color: #fcd34d;
+  background: #fef9c3;
+}
+
 .card-row.selected[data-value="1"] {
-  background-color: #d1fae5; /* verde suave */
+  background-color: #d1fae5;
   color: #065f46;
 }
 
 .card-row.selected[data-value="2"] {
-  background-color: #fde68a; /* naranja pastel */
+  background-color: #fde68a;
   color: #78350f;
 }
 
 .card-row.selected[data-value="3"] {
-  background-color: #fecaca; /* rojo claro */
+  background-color: #fecaca;
   color: #7f1d1d;
 }
 
-/* === General: cuando está seleccionada === */
-.card-row.selected p {
-  color: #1e293b; /* azul-gris legible */
+.card-row.selected .label {
+  color: white;
 }
 
-/* === Estilo del LABEL en selección por valor === */
 .card-row.selected[data-value="1"] .label {
-  background-color: #10b981;  /* verde más fuerte */
-  color: white;
+  background-color: #10b981;
 }
 
 .card-row.selected[data-value="2"] .label {
-  background-color: #f59e0b;  /* naranja fuerte */
-  color: white;
+  background-color: #f59e0b;
 }
 
 .card-row.selected[data-value="3"] .label {
-  background-color: #ef4444;  /* rojo fuerte */
-  color: white;
+  background-color: #ef4444;
 }
 
-/* === BURBUJAS === */
 .bubble {
   position: absolute;
   top: -15px;
@@ -318,218 +272,27 @@ body {
   display: none;
   justify-content: center;
   align-items: center;
-  animation: pop 0.4s ease;
 }
 
 .bubble.active {
   display: flex;
 }
 
-/* === Colores pastel en las burbujas según valor === */
 .bubble[data-value="1"] {
-  background-color: #34d399;  /* Verde */
-  color: #064e3b; 
+  background-color: #34d399;
+  color: #064e3b;
 }
 
 .bubble[data-value="2"] {
-  background-color: #fbbf24;  /* Amarillo/naranja */
+  background-color: #fbbf24;
   color: #78350f;
 }
 
 .bubble[data-value="3"] {
-  background-color: #f87171;  /* Rojo suave */
+  background-color: #f87171;
   color: #7f1d1d;
 }
 
-@keyframes pop {
-  from {
-    transform: scale(0.6);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-/* === VISTA SIMPLE === */
-.wrapper.simple .factor {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  height: 280px;
-}
-
-.wrapper.simple .card-content {
-  opacity: 0;
-  visibility: hidden;
-  transition-delay: 0s;
-  transition-duration: 0.3s;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
-}
-
-.wrapper.simple .card-row {
-  display: flex;
-  justify-content: center; /* centra horizontalmente */
-  align-items: center;     /* centra verticalmente */
-  padding: 8px;
-  min-height: 56px;
-  background: #fff;  
-  box-shadow: none;
-  margin: 6px 0;
-  flex-direction: row;
-  transition: all 0.3s ease 0.3s; /* empieza tras el desvanecimiento del texto */
-}
-
-.wrapper.simple .label {
-  margin: 0 auto;
-  display: inline-flex;
-  background: #facc15;
-  writing-mode: horizontal-tb;
-  transform: none;
-  border: 2px solid #facc15;
-  color: #1e293b;
-  padding: 6px 10px;
-  font-size: 15px;
-  border-radius: 12px;
-  min-width: 100px;
-  width: auto;
-}
-
-.wrapper.simple .card-row.selected {
-  background: #fff;
-  border: none;
-  box-shadow: none;
-}
-
-.wrapper.simple .card-row.selected .label {
-  color: white;
-}
-
-/* Colores según valor */
-.wrapper.simple .card-row.selected[data-value="1"] .label {
-  background-color: #10b981;
-}
-
-.wrapper.simple .card-row.selected[data-value="2"] .label {
-  background-color: #f59e0b;
-}
-
-.wrapper.simple .card-row.selected[data-value="3"] .label {
-  background-color: #ef4444;
-}
-
-/* === ANIMACIÓN AL PULSAR CASILLAS === */
-@keyframes pulse {
-  0%   { transform: scale(1); }
-  50%  { transform: scale(1.03); }
-  100% { transform: scale(1); }
-}
-
-.card-row.selected {
-  will-change: background-color, transform;
-  animation: pulse 0.25s ease;
-}
-
-.bubble.active {
-  animation: pulse 0.25s ease;
-}
-
-/* Animación SP */
-@keyframes sp-wobble {
-  0%   { transform: rotate(0deg); }
-  20%  { transform: rotate(-4deg); }
-  40%  { transform: rotate(3deg); }
-  60%  { transform: rotate(-2deg); }
-  80%  { transform: rotate(1deg); }
-  100% { transform: rotate(0deg); }
-}
-
-.sp-badge.wobble {
-  animation: sp-wobble 0.4s ease;
-}
-
-/* === RESPONSIVE === */
-@media (max-width: 768px) {
-  .controls {
-    flex-direction: column;
-    align-items: flex-end;
-  }
-
-  #toggle-view {
-    display: none;
-  }
-}
-
-
-/* === CONTENEDOR DE VISTA PREVIA === */
-
-#toggle-view {
-  display: none !important;
-}
-
-#preview-container {
-  margin: 0 30px 30px;
-  border: 3px solid #fcd34d;
-  border-radius: 16px;
-  overflow: hidden;
-  background: white;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-  max-height: 500px;
-  transition: max-height 0.4s ease;
-}
-
-#preview-container.minimized {
-  max-height: 40px;
-}
-
-#preview-container.hidden {
-  display: none;
-}
-
-.preview-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #facc15;
-  padding: 10px 16px;
-  color: #1f2937;
-  font-weight: bold;
-  font-size: 15px;
-}
-
-#preview-url-display {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  max-width: 80%;
-}
-
-#toggle-preview {
-  background: transparent;
-  border: none;
-  font-weight: bold;
-  cursor: pointer;
-  color: #1f2937;
-  padding: 6px 10px;
-  border-radius: 8px;
-  transition: background-color 0.2s ease;
-}
-
-#toggle-preview:hover {
-  background-color: #fcd34d;
-}
-
-#task-preview {
-  border: none;
-  width: 100%;
-  height: 460px;
-}
-
-/* === BOTÓN DE CIERRE DE SESIÓN === */
 .logout-container {
   position: fixed;
   bottom: 20px;
@@ -537,7 +300,6 @@ body {
   z-index: 1000;
 }
 
-/* === BOTÓN BASE === */
 #logout-btn {
   display: flex;
   align-items: center;
@@ -557,14 +319,10 @@ body {
   transition: width 0.3s ease, background-color 0.3s ease;
 }
 
-/* === ICONO === */
-#logout-btn svg {
-  stroke: #1f2937;
-  flex-shrink: 0;
+#logout-btn:hover {
+  width: 160px;
 }
 
-
-/* === TEXTO OCULTO (animación suave) === */
 .logout-text {
   display: inline-block;
   overflow: hidden;
@@ -572,76 +330,11 @@ body {
   width: 0;
   opacity: 0;
   transform: translateX(-10px);
-  transition: 
-    width 0.3s ease,
-    opacity 0.3s ease,
-    transform 0.3s ease;
-}
-
-/* === AL HACER HOVER: EXPANDE BOTÓN Y MUESTRA TEXTO SUAVEMENTE === */
-#logout-btn:hover {
-  width: 160px;
+  transition: width 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
 }
 
 #logout-btn:hover .logout-text {
-  width: 100px;          /* Fijo para animar suavemente */
+  width: 100px;
   opacity: 1;
   transform: translateX(0);
-}
-
-/*  ------------ SP GLOBAL ------------- */
-
-.top-actions {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 12px;
-  margin-top: -10px;
-  margin-bottom: 16px;
-  padding-right: 20px;
-}
-
-/* SP box mini */
-.sp-result-box.compact {
-  width: 70px;
-  height: 70px;
-  background: #1f2937;
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
-  border-radius: 12px;
-  text-align: center;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-  padding: 8px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.sp-result-box.compact .label {
-  font-size: 12px;
-  margin-bottom: 4px;
-  color: #facc15;
-}
-
-/* Confirm button mini */
-.confirm-selection-btn.compact {
-  width: 70px;
-  height: 70px;
-  background: #facc15;
-  border: none;
-  border-radius: 12px;
-  font-weight: bold;
-  font-family: 'Fredoka', sans-serif;
-  font-size: 12px;
-  cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.3s ease;
-}
-
-.confirm-selection-btn.compact:hover {
-  background-color: #fbbf24;
 }
