@@ -13,7 +13,10 @@ document.getElementById("logout-btn").addEventListener("click", () => {
 });
 
 // === VARIABLES ===
-const storyPointDisplay = document.getElementById("story-point");
+const storyPointDisplay = document.getElementById("story-point"); // SP cabecera
+const averageSpDisplay = document.getElementById("average-sp");   // SP resumen lateral
+const spBox = document.getElementById("sp-local");                // Badge principal con animación
+
 const toggleBtn = document.getElementById("toggle-view");
 const wrapper = document.querySelector(".wrapper");
 const cardContents = document.querySelectorAll(".card-content");
@@ -44,31 +47,39 @@ function select(element, value) {
   else if (total === 8) sp = 13;
   else if (total === 9) sp = 21;
 
+  // Actualiza SP visualmente en los dos elementos
   storyPointDisplay.textContent = sp;
+  if (averageSpDisplay) averageSpDisplay.textContent = sp;
 
-  const spBox = document.querySelector(".sp-badge");
-  spBox.classList.remove("wobble");
-  void spBox.offsetWidth;
-  spBox.classList.add("wobble");
+  // Animación en el SP badge de cabecera
+  if (spBox) {
+    spBox.classList.remove("wobble");
+    void spBox.offsetWidth;
+    spBox.classList.add("wobble");
+  }
 
+  // Actualiza bubble del factor
   const factorName = container.dataset.factor.toLowerCase();
   const bubble = document.getElementById(`bubble-${factorName}`);
-  bubble.textContent = value;
-  bubble.setAttribute("data-value", value);
-  bubble.classList.add("active");
+  if (bubble) {
+    bubble.textContent = value;
+    bubble.setAttribute("data-value", value);
+    bubble.classList.add("active");
 
+    bubble.style.animation = "none";
+    void bubble.offsetWidth;
+    bubble.style.animation = "pulse 0.25s ease";
+  }
+
+  // Reinicia animación de la selección
   element.style.animation = "none";
   void element.offsetWidth;
   element.style.animation = "pulse 0.25s ease";
-
-  bubble.style.animation = "none";
-  void bubble.offsetWidth;
-  bubble.style.animation = "pulse 0.25s ease";
 }
 
 // === TOGGLE VISTA SIMPLE ===
 let isSimple = false;
-toggleBtn.addEventListener("click", () => {
+toggleBtn?.addEventListener("click", () => {
   isSimple = !isSimple;
   wrapper.classList.toggle("simple", isSimple);
 
@@ -90,9 +101,11 @@ toggleBtn.addEventListener("click", () => {
     }
   });
 
-  toggleBtn.innerHTML = isSimple
-    ? `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye-closed-icon"><path d="m15 18-.722-3.25"/><path d="M2 8a10.645 10.645 0 0 0 20 0"/><path d="m20 15-1.726-2.05"/><path d="m4 15 1.726-2.05"/><path d="m9 18 .722-3.25"/></svg>`
-    : `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye-icon"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg>`;
+  if (toggleBtn) {
+    toggleBtn.innerHTML = isSimple
+      ? `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye-closed-icon"><path d="m15 18-.722-3.25"/><path d="M2 8a10.645 10.645 0 0 0 20 0"/><path d="m20 15-1.726-2.05"/><path d="m4 15 1.726-2.05"/><path d="m9 18 .722-3.25"/></svg>`
+      : `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye-icon"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg>`;
+  }
 });
 
 // === MOSTRAR TAREA ACTIVA ===
@@ -105,7 +118,6 @@ loadPreviewBtn.addEventListener("click", () => {
   const url = taskInput.value.trim();
   if (!url) return;
 
-  // Extrae algo tipo SM-2060 de la URL
   const match = url.match(/([A-Z]+-\d+)/i);
   const taskId = match ? match[1].toUpperCase() : "Tarea no reconocida";
 
