@@ -18,9 +18,17 @@ body {
 }
 
 .title {
-  font-size: 28px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 32px;
   font-weight: bold;
-  margin: 0 0 16px;
+  margin: 0 0 20px;
+}
+
+.title svg {
+  width: 32px;
+  height: 32px;
 }
 
 .main-container {
@@ -31,24 +39,106 @@ body {
 
 .task-link-wrapper {
   display: flex;
+  flex-wrap: wrap;
   gap: 12px;
   align-items: center;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
+  justify-content: flex-start;
+}
+
+.task-link-wrapper label {
+  font-weight: bold;
+  color: #1e293b;
 }
 
 .task-link-wrapper input {
-  flex: 0 1 400px;
+  flex: 0 1 280px;
+  padding: 10px 14px;
+  border: 2px solid #fcd34d;
+  border-radius: 12px;
+  font-size: 14px;
+  font-family: 'Fredoka', sans-serif;
+  min-width: 200px;
 }
 
-.wrapper {
+#load-preview {
+  background: #facc15;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-weight: bold;
+  font-family: 'Fredoka', sans-serif;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#load-preview:hover {
+  background-color: #fbbf24;
+}
+
+.task-carousel {
+  position: relative;
+  margin: 10px 0 30px;
   display: flex;
-  flex-direction: row;
-  gap: 30px; /* Restauramos a 30px como antes */
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
 }
 
+#active-task-banner {
+  font-weight: bold;
+  font-size: 18px;
+  background: white;
+  border-radius: 12px;
+  padding: 12px 24px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  min-width: 240px;
+  text-align: center;
+  border: 3px solid #fcd34d;
+  z-index: 1;
+}
+
+.task-carousel .arrow-btn {
+  background: #fcd34d;
+  border: none;
+  border-radius: 8px;
+  padding: 6px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  margin: 0 10px;
+  transition: background 0.3s ease;
+}
+
+.task-carousel .arrow-btn:hover {
+  background: #fbbf24;
+}
+
+/* === SP BADGE REDISEÑADO === */
+.sp-badge {
+  background: #1f2937;
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+  padding: 10px;
+  border-radius: 12px;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.sp-badge .sp-title {
+  font-size: 10px;
+  background: #facc15;
+  color: #1f2937;
+  border-radius: 8px;
+  padding: 2px 6px;
+  margin-bottom: 2px;
+  font-weight: bold;
+}
+  
 .factors-column {
   display: flex;
   gap: 16px; /* Reducido de 30px a 16px */
@@ -64,18 +154,6 @@ body {
   gap: 20px;
   width: 100px;
   min-width: 100px;
-}
-
-.sp-badge {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-  background: #1f2937;
-  padding: 10px 16px;
-  border-radius: 16px;
-  color: white;
-  font-size: 16px;
-  font-weight: bold;
 }
 
 .sp-result-box {
@@ -384,45 +462,6 @@ body {
   }
 }
 
-/* === INPUT DE ENLACE Y VISTA PREVIA === */
-.task-link-wrapper {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  padding: 0 30px 20px;
-  margin-top: 10px;
-  flex-wrap: wrap;
-}
-
-.task-link-wrapper label {
-  font-weight: bold;
-  color: #1e293b;
-}
-
-#task-url {
-  flex: 1;
-  padding: 10px 14px;
-  border: 2px solid #fcd34d;
-  border-radius: 12px;
-  font-size: 14px;
-  font-family: 'Fredoka', sans-serif;
-  min-width: 200px;
-}
-
-#load-preview {
-  background: #facc15;
-  border: none;
-  padding: 10px 14px;
-  border-radius: 12px;
-  font-weight: bold;
-  font-family: 'Fredoka', sans-serif;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-#load-preview:hover {
-  background-color: #fbbf24;
-}
 
 /* === CONTENEDOR DE VISTA PREVIA === */
 
