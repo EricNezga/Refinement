@@ -587,38 +587,55 @@ body {
 
 .top-actions {
   display: flex;
-  gap: 12px;
   justify-content: flex-end;
-  margin: -10px 0 10px;
-  padding-right: 10px;
+  align-items: center;
+  gap: 12px;
+  margin-top: -10px;
+  margin-bottom: 16px;
+  padding-right: 20px;
 }
 
-.top-actions .sp-result-box.compact {
+/* SP box mini */
+.sp-result-box.compact {
   width: 70px;
   height: 70px;
-  font-size: 16px;
-  padding: 8px;
+  background: #1f2937;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
   border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  padding: 8px;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
 }
 
-.top-actions .sp-result-box.compact .label {
+.sp-result-box.compact .label {
   font-size: 12px;
   margin-bottom: 4px;
   color: #facc15;
 }
 
-.top-actions .confirm-selection-btn.compact {
+/* Confirm button mini */
+.confirm-selection-btn.compact {
   width: 70px;
   height: 70px;
-  padding: 8px;
-  font-size: 12px;
+  background: #facc15;
+  border: none;
   border-radius: 12px;
-  text-align: center;
+  font-weight: bold;
+  font-family: 'Fredoka', sans-serif;
+  font-size: 12px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.confirm-selection-btn.compact:hover {
+  background-color: #fbbf24;
 }
