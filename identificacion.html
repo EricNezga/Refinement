@@ -34,16 +34,10 @@
   <!-- Modal de selección de avatar -->
   <div class="avatar-modal hidden" id="avatarModal">
     <div class="avatar-modal-content">
-      
-      <!-- Botón de cierre -->
       <button class="avatar-close" id="avatarCloseBtn" aria-label="Cerrar">
         <i data-lucide="x"></i>
       </button>
-
-      <!-- Título -->
       <h2>Elige un avatar</h2>
-
-      <!-- Avatares -->
       <div class="avatar-grid">
         <i data-lucide="cookie" class="avatar" data-avatar="cookie"></i>
         <i data-lucide="handshake" class="avatar" data-avatar="handshake"></i>
@@ -56,11 +50,7 @@
         <i data-lucide="rabbit" class="avatar" data-avatar="rabbit"></i>
         <i data-lucide="turtle" class="avatar" data-avatar="turtle"></i>
       </div>
-
-      <!-- Mensaje de error para validación -->
       <span class="error-message" id="avatar-error"></span>
-
-      <!-- Botón para continuar -->
       <div class="avatar-footer">
         <button id="confirmAvatarBtn" class="confirm-button">
           <i data-lucide="arrow-right"></i>
@@ -69,63 +59,105 @@
     </div>
   </div>
 
-  <script src="identificacion.js"></script>
   <script>
-    // Renderizar íconos Lucide
-    lucide.createIcons();
+    document.addEventListener("DOMContentLoaded", () => {
+      lucide.createIcons();
 
-    // Redirigir si ya hay sesión activa
-    if (localStorage.getItem('session')) {
-      window.location.replace('index.html');
-    }
-
-    // Invitado
-    document.getElementById('guest-button').addEventListener('click', () => {
-      localStorage.setItem('session', 'true');
-      localStorage.setItem('username', 'Invitado');
-      localStorage.setItem('avatar', 'cookie'); // avatar por defecto
-      window.location.replace('index.html');
-    });
-
-    // Login con email
-    document.getElementById('login-button').addEventListener('click', () => {
-      const email = document.getElementById('email-input').value;
-      const username = document.getElementById('username-input').value || 'Usuario';
-      if (!email || !email.includes('@')) {
-        document.getElementById('email-error').textContent = 'Introduce un correo válido';
+      // Si ya hay sesión activa, redirige
+      const session = JSON.parse(localStorage.getItem("session") || "{}");
+      if (session?.name && session?.avatar) {
+        window.location.replace("index.html");
         return;
       }
 
-      // Guardar datos básicos, mostrar modal
-      localStorage.setItem('session', 'true');
-      localStorage.setItem('email', email);
-      localStorage.setItem('username', username);
-      document.getElementById('email-error').textContent = '';
-      document.getElementById('avatarModal').classList.remove('hidden');
-    });
+      const inputName = document.getElementById("username-input");
+      const inputEmail = document.getElementById("email-input");
+      const loginButton = document.getElementById("login-button");
+      const guestButton = document.getElementById("guest-button");
+      const emailError = document.getElementById("email-error");
+      const avatarModal = document.getElementById("avatarModal");
+      const avatarCloseBtn = document.getElementById("avatarCloseBtn");
+      const avatarIcons = document.querySelectorAll(".avatar");
+      const confirmButton = document.getElementById("confirmAvatarBtn");
+      const avatarError = document.getElementById("avatar-error");
 
-    // Confirmar avatar
-    document.getElementById('confirmAvatarBtn').addEventListener('click', () => {
-      const selected = document.querySelector('.avatar.selected');
-      if (!selected) {
-        document.getElementById('avatar-error').textContent = 'Selecciona un avatar para continuar';
-        return;
-      }
-      localStorage.setItem('avatar', selected.dataset.avatar);
-      window.location.replace('index.html');
-    });
+      let selectedAvatar = null;
+      let tempSession = null;
 
-    // Seleccionar visualmente el avatar
-    document.querySelectorAll('.avatar').forEach(avatar => {
-      avatar.addEventListener('click', () => {
-        document.querySelectorAll('.avatar').forEach(a => a.classList.remove('selected'));
-        avatar.classList.add('selected');
+      // --- Invitado ---
+      guestButton.addEventListener("click", () => {
+        tempSession = {
+          name: `Invitado_${Math.floor(Math.random() * 1000)}`,
+          email: null,
+          isGuest: true
+        };
+        openAvatarModal();
       });
-    });
 
-    // Cerrar modal
-    document.getElementById('avatarCloseBtn').addEventListener('click', () => {
-      document.getElementById('avatarModal').classList.add('hidden');
+      // --- Login con email ---
+      loginButton.addEventListener("click", () => {
+        const email = inputEmail.value.trim();
+        const name = inputName.value.trim() || email.split("@")[0];
+
+        emailError.textContent = "";
+
+        if (!email || !email.includes("@")) {
+          emailError.textContent = "Introduce un correo válido";
+          return;
+        }
+
+        tempSession = {
+          name,
+          email,
+          isGuest: false
+        };
+
+        openAvatarModal();
+      });
+
+      // --- Mostrar modal ---
+      function openAvatarModal() {
+        avatarModal.classList.remove("hidden");
+        selectedAvatar = null;
+        avatarError.textContent = "";
+
+        avatarIcons.forEach(icon => {
+          icon.classList.remove("selected");
+          icon.style.backgroundColor = "#f9fafb";
+        });
+      }
+
+      // --- Cerrar modal ---
+      avatarCloseBtn.addEventListener("click", () => {
+        avatarModal.classList.add("hidden");
+        avatarError.textContent = "";
+      });
+
+      // --- Selección visual de avatar ---
+      avatarIcons.forEach(icon => {
+        icon.addEventListener("click", () => {
+          avatarIcons.forEach(a => a.classList.remove("selected"));
+          icon.classList.add("selected");
+          selectedAvatar = icon;
+          avatarError.textContent = "";
+        });
+      });
+
+      // --- Confirmar avatar ---
+      confirmButton.addEventListener("click", () => {
+        if (!selectedAvatar || !tempSession) {
+          avatarError.textContent = "Selecciona un avatar para continuar";
+          return;
+        }
+
+        const session = {
+          ...tempSession,
+          avatar: selectedAvatar.dataset.avatar
+        };
+
+        localStorage.setItem("session", JSON.stringify(session));
+        window.location.replace("index.html");
+      });
     });
   </script>
 </body>
