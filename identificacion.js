@@ -13,11 +13,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let selectedAvatar = null;
   let selectedColor = null;
+  let tempSession = null;
 
   const colorOptions = ["#facc15", "#38bdf8", "#4ade80", "#a78bfa", "#f472b6"];
   const getRandomColor = () => colorOptions[Math.floor(Math.random() * colorOptions.length)];
 
-  // === Mostrar y resetear modal de avatar ===
   const openAvatarModal = () => {
     selectedAvatar = null;
     avatarError.textContent = "";
@@ -31,35 +31,29 @@ document.addEventListener("DOMContentLoaded", () => {
     avatarModal.classList.remove("hidden");
   };
 
-  // === Cerrar modal de avatar ===
   avatarCloseBtn?.addEventListener("click", () => {
     avatarModal.classList.add("hidden");
     avatarError.textContent = "";
-
-    if (selectedAvatar) {
-      selectedAvatar.classList.remove("selected", "animate");
-      selectedAvatar.setAttribute("stroke", "#1f2937");
-      selectedAvatar.style.backgroundColor = "#f9fafb";
-      selectedAvatar = null;
-    }
+    selectedAvatar = null;
   });
 
-  // === Confirmar avatar y continuar ===
   confirmButton?.addEventListener("click", () => {
-    if (!selectedAvatar) {
+    if (!selectedAvatar || !tempSession) {
       avatarError.textContent = "Por favor selecciona un avatar antes de continuar.";
       return;
     }
 
-    avatarError.textContent = "";
     const iconId = selectedAvatar.getAttribute("data-avatar");
-    localStorage.setItem("avatar", iconId);
-    localStorage.setItem("avatarColor", selectedColor || "#facc15");
+    const session = {
+      ...tempSession,
+      avatar: iconId,
+      avatarColor: selectedColor || "#facc15",
+    };
 
+    localStorage.setItem("session", JSON.stringify(session));
     window.location.href = "index.html";
   });
 
-  // === Selección de avatar con reinicio de animación siempre ===
   avatarIcons?.forEach(icon => {
     icon.addEventListener("click", () => {
       avatarIcons.forEach(i => {
@@ -75,7 +69,6 @@ document.addEventListener("DOMContentLoaded", () => {
       icon.setAttribute("stroke", "#ffffff");
       icon.style.backgroundColor = selectedColor;
 
-      // Forzar reinicio de animación
       icon.classList.remove("animate");
       void icon.offsetWidth;
       icon.classList.add("animate");
@@ -84,7 +77,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // === Login con email ===
   loginButton.addEventListener("click", () => {
     const name = inputName.value.trim();
     const email = inputEmail.value.trim();
@@ -100,24 +92,26 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    const finalName = name || email.split("@")[0];
-    localStorage.setItem("username", finalName);
-    localStorage.setItem("email", email);
-    localStorage.setItem("guest", "false");
+    tempSession = {
+      name: name || email.split("@")[0],
+      email,
+      isGuest: false
+    };
 
     openAvatarModal();
   });
 
-  // === Login como invitado ===
   guestButton.addEventListener("click", () => {
-    localStorage.setItem("username", `Invitado_${Math.floor(Math.random() * 1000)}`);
-    localStorage.setItem("guest", "true");
-    localStorage.removeItem("email");
+    tempSession = {
+      name: `Invitado_${Math.floor(Math.random() * 1000)}`,
+      email: null,
+      isGuest: true
+    };
 
     openAvatarModal();
   });
 
-  // === Animación de fondo ===
+  // === ANIMACIÓN FONDO ===
   const canvas = document.querySelector(".background-binary");
   if (!canvas) return;
 
