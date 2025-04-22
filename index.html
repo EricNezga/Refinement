@@ -8,24 +8,12 @@
 </head>
 
 <body>
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const username = localStorage.getItem("username");
-      if (!username) {
-        window.location.replace("identificacion.html");
-      }
-    });
-  </script>
-</head>
-
-<body>
   <!-- ========== CABECERA GENERAL ========== -->
   <div class="header">
-    <h2 id="user-greeting">Bienvenid@</h2>
+    <h2 id="user-greeting"></h2>
     <div class="controls">
       <button id="toggle-view" title="Cambiar vista">
-        <!-- Icono de ojo -->
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye-icon">
           <path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/>
           <circle cx="12" cy="12" r="3"/>
         </svg>
@@ -37,12 +25,12 @@
     </div>
   </div>
 
-  <!-- ========== CONTENIDO PRINCIPAL ========== -->
+  <!-- ========== CONTENIDO PRINCIPAL CENTRALIZADO ========== -->
   <main class="main-container">
     <div class="left-column">
       <h1 class="title">Refinador</h1>
 
-      <!-- Input para enlace -->
+      <!-- === Input para enlace de tarea === -->
       <div class="task-link-wrapper compact">
         <label for="task-url">Enlace de la tarea:</label>
         <div class="input-button-row">
@@ -50,8 +38,18 @@
           <button id="load-preview">Mostrar</button>
         </div>
       </div>
-
-      <!-- Factores -->
+      
+      <!-- === ACCIONES SUPERIORES (SP + Confirmación) === 
+      <div class="top-actions">
+        <div class="sp-result-box compact">
+          <span class="label">SP</span>
+          <div id="average-sp">8</div>
+        </div>
+        <button class="confirm-selection-btn compact">OK</button>
+      </div>
+      -->
+      
+      <!-- === FACTORES === -->
       <div class="wrapper compact">
         <!-- COMPLEJIDAD -->
         <div class="factor" data-factor="Complejidad">
@@ -85,7 +83,7 @@
           </div>
           <div class="card-row" onclick="select(this, 3)" data-value="3">
             <div class="label">Alta</div>
-            <div class="card-content"><p>Definición ambigua, faltan datos clave</p></div>
+            <div class="card-content"><p>Definición ambigua, faltan datos clave para avanzar</p></div>
           </div>
         </div>
 
@@ -95,25 +93,24 @@
           <h2>Esfuerzo</h2>
           <div class="card-row" onclick="select(this, 1)" data-value="1">
             <div class="label">Bajo</div>
-            <div class="card-content"><p>Rápido de ejecutar, pocas líneas</p></div>
+            <div class="card-content"><p>Rápido de ejecutar, es cosa de unas pocas líneas</p></div>
           </div>
           <div class="card-row" onclick="select(this, 2)" data-value="2">
             <div class="label">Medio</div>
-            <div class="card-content"><p>Podría requerir revisión o soporte</p></div>
+            <div class="card-content"><p>Podría necesitar algo de revisión y soporte</p></div>
           </div>
           <div class="card-row" onclick="select(this, 3)" data-value="3">
             <div class="label">Alto</div>
-            <div class="card-content"><p>Trabajo intenso, muchos frentes</p></div>
+            <div class="card-content"><p>Trabajo intenso y con muchos frentes</p></div>
           </div>
         </div>
       </div>
     </div>
-  </main>
 
-  <!-- Botón logout -->
+  <!-- ========== BOTÓN DE CIERRE DE SESIÓN FIJO ========== -->
   <div class="logout-container">
     <button id="logout-btn" title="Cerrar sesión">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-log-out">
         <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
         <polyline points="16 17 21 12 16 7"/>
         <line x1="21" y1="12" x2="9" y2="12"/>
@@ -122,6 +119,7 @@
     </button>
   </div>
 
+  <!-- ========== SCRIPT PRINCIPAL ========== -->
   <script src="script.js"></script>
 </body>
 </html>
