@@ -1,7 +1,7 @@
 // === USUARIO ===
 const username = localStorage.getItem("username");
 if (!username) {
-  window.location.href = "login.html";
+  window.location.href = "../home/login.html";
 } else {
   document.getElementById("user-greeting").textContent = `Hola, ${username}!`;
 }
@@ -9,7 +9,7 @@ if (!username) {
 // === CIERRE DE SESIÓN ===
 document.getElementById("logout-btn").addEventListener("click", () => {
   localStorage.removeItem("username");
-  window.location.href = "login.html";
+  window.location.href = "../home/login.html";
 });
 
 // === VARIABLES ===
