@@ -76,7 +76,7 @@
 
     // Redirigir si ya hay sesión activa
     if (localStorage.getItem('session')) {
-      window.location.replace('refinador/');
+      window.location.replace('index.html');
     }
 
     // Invitado
@@ -84,7 +84,7 @@
       localStorage.setItem('session', 'true');
       localStorage.setItem('username', 'Invitado');
       localStorage.setItem('avatar', 'cookie'); // avatar por defecto
-      window.location.replace('refinador/');
+      window.location.replace('index.html');
     });
 
     // Login con email
@@ -112,7 +112,7 @@
         return;
       }
       localStorage.setItem('avatar', selected.dataset.avatar);
-      window.location.replace('refinador/');
+      window.location.replace('index.html');
     });
 
     // Seleccionar visualmente el avatar
