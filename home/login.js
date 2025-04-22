@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.setItem("avatar", iconId);
     localStorage.setItem("avatarColor", selectedColor || "#facc15");
 
-    window.location.href = "index.html";
+    window.location.href = "refinador.html";
   });
 
   // === Selección de avatar con reinicio de animación siempre ===
