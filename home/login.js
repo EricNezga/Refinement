@@ -17,7 +17,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const colorOptions = ["#facc15", "#38bdf8", "#4ade80", "#a78bfa", "#f472b6"];
   const getRandomColor = () => colorOptions[Math.floor(Math.random() * colorOptions.length)];
 
-  // === Mostrar y resetear modal de avatar ===
   const openAvatarModal = () => {
     selectedAvatar = null;
     avatarError.textContent = "";
@@ -31,35 +30,25 @@ document.addEventListener("DOMContentLoaded", () => {
     avatarModal.classList.remove("hidden");
   };
 
-  // === Cerrar modal de avatar ===
   avatarCloseBtn?.addEventListener("click", () => {
     avatarModal.classList.add("hidden");
     avatarError.textContent = "";
-
-    if (selectedAvatar) {
-      selectedAvatar.classList.remove("selected", "animate");
-      selectedAvatar.setAttribute("stroke", "#1f2937");
-      selectedAvatar.style.backgroundColor = "#f9fafb";
-      selectedAvatar = null;
-    }
+    selectedAvatar = null;
   });
 
-  // === Confirmar avatar y continuar ===
   confirmButton?.addEventListener("click", () => {
     if (!selectedAvatar) {
       avatarError.textContent = "Por favor selecciona un avatar antes de continuar.";
       return;
     }
 
-    avatarError.textContent = "";
     const iconId = selectedAvatar.getAttribute("data-avatar");
     localStorage.setItem("avatar", iconId);
     localStorage.setItem("avatarColor", selectedColor || "#facc15");
 
-    window.location.href = "refinador.html";
+    window.location.href = "../tool/refinador.html";
   });
 
-  // === Selección de avatar con reinicio de animación siempre ===
   avatarIcons?.forEach(icon => {
     icon.addEventListener("click", () => {
       avatarIcons.forEach(i => {
@@ -75,7 +64,6 @@ document.addEventListener("DOMContentLoaded", () => {
       icon.setAttribute("stroke", "#ffffff");
       icon.style.backgroundColor = selectedColor;
 
-      // Forzar reinicio de animación
       icon.classList.remove("animate");
       void icon.offsetWidth;
       icon.classList.add("animate");
@@ -84,7 +72,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // === Login con email ===
   loginButton.addEventListener("click", () => {
     const name = inputName.value.trim();
     const email = inputEmail.value.trim();
@@ -108,7 +95,6 @@ document.addEventListener("DOMContentLoaded", () => {
     openAvatarModal();
   });
 
-  // === Login como invitado ===
   guestButton.addEventListener("click", () => {
     localStorage.setItem("username", `Invitado_${Math.floor(Math.random() * 1000)}`);
     localStorage.setItem("guest", "true");
@@ -117,7 +103,7 @@ document.addEventListener("DOMContentLoaded", () => {
     openAvatarModal();
   });
 
-  // === Animación de fondo ===
+  // Animación fondo
   const canvas = document.querySelector(".background-binary");
   if (!canvas) return;
 
