@@ -5,12 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Refinador</title>
   <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
   <script>
-    // Redirige al login si no hay sesión activa
-    const session = localStorage.getItem('session');
-    if (!session) {
-      window.location.replace('../identificacion/');
-    }
+    document.addEventListener("DOMContentLoaded", () => {
+      const username = localStorage.getItem("username");
+      if (!username) {
+        window.location.replace("identificacion.html");
+      }
+    });
   </script>
 </head>
 
