@@ -1,21 +1,22 @@
-// === USUARIO ===
-const username = localStorage.getItem("username");
-if (!username) {
+// === SESIÓN ===
+const session = JSON.parse(localStorage.getItem("session") || "{}");
+
+if (!session.name) {
   window.location.href = "identificacion.html";
 } else {
-  document.getElementById("user-greeting").textContent = `Hola, ${username}!`;
+  document.getElementById("user-greeting").textContent = `Hola, ${session.name}!`;
 }
 
 // === CIERRE DE SESIÓN ===
 document.getElementById("logout-btn").addEventListener("click", () => {
-  localStorage.removeItem("username");
+  localStorage.removeItem("session");
   window.location.href = "identificacion.html";
 });
 
 // === VARIABLES ===
-const storyPointDisplay = document.getElementById("story-point"); // SP cabecera
-const averageSpDisplay = document.getElementById("average-sp");   // SP resumen lateral
-const spBox = document.getElementById("sp-local");                // Badge principal con animación
+const storyPointDisplay = document.getElementById("story-point");
+const averageSpDisplay = document.getElementById("average-sp");
+const spBox = document.getElementById("sp-local");
 
 const toggleBtn = document.getElementById("toggle-view");
 const wrapper = document.querySelector(".wrapper");
@@ -47,18 +48,15 @@ function select(element, value) {
   else if (total === 8) sp = 13;
   else if (total === 9) sp = 21;
 
-  // Actualiza SP visualmente en los dos elementos
   storyPointDisplay.textContent = sp;
   if (averageSpDisplay) averageSpDisplay.textContent = sp;
 
-  // Animación en el SP badge de cabecera
   if (spBox) {
     spBox.classList.remove("wobble");
     void spBox.offsetWidth;
     spBox.classList.add("wobble");
   }
 
-  // Actualiza bubble del factor
   const factorName = container.dataset.factor.toLowerCase();
   const bubble = document.getElementById(`bubble-${factorName}`);
   if (bubble) {
@@ -71,7 +69,6 @@ function select(element, value) {
     bubble.style.animation = "pulse 0.25s ease";
   }
 
-  // Reinicia animación de la selección
   element.style.animation = "none";
   void element.offsetWidth;
   element.style.animation = "pulse 0.25s ease";
